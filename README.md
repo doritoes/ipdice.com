@@ -27,8 +27,8 @@ Here are the goals I have for this project. If you would like to encourage me to
 ## In Scope
 ### Completed
 - Register domain name
-### Working on
 - Bootstrapping repo on github
+### Working on
 - Bootstrapping image on docker hub
 ### Will Do
 - Basic IP address experience
