@@ -3,16 +3,18 @@ Here will will use Amazon Elastic Container Service (ECS) to host our container 
 
 It is also important that we will be using the launch type **AWS Fargate**, a serverless model where AWS manages the underlying infrastructure for your. It's simpler but with less flexibility.
 
+Tip: Make sure you are in the desired region (e.g., `us-east-1`)
+
 *See https://aws.amazon.com/ecr/pricing/ for details about pricing after the first year of Free Tier*
 
 ## Create an ECR Repository
-### Log in to AWS Console and Navigate to ECR
-1. Browse to (https://console.aws.amazon.com) and log in
-2. Make sure you are in the desired region (e.g., `us-east-1`)
-3. In the search bar enter "ECR" and click on **Elastic Container Registry**
+### Create IAM User for ECS
 
-### Create repository
-1. Click **Get Started**
+### Create Secrets Manager Secret
+
+### Create the Repository
+1. In the search bar enter "ECR" and click on **Elastic Container Registry**
+2. Click **Get Started** or **Create repository**
     - Visibility: **Private** (for image pulls)
     - Repository name: **ipdice**
     - Leave the rest at defaults
