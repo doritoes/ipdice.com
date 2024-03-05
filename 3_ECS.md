@@ -78,6 +78,19 @@ Validate: `aws ecr describe-images --repository-name ipdice`
 4.  Infrastructure: **AWS Fargate (serverless)**
 5.  Click **Create**
 
+## Create Role ecsTaskExecutionRole
+1. In another browser tab, open the AWS console and navigate to **IAM**
+2. Click **Roles**
+3. Search for *ecsTaskExecutionRole*
+4. If it does not exist
+    - Click **Create role**
+    - Type: **AWS service**
+    - Use case: **Elastic Container Service** > **Elastic Container Service Task** (ECS tasks will use role)
+    - Search for the **AmazonECSTaskExecutionRolePolicy** policy and check the box next to it. This is a managed policy by AWS with the appropriate permissions.
+    - Role name: **ecsTaskExecutionRole**
+    - Description: *Allows ECS tasks to call AWS services on your behalf*
+    - Click **Create role**
+
 ## Define a Task Definition
 1. Click **Task Definition** > **Create new task definition** from the left menu (not with JSON)
     - Task definition family: **ipdice-app**
@@ -89,13 +102,29 @@ Validate: `aws ecr describe-images --repository-name ipdice`
 3. Launch Type Compatibility: **Fargate**
 4. Task Definition Name: **ipdice-task-def**
 5. Task Role - grants your task's containers permissions to call other AWS services on your behalf (e.g., accessing an S3 bucket, sending a message to SNS) - **Leave Blank for Now**
-6. Task Execution role - gives the ECS agent (running on the Fargate infrastructure) permissions to manage your tasks. It needs permissions like pulling container images from ECR and writing logs to CloudWatch - **WHATNOW**
-7. 
-8.  ?? Create a new IAM role for your task if needed (or choose an existing one). This role will need permissions to pull from your ECR repository. ??
-9. Add Container
+6. Task Execution role - gives the ECS agent (running on the Fargate infrastructure) permissions to manage your tasks. It needs permissions like pulling container images from ECR and writing logs to CloudWatch - **ecsTaskExecutionRole**
+7. Container - 1
+    - Name: **ipdice-container**
+    - Image URI: *your image URI* (mine is 702745267684.dkr.ecr.us-east-1.amazonaws.com/ipdice:latest)
+    - Essential container: **Yes**
+    - Private registry authentication: **Yes**
+      - Secrets Manager ARN or name: **WHATNOW**
+    - Port Mappings
+      - Container port: 8080
+      - Protocol: TCP
+      - Port name:
+      - App protocol: HTTP ?????
+    - Read only root file system: ?????
+    - Resource allocation limits
+      - CPU: 1 vCPU
+      - GPU: 1 (can't change)
+      - Memory hard limit: 3GB
+      - Memory soft limit: 1GB
+9.  ?? Create a new IAM role for your task if needed (or choose an existing one). This role will need permissions to pull from your ECR repository. ??
+10. Add Container
     - Container name: **ipdice-app**
     - Image: URI to your image (e.g., 702745267684.dkr.ecr.us-east-1.amazonaws.com/ipdice:latest)
     - Memory Limits: soft limts are fine initially
     - Port Mappings:  If your app exposes ports, add mappings (e.g., container port 80 to host port 80).
-10. Click Create
+11. Click Create
 
