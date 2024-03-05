@@ -25,6 +25,6 @@ $client_ip = client_ip();
 <html>
   <body>
     <h1>Your IP Address</h1>
-    <p>{$client_ip}</p>
+    <p><?php echo $client_ip ?></p>
   </body>
 </html>
