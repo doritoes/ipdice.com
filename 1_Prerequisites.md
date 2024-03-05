@@ -14,6 +14,10 @@ Required resources
     - (https://aws.amazon.com/route53/pricing/) has a list of pricing by TLD
     - .click $3
     - .link $5
- 
+ - Install AWS Cli on your local machine
+     - https://aws.amazon.com/cli/
+     - Find **Windows** Download and run the 64-bit Windows installer
+     - Download and launch AWSCLIV2.msi
+     - Accept the terms and defaults
 # Assumptions
 You are responsible to select an AWS region where you will build your lab. In my examples, I will use us-east-1 (N. Virginia).
