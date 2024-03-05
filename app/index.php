@@ -18,7 +18,7 @@ function client_ip() {
   } else {
     $ip = "IP Address Not Found";
   }
-  return $ip
+  return $ip;
 }
 $client_ip = client_ip();
 ?>
