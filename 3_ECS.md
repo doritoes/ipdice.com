@@ -1,5 +1,7 @@
 # Configuring ECS
-Here will will use Amazon Elastic Container Service (ECS) to host our container application. We will use Amazon Elastic Container Registry (ECR) to store and replicate our Docker image we built.
+Here will will use Amazon Elastic Container Service (ECS) to host our container application. We will use Amazon Elastic Container Registry (ECR) to store and replicate the Docker image we built.
+
+It is also important that we will be using the launch type **AWS Fargate**, a serverless model where AWS manages the underlying infrastructure for your. It's simpler but with less flexibility.
 
 *See https://aws.amazon.com/ecr/pricing/ for details about pricing after the first year of Free Tier*
 
@@ -11,7 +13,6 @@ Here will will use Amazon Elastic Container Service (ECS) to host our container 
 
 ### Create repository
 1. Click **Get Started**
-    - General settings:
     - Visibility: **Private** (for image pulls)
     - Repository name: **ipdice**
     - Leave the rest at defaults
@@ -39,7 +40,7 @@ Here will will use Amazon Elastic Container Service (ECS) to host our container 
     - This is your <u>last chance to save</u> information about the access key
 10. Click Done
 
-### Push Image to ECR
+### Configure the AWS CLI
 At this point you will need:
 - An existing Docker image (e.g. mine is https://hub.docker.com/repository/docker/doritoes/ipdice.com)
 - Your AWS account
@@ -48,5 +49,44 @@ At this point you will need:
 1. Open a commmand line where will will use the AWS CLI
 2. Authenticate and provide your AWS access keys
     - `aws configure`
-  
-CONTINUE HERE
+    - Copy the access key ID from the CSV file you downloaded
+    - Copy the secret access key from the CSV file you downloaded
+    - Default region name: *your region* (e.g., us-east-1)
+    - Default output formation: **json**
+
+## Push Image
+### Get ECR Login and Docker Working
+This step authenticates the Docker client with Amazon ECR. It generates a temporary token (12 hours). It provides seamless Docker Login. The URL of your ECR repository is used for the last part.
+~~~
+aws ecr get-login-password --region <your-region> | docker login --username AWS --password-stdin https://<your-account-id>.dkr.ecr.<your-region>.amazonaws.com
+~~~
+Validate: `aws ecr describe-images --repository-name ipdice`
+
+### Tag Image
+1. List images `docker images`
+2. Tag image
+    - `docker tag <image_repository_name>:latest <your_repository_url>:latest
+    - no "https" in the tag
+### Push Image
+1. Push: `docker push <your_repository_url>:latest`
+2. Verify: `aws ecr describe-images --repository-name ipdice`
+
+## Create an ECS Cluster
+1.  In the AWS console search bar enter "ECS" and click on **Elastic Container Service**
+2.  Click **Create cluster**
+3.  Cluster name: **ipdice-us-east-1**
+4.  Infrastructure: **AWS Fargate (serverless)**
+5.  Click **Create**
+
+## Define a Task Definition
+1. Click **Task Definition** > **Create new task definition** from the left menu
+2. Launch Type Compatibility: **Fargate**
+3. Task Definition Name: **ipdice-task-def**
+4. Task Role: ?? Create a new IAM role for your task if needed (or choose an existing one). This role will need permissions to pull from your ECR repository. ??
+5. Add Container
+    - Container name: **ipdice-app**
+    - Image: URI to your image (e.g., 702745267684.dkr.ecr.us-east-1.amazonaws.com/ipdice:latest)
+    - Memory Limits: soft limts are fine initially
+    - Port Mappings:  If your app exposes ports, add mappings (e.g., container port 80 to host port 80).
+6. Click Create
+
