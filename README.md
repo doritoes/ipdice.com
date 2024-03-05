@@ -43,7 +43,7 @@ Here are the goals I have for this project. If you would like to encourage me to
 
 # Step-by-Step
 1. [Pre-Requisites](1_Prerequisites.md)
-2. [Creating and Build the Web App Container](2_ipdice.md)
+2. [Create and Build the Web App Container](2_ipdice.md)
 3. [Configuring ECS](3_ECS.md)
 4. [Create CloudFront](4_CloudFront.md)
 5. [Update DNS](5_Route_53.md)
