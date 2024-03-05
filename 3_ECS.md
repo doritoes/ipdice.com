@@ -74,19 +74,28 @@ Validate: `aws ecr describe-images --repository-name ipdice`
 ## Create an ECS Cluster
 1.  In the AWS console search bar enter "ECS" and click on **Elastic Container Service**
 2.  Click **Create cluster**
-3.  Cluster name: **ipdice-us-east-1**
+3.  Cluster name: **ipdice-cluster**
 4.  Infrastructure: **AWS Fargate (serverless)**
 5.  Click **Create**
 
 ## Define a Task Definition
-1. Click **Task Definition** > **Create new task definition** from the left menu
-2. Launch Type Compatibility: **Fargate**
-3. Task Definition Name: **ipdice-task-def**
-4. Task Role: ?? Create a new IAM role for your task if needed (or choose an existing one). This role will need permissions to pull from your ECR repository. ??
-5. Add Container
+1. Click **Task Definition** > **Create new task definition** from the left menu (not with JSON)
+    - Task definition family: **ipdice-app**
+    - Launch type: **AWS Fargate**
+    - OS, Architecture, Network mode: **Linux/X86_64**
+    - Network mode: automatically set to *awsvpc* for Fargate
+    - CPU: **0.25 vCPU**
+    - Memory: **0.5 GB**
+3. Launch Type Compatibility: **Fargate**
+4. Task Definition Name: **ipdice-task-def**
+5. Task Role - grants your task's containers permissions to call other AWS services on your behalf (e.g., accessing an S3 bucket, sending a message to SNS) - **Leave Blank for Now**
+6. Task Execution role - gives the ECS agent (running on the Fargate infrastructure) permissions to manage your tasks. It needs permissions like pulling container images from ECR and writing logs to CloudWatch - **WHATNOW**
+7. 
+8.  ?? Create a new IAM role for your task if needed (or choose an existing one). This role will need permissions to pull from your ECR repository. ??
+9. Add Container
     - Container name: **ipdice-app**
     - Image: URI to your image (e.g., 702745267684.dkr.ecr.us-east-1.amazonaws.com/ipdice:latest)
     - Memory Limits: soft limts are fine initially
     - Port Mappings:  If your app exposes ports, add mappings (e.g., container port 80 to host port 80).
-6. Click Create
+10. Click Create
 
