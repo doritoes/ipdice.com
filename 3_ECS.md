@@ -40,6 +40,19 @@ It is also important that we will be using the launch type **AWS Fargate**, a se
     - This is your <u>last chance to save</u> information about the access key
 10. Click Done
 
+### Create Secret for the Repository
+1. In the AWS console, search for "Secrets" and click on **Secrets Manager**
+2. Click **Store a new secret**
+3. Secret type: **Other type of secrets**
+4. Key-value pairs:
+    - Key: username
+    - Value: the access key ID from your ECR access keys
+    - Key: password
+    - Value: the secret access keyfrom your ECR access keys
+5. Secret Namee: **ecr-image-pull-credentials**
+6. Descrition: **credentials for pulling images from ECR**
+7. Click **Store**
+
 ### Configure the AWS CLI
 At this point you will need:
 - An existing Docker image (e.g. mine is https://hub.docker.com/repository/docker/doritoes/ipdice.com)
