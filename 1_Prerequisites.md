@@ -1,4 +1,6 @@
 # Prerequisites
+This lab is written for a Windows 11 system.
+
 Required knowledge and understanding
 - Cloud Computing basics and what AWS is (Free Udemy course [link](https://www.udemy.com/course/introduction-to-aws-cloud-computing/))
 - What container computing is
