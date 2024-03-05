@@ -6,7 +6,8 @@ Here will will use Amazon Elastic Container Service (ECS) to host our container 
 ## Create an ECR Repository
 ### Log in to AWS Console and Navigate to ECR
 1. Browse to (https://console.aws.amazon.com) and log in
-2. In the search bar enter "ECR" and click on **Elastic Container Registry**
+2. Make sure you are in the desired region (e.g., `us-east-1`)
+3. In the search bar enter "ECR" and click on **Elastic Container Registry**
 
 ### Create repository
 1. Click **Get Started**
