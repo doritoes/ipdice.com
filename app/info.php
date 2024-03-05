@@ -27,10 +27,3 @@
     </table>
   </body>
 </html>
-<?php
-function get_client_ip() {
-  return $_SERVER['HTTP_X_FORWARDED_FOR']
-    ?? $_SERVER['REMOTE_ADDR']
-    ?? $_SERVER['HTTP_CLIENT_IP']
-    ?? '';
-}
