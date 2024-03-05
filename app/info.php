@@ -7,7 +7,7 @@
   <body>
     <table>
       <tr>
-        <th>Sourch</th><th>Value</th>
+        <th>Source</th><th>Value</th>
       </tr>
       <?php
          if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
@@ -18,10 +18,10 @@
            }
          }
          if (array_key_exists('REMOTE_ADDR', $_SERVER)) {
-           echo "<tr><td>REMOTE_ADDR</td><td>$_SERVER['REMOTE_ADDR']</td></tr>";
+           echo "<tr><td>REMOTE_ADDR</td><td>" . $_SERVER['REMOTE_ADDR'] . "</td></tr>";
          }
          if (array_key_exists('HTTP_CLIENT_IP', $_SERVER)) {
-           echo "<tr><td>HTTP_CLIENT_IP</td><td>$_SERVER['HTTP_CLIENT_IP']</td></tr>";
+           echo "<tr><td>HTTP_CLIENT_IP</td><td>" . $_SERVER['HTTP_CLIENT_IP'] . "</td></tr>";
          }       
       ?>
     </table>
