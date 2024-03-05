@@ -43,15 +43,13 @@ Here are the goals I have for this project. If you would like to encourage me to
 
 # Step-by-Step
 1. [Pre-Requisites](1_Prerequisites.md)
-2. [Creating the Web App](2_ipdice.md)
-3. [Building the Container](3_Building_container.md)
-4. [Testing in Docker](4_Testing_docker.md)
-5. [Configuring ECS](5_ECS.md)
-6. [Create CloudFront](6_CloudFront.md)
-7. [Update DNS](7_Route_53.md)
-8. [Testing and Monitoring](8_Testing_and_Monitoring.md)
-9. [Adding Regions](9_Regions.md)
-10. [Next Steps](10_Next_Steps.md)
+2. [Creating and Build the Web App Container](2_ipdice.md)
+3. [Configuring ECS](3_ECS.md)
+4. [Create CloudFront](4_CloudFront.md)
+5. [Update DNS](5_Route_53.md)
+6. [Testing and Monitoring](6_Testing_and_Monitoring.md)
+7. [Adding Regions](7_Regions.md)
+8. [Next Steps](8_Next_Steps.md)
 
 # References
 My favorite IP address checking web sites:
