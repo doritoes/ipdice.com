@@ -52,6 +52,7 @@ It is also important that we will be using the launch type **AWS Fargate**, a se
 5. Secret Namee: **ecr-image-pull-credentials**
 6. Descrition: **credentials for pulling images from ECR**
 7. Click **Store**
+8. View the new secret *ecr-image-pull-credentials* and note the Secret ARN; you will need this later!
 
 ### Configure the AWS CLI
 At this point you will need:
@@ -121,19 +122,26 @@ Validate: `aws ecr describe-images --repository-name ipdice`
     - Image URI: *your image URI* (mine is 702745267684.dkr.ecr.us-east-1.amazonaws.com/ipdice:latest)
     - Essential container: **Yes**
     - Private registry authentication: **Yes**
-      - Secrets Manager ARN or name: **WHATNOW**
+      - Secrets Manager ARN or name: *Copy the secret's ARN from the AWS Secrets Manager*
     - Port Mappings
-      - Container port: 8080
-      - Protocol: TCP
-      - Port name:
-      - App protocol: HTTP ?????
-    - Read only root file system: ?????
+      - Container port: **8080** (our applcation listens on port 8080)
+      - Protocol: **TCP**
+      - Port name: *leave blank*
+      - App protocol: **HTTP**
+    - Read only root file system: **Leave off** (our application can run with Read Only enabled)
     - Resource allocation limits
       - CPU: 1 vCPU
       - GPU: 1 (can't change)
-      - Memory hard limit: 3GB
+      - Memory hard limit: 3GB (very generous)
       - Memory soft limit: 1GB
-9.  ?? Create a new IAM role for your task if needed (or choose an existing one). This role will need permissions to pull from your ECR repository. ??
+    - Log collection: **On** for testing, **Off** to reduce costs
+    - HealthCheck - Optional: (incurs small costs)
+      - Command: `CMD-SHELL, curl -f http://localhost/health.php || exit 1`
+      - Interval: 30 seconds (default)
+      - Timeout: 5 seconds (default)
+      - Start period: 0 seconds (no need for grace period here)
+      - Retries: 2 (one or two retriess before making the container unhealthy)
+8. Click **Create**
 10. Add Container
     - Container name: **ipdice-app**
     - Image: URI to your image (e.g., 702745267684.dkr.ecr.us-east-1.amazonaws.com/ipdice:latest)
@@ -141,3 +149,7 @@ Validate: `aws ecr describe-images --repository-name ipdice`
     - Port Mappings:  If your app exposes ports, add mappings (e.g., container port 80 to host port 80).
 11. Click Create
 
+ERROR
+~~~~
+Private repository credentials are not a supported authentication method for ECR repositories.
+~~~~
