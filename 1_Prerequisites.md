@@ -19,5 +19,7 @@ Required resources
      - Find **Windows** Download and run the 64-bit Windows installer
      - Download and launch AWSCLIV2.msi
      - Accept the terms and defaults
+   - Install Docker on your local machine
+   - Install Git on your local machine
 # Assumptions
 You are responsible to select an AWS region where you will build your lab. In my examples, I will use us-east-1 (N. Virginia).
