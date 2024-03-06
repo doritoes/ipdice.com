@@ -6,23 +6,9 @@ It is also important that we will be using the launch type **AWS Fargate**, a se
 Tip: Make sure you are in the desired region (e.g., `us-east-1`)
 
 *See https://aws.amazon.com/ecr/pricing/ for details about pricing after the first year of Free Tier*
-
-## Create an ECR Repository
-### Create IAM User for ECS
-
-### Create Secrets Manager Secret
-
-### Create the Repository
-1. In the search bar enter "ECR" and click on **Elastic Container Registry**
-2. Click **Get Started** or **Create repository**
-    - Visibility: **Private** (for image pulls)
-    - Repository name: **ipdice**
-    - Leave the rest at defaults
-2. Click **Create repository**
-
-### Create access key(s)
+## Create IAM User and Access Keys
 1.  In the AWS console search bar enter "IAM" and click on **IAM**
-2.  Click on "Users" in the left sidebar
+2.  Click **Users** in the left sidebar
 3.  Click **Add users** or **Create user** (click Next to proceed through each step)
     - User name: **ecs-admin**
     - Permissions options: **Attach policies directly**
@@ -35,33 +21,40 @@ Tip: Make sure you are in the desired region (e.g., `us-east-1`)
 5. Click **Security credentials**
 6. Click **Create access key**
 7. Use case: **Command Line Interface (CLI)**
+    - check the confirmation box and click **Next**
 8. Description: **ECS Administration**
 9. Click **Download .csv file**
     - Store this key securely!
     - Easy user can only have 2 active access keys at a time
     - This is your <u>last chance to save</u> information about the access key
-10. Click Done
+10. Click **Done**
 
-### Create Secret for the Repository
+## Create Secret for the Repository
 1. In the AWS console, search for "Secrets" and click on **Secrets Manager**
 2. Click **Store a new secret**
 3. Secret type: **Other type of secrets**
-4. Key-value pairs:
+4. Key-value pairs: *use the information in the CSV file you downloaded*
     - Key: username
     - Value: the access key ID from your ECR access keys
     - Key: password
     - Value: the secret access keyfrom your ECR access keys
 5. Secret Namee: **ecr-image-pull-credentials**
-6. Descrition: **credentials for pulling images from ECR**
-7. Click **Store**
-8. View the new secret *ecr-image-pull-credentials* and note the Secret ARN; you will need this later!
+6. Description: **credentials for pulling images from ECR**
+7. <u>Do not configure automatic rotation</u>
+    - Once the application is up and running first try rotating the secret manually
+    - Once you have successfully rotated the secret manually, look into enabling and configuration automatic rotation
+8. Click **Store**
+9. View the new secret *ecr-image-pull-credentials* and note the Secret ARN; you will need this later!
 
-### Configure the AWS CLI
-At this point you will need:
-- An existing Docker image (e.g. mine is https://hub.docker.com/repository/docker/doritoes/ipdice.com)
-- Your AWS account
-- the AWS CLI installed and configured
+## Create an ECR Repository
+1. In the search bar enter "ECR" and click on **Elastic Container Registry**
+2. Click **Get Started** or **Create repository**
+    - Visibility: **Private** (for image pulls)
+    - Repository name: **ipdice**
+    - Leave the rest at defaults
+2. Click **Create repository**
 
+## Configure the AWS CLI
 1. Open a commmand line where will will use the AWS CLI
 2. Authenticate and provide your AWS access keys
     - `aws configure`
@@ -71,6 +64,8 @@ At this point you will need:
     - Default output formation: **json**
 
 ## Push Image
+:worried: continue re-work here
+
 ### Get ECR Login and Docker Working
 This step authenticates the Docker client with Amazon ECR. It generates a temporary token (12 hours). It provides seamless Docker Login. The URL of your ECR repository is used for the last part.
 ~~~
