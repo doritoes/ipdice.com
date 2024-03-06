@@ -81,7 +81,6 @@ Validate: `aws ecr describe-images --repository-name ipdice`
 2. Verify: `aws ecr describe-images --repository-name ipdice`
 
 ## Create an ECS Cluster
-:worried: continue here
 1.  In the AWS console search bar enter "ECS" and click on **Elastic Container Service**
 2.  Click **Create cluster**
 3.  Cluster name: **ipdice-cluster**
@@ -89,6 +88,8 @@ Validate: `aws ecr describe-images --repository-name ipdice`
 5.  Click **Create**
 
 ## Create Role ecsTaskExecutionRole
+This role allows ECS tasks to pull images from ECR and perform other necessary AWS actions.
+
 1. In another browser tab, open the AWS console and navigate to **IAM**
 2. Click **Roles**
 3. Search for *ecsTaskExecutionRole*
@@ -96,13 +97,16 @@ Validate: `aws ecr describe-images --repository-name ipdice`
     - Click **Create role**
     - Type: **AWS service**
     - Use case: **Elastic Container Service** > **Elastic Container Service Task** (ECS tasks will use role)
+    - Click **Next**
     - Search for the **AmazonECSTaskExecutionRolePolicy** policy and check the box next to it. This is a managed policy by AWS with the appropriate permissions.
+    - Click **Next**
     - Role name: **ecsTaskExecutionRole**
     - Description: *Allows ECS tasks to call AWS services on your behalf*
     - Click **Create role**
 
 ## Define a Task Definition
-1. Click **Task Definition** > **Create new task definition** from the left menu (not with JSON)
+1. Switch back to the ECS console, the window with your cluster `ipdice-cluster`
+2. Click **Task Definition** > **Create new task definition** from the left menu (not with JSON)
     - Task definition family: **ipdice-app**
     - Launch type: **AWS Fargate**
     - OS, Architecture, Network mode: **Linux/X86_64**
@@ -113,12 +117,18 @@ Validate: `aws ecr describe-images --repository-name ipdice`
 4. Task Definition Name: **ipdice-task-def**
 5. Task Role - grants your task's containers permissions to call other AWS services on your behalf (e.g., accessing an S3 bucket, sending a message to SNS) - **Leave Blank for Now**
 6. Task Execution role - gives the ECS agent (running on the Fargate infrastructure) permissions to manage your tasks. It needs permissions like pulling container images from ECR and writing logs to CloudWatch - **ecsTaskExecutionRole**
-7. Container - 1
+7. Add Container (ECR Sidecar)
+    - Name: **ecr-auth-sidecar**
+    - Image: **public.ecr.aws/amazonlinux/amazonlinux:latest**
+    - Essential: **Yes**
+    - Override Command
+      - `/bin/sh -c "aws ecr get-login-password --region $(curl -s http://169.254.169.254/latest/meta-data/placement/region) | docker login --username AWS --password-stdin https://$(aws sts get-caller-identity --query 'Account' --output text).dkr.ecr.$(curl -s http://169.254.169.254/latest/meta-data/placement/region).amazonaws.com" 
+`
+8. Add Containyer (Your Main App) - Container - 1
     - Name: **ipdice-container**
     - Image URI: *your image URI* (mine is 702745267684.dkr.ecr.us-east-1.amazonaws.com/ipdice:latest)
     - Essential container: **Yes**
-    - Private registry authentication: **Yes**
-      - Secrets Manager ARN or name: *Copy the secret's ARN from the AWS Secrets Manager*
+    - Private registry authentication: **No**
     - Port Mappings
       - Container port: **8080** (our applcation listens on port 8080)
       - Protocol: **TCP**
@@ -137,13 +147,13 @@ Validate: `aws ecr describe-images --repository-name ipdice`
       - Timeout: 5 seconds (default)
       - Start period: 0 seconds (no need for grace period here)
       - Retries: 2 (one or two retriess before making the container unhealthy)
-8. Click **Create**
-10. Add Container
+11. Click **Create**
+12. Add Container
     - Container name: **ipdice-app**
     - Image: URI to your image (e.g., 702745267684.dkr.ecr.us-east-1.amazonaws.com/ipdice:latest)
     - Memory Limits: soft limts are fine initially
     - Port Mappings:  If your app exposes ports, add mappings (e.g., container port 80 to host port 80).
-11. Click Create
+13. Click Create
 
 ERROR
 ~~~~
