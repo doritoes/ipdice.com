@@ -64,8 +64,6 @@ Tip: Make sure you are in the desired region (e.g., `us-east-1`)
     - Default output formation: **json**
 
 ## Push Image
-:worried: continue re-work here
-
 ### Get ECR Login and Docker Working
 This step authenticates the Docker client with Amazon ECR. It generates a temporary token (12 hours). It provides seamless Docker Login. The URL of your ECR repository is used for the last part.
 ~~~
@@ -74,7 +72,7 @@ aws ecr get-login-password --region <your-region> | docker login --username AWS 
 Validate: `aws ecr describe-images --repository-name ipdice`
 
 ### Tag Image
-1. List images `docker images`
+1. List images: `docker images`
 2. Tag image
     - `docker tag <image_repository_name>:latest <your_repository_url>:latest
     - no "https" in the tag
@@ -83,6 +81,7 @@ Validate: `aws ecr describe-images --repository-name ipdice`
 2. Verify: `aws ecr describe-images --repository-name ipdice`
 
 ## Create an ECS Cluster
+:worried: continue here
 1.  In the AWS console search bar enter "ECS" and click on **Elastic Container Service**
 2.  Click **Create cluster**
 3.  Cluster name: **ipdice-cluster**
