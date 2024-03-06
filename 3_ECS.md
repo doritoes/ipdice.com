@@ -119,6 +119,31 @@ You need to configure VPCs for the networking in each region. The following exam
 1. In the AWS console search for "EC2" and click **EC2**
 2. From then left menu, under *Load Balancing* click **Load Balancers**
 3. Click **Create load balancer**
+4. Click **Create** under *Application Load Balancer*
+    - Load balancer name: **ipdice-alb-us-east-1**
+    - Scheme: **internet-facing**
+    - IP address type: **IPv4**
+    - VPC: *select the VPC you created earlier (e.g., ipdice-vpc-us-east-1)
+    - Mappings: select the public subnet's availability zone and the subnet
+    - Security groups
+      - Click the link to **Create a new security group**
+        - a new windows opens with the *Create security group* page
+        - Security Group Name: **ipdice-alb-sg** (or similar descriptive name)
+        - Description: **Security group for the ipdice Application Load Balancer**
+        - VPC info: *Ensure this is set to your VPC* (e.g., ipdice-vpc-us-east-1.)
+        - Inbound rules
+          - Click **Add rule**
+          - Type: **HTTPS**
+          - Protocol: *automatically TCP*
+          - Port Range: *automatcially 443*
+          - Source: **Anywhere-IPv4** (0.0.0.0/0)
+        - Outbound rules: leave default
+    - Click **Create security group**
+    - Back on the *Create Application Load Balancer* page
+      - Under *Security groups* click the refresh arrow
+      - From the drop down select the new security group
+      - :worried: it does not show up!!!
+
 
 😟 CONTINUE HERE
 
