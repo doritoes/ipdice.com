@@ -80,6 +80,52 @@ Validate: `aws ecr describe-images --repository-name ipdice`
 1. Push: `docker push <your_repository_url>:latest`
 2. Verify: `aws ecr describe-images --repository-name ipdice`
 
+## Create VPCs
+You need to configure VPCs for the networking in each region. The following example uses the `us-east-1` region.
+1. In the AWS console search for "VPN" and click **VPC**
+2. Click **Start VPC Wizard** or **Create VPC**
+    - Resources: **VPC and more**
+    - Most settings can be left at default
+    - Number of availability zones: **1** (default is 2; can always add more later)
+    - Number of public subnets: **1** (for your load balancers)
+    - Number of private subnets: **0** (can add private subnets later for ECS tasks if desired, providing extra security isolation)
+    - NAT gateways: **None** for now; NAT gateways are mainly used for private subnet instances to access the internet, which we don't strictly need in this setup
+    - VPC Endpoints: **None** (S3 Gateway endpoints offer optimization but can add complexity for initial setup)
+    - DNS: Enable both options, **DNS hostnames** and **DNS resolution**
+    - Click **Create VPC**
+3. :zap:Thoroughly document your new VPC information
+    - VPC ID
+    - Subnet ID (public)
+    - Internet Gateway ID
+    - Route Table ID (automatically created)
+
+## Create TLS Certificate using AWS Certificate Manager (ACM)
+1. In the AWS console search for "Certificate" and click **Certificate Manager**
+2. Click **Request**
+    - Request a public certificate is selcted
+    - Click **Next**
+    - Fully qualified domain name (see my example below, including the www subdomain)
+      - ipdice.com
+      - www.ipdice.com (used the *Add another name to this certificate* button)
+    - Validation method: **DNS validation**
+    - Key algorithm: RSA 2048
+    - Click **Request**
+3. Refresh the list of certificates until your new request is listed, *Pending validation*
+4. Click on the request ID for the new certifcate
+5. Click **Create records in Route 53**, then click **Create records**
+6. Refresh the list of certificates until the new certificate is validated and the status changes to *Issued*
+
+## Create Aplication Load Balancer (ALB)
+1. In the AWS console search for "EC2" and click **EC2**
+2. From then left menu, under *Load Balancing* click **Load Balancers**
+3. Click **Create load balancer**
+
+😟 CONTINUE HERE
+
+- ALB Creation: Create the ALB in your public subnet.
+- Listener: Configure an HTTPS listener (port 443) on the ALB and attach a valid SSL/TLS certificate for your domain.
+- Target Group: Create a target group to direct traffic to your ECS tasks (we'll set this up later when you deploy your ECS service).
+
 ## Create an ECS Cluster
 1.  In the AWS console search bar enter "ECS" and click on **Elastic Container Service**
 2.  Click **Create cluster**
@@ -117,14 +163,7 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
 4. Task Definition Name: **ipdice-task-def**
 5. Task Role - grants your task's containers permissions to call other AWS services on your behalf (e.g., accessing an S3 bucket, sending a message to SNS) - **Leave Blank for Now**
 6. Task Execution role - gives the ECS agent (running on the Fargate infrastructure) permissions to manage your tasks. It needs permissions like pulling container images from ECR and writing logs to CloudWatch - **ecsTaskExecutionRole**
-7. Add Container (ECR Sidecar)
-    - Name: **ecr-auth-sidecar**
-    - Image: **public.ecr.aws/amazonlinux/amazonlinux:latest**
-    - Essential: **Yes**
-    - Override Command
-      - `/bin/sh -c "aws ecr get-login-password --region $(curl -s http://169.254.169.254/latest/meta-data/placement/region) | docker login --username AWS --password-stdin https://$(aws sts get-caller-identity --query 'Account' --output text).dkr.ecr.$(curl -s http://169.254.169.254/latest/meta-data/placement/region).amazonaws.com" 
-`
-8. Add Containyer (Your Main App) - Container - 1
+7. Container - 1
     - Name: **ipdice-container**
     - Image URI: *your image URI* (mine is 702745267684.dkr.ecr.us-east-1.amazonaws.com/ipdice:latest)
     - Essential container: **Yes**
@@ -148,14 +187,24 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
       - Start period: 0 seconds (no need for grace period here)
       - Retries: 2 (one or two retriess before making the container unhealthy)
 11. Click **Create**
-12. Add Container
-    - Container name: **ipdice-app**
-    - Image: URI to your image (e.g., 702745267684.dkr.ecr.us-east-1.amazonaws.com/ipdice:latest)
-    - Memory Limits: soft limts are fine initially
-    - Port Mappings:  If your app exposes ports, add mappings (e.g., container port 80 to host port 80).
-13. Click Create
 
-ERROR
-~~~~
-Private repository credentials are not a supported authentication method for ECR repositories.
-~~~~
+## Create a Service
+1. Back in the ECS console, the go to your cluster `ipdice-cluster`
+2. In the lower pane, find the **Services** tab (probably already selected)
+3. Click **Create**
+    - Most settings will be left at defaults
+    - Family: **ipdice-app**
+    - Service name: **ipdice-service**
+    - Desired tasks: **1** start with 1 for initial testing; can scale later
+    - Deployment type: **Rolling updates**
+      - After you have the lab up and running, you can experiment with the Blue/green deployment type, which uses AWS CodeDeploy
+    - Launch type: **Fargate**
+    - Task defintion: **ipdice-task-def**
+    - Networking
+    - 
+    - 
+    
+    - Networking: configre your load balancer and security groups here
+    - Auto scaling
+    - service discovery
+    - create
