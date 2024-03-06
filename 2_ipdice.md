@@ -33,4 +33,4 @@ Optionally, customize the application.
       - this network does not show in your Windows IP addresses
       - open Docker Desktop, click on the running container, and click the Inpsect tab then Networks to learn more
 3. Back at the command line, press **Control-C** to stop the container
-4. Open Docker Desktop and delete Container ipdice and the Image ipdice
+4. You can delete the container if you want, but keep the image as we will be pushing it to AWS ECR using in the next step
