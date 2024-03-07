@@ -239,8 +239,9 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
         - Memory hard limit: 3GB (very generous)
         - Memory soft limit: 1GB
       - Log collection: **On** for testing, **Off** to reduce costs
-      - HealthCheck - Optional: (incurs small costs) **OFF FOR NOW**
+      - HealthCheck - Optional: (incurs small costs)
         - Command: `CMD-SHELL, curl -f http://localhost/health.php || exit 1`
+        - Command: `CMD-SHELL, curl -f http://localhost:8080/health.php || exit 1`
         - Interval: 30 seconds (default)
         - Timeout: 5 seconds (default)
         - Start period: 0 seconds (no need for grace period here)
@@ -293,5 +294,10 @@ Test public IP address
 1. ECS > Click your cluster > click your service > click tab tasks, click the first task > find the public IP
 2. `http://<publicIP>:8080`
 3. Page will load and show your IP address
+
+
+Test ALB
+1. EC2 > Load Balancers > Copy the DNS name (e.g., ipdice-alb-us-east-1-1264694426.us-east-1.elb.amazonaws.com)
+2. Try accessing by http and https
 
 :worried: Missing a lot of information here
