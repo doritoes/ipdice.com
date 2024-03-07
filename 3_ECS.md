@@ -87,6 +87,7 @@ You need to configure VPCs for the networking in each region. The following exam
 2. Click **Start VPC Wizard** or **Create VPC**
     - Resources: **VPC and more**
     - Most settings can be left at default
+    - Name tag auto-generation: **ipdice**
     - Number of availability zones: **2**
     - Number of public subnets: **2** (for your load balancers)
     - Number of private subnets: **0** (can add private subnets later for ECS tasks if desired, providing extra security isolation)
@@ -139,14 +140,13 @@ You need to configure VPCs for the networking in each region. The following exam
           - Port Range: *automatcially 443*
           - Source: **Anywhere-IPv4** (0.0.0.0/0)
         - Outbound rules: leave default
-    - Click **Create security group**
     - Back on the *Create Application Load Balancer* page
       - Under *Security groups* click the refresh arrow
       - From the drop down select the new security group (e.g., ipdice-alb-sg)
     - Listeners and routing
       - Modify the protocol to **HTTPS**
       - Click the link **Create target group**
-        - Target type: Instances
+        - Target type: **Instances** (compatibility issue) (vs IP vs **Application Load Balancer**)
         - Target Group Name: **ipdice-target-group**
         - Protocol: **HTTP**
         - Port: **8080** (the port the container listens on)
@@ -237,15 +237,24 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
 1. Back in the ECS console, the go to your cluster `ipdice-cluster`
 2. In the lower pane, find the **Services** tab (probably already selected)
 3. Click **Create**
+    - Cluster: **ipdice-cluster**
     - Most settings will be left at defaults
+    - Type: **Service**
     - Family: **ipdice-app**
+    - Revision: *latest*
     - Service name: **ipdice-service**
+    - Service type: Replica
     - Desired tasks: **1** start with 1 for initial testing; can scale later
-    - Deployment type: **Rolling updates**
+    - Deployment options > Deployment type: **Rolling updates** (default)
       - After you have the lab up and running, you can experiment with the Blue/green deployment type, which uses AWS CodeDeploy
-    - Launch type: **Fargate**
-    - Task defintion: **ipdice-task-def**
-    - :worried: Missing a lot of information here
+    - Networking
+      - VPC: *select the VPC you created*
+      - The two subnets, one for each availability zone, should be listed
+      - Security group: *Select tye SG you created (only)*
+      - Load balancing
+        - Type: **Application Load Balancer**
+        - Container: **ipdice-container 8080:8080** (from the dropdown)
+        - Load balancer name: **ipdice-alb-us-east-1**
     - Networking: configre your load balancer and security groups here
     - Auto scaling
     - service discovery
