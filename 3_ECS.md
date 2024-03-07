@@ -23,21 +23,22 @@ Tip: Make sure you are in the desired region (e.g., `us-east-1`)
 7. Use case: **Command Line Interface (CLI)**
     - check the confirmation box and click **Next**
 8. Description: **ECS Administration**
-9. Click **Download .csv file**
+9. Click **Create access key**
+10. Click **Download .csv file**
     - Store this key securely!
     - Easy user can only have 2 active access keys at a time
     - This is your <u>last chance to save</u> information about the access key
-10. Click **Done**
+11. Click **Done**
 
 ## Create Secret for the Repository
 1. In the AWS console, search for "Secrets" and click on **Secrets Manager**
 2. Click **Store a new secret**
 3. Secret type: **Other type of secrets**
 4. Key-value pairs: *use the information in the CSV file you downloaded*
-    - Key: username
-    - Value: the access key ID from your ECR access keys
-    - Key: password
-    - Value: the secret access keyfrom your ECR access keys
+    - Key: **username**
+    - Value: *the access key ID from your ECR access keys*
+    - Key: **password**
+    - Value: *the secret access keyfrom your ECR access keys*
 5. Secret Namee: **ecr-image-pull-credentials**
 6. Description: **credentials for pulling images from ECR**
 7. <u>Do not configure automatic rotation</u>
@@ -65,7 +66,7 @@ Tip: Make sure you are in the desired region (e.g., `us-east-1`)
 
 ## Push Image
 ### Get ECR Login and Docker Working
-This step authenticates the Docker client with Amazon ECR. It generates a temporary token (12 hours). It provides seamless Docker Login. The URL of your ECR repository is used for the last part.
+This step authenticates the Docker client with Amazon ECR. It generates a temporary token (12 hours). It provides seamless Docker Login. The URL of your ECR repository is used for the last part. If the command failes, launch Docker Desktop to ensure the Docker Engine is running.
 ~~~
 aws ecr get-login-password --region <your-region> | docker login --username AWS --password-stdin https://<your-account-id>.dkr.ecr.<your-region>.amazonaws.com
 ~~~
@@ -80,7 +81,7 @@ Validate: `aws ecr describe-images --repository-name ipdice`
 1. Push: `docker push <your_repository_url>:latest`
 2. Verify: `aws ecr describe-images --repository-name ipdice`
 
-## Create VPCs
+## Create VPC(s)
 You need to configure VPCs for the networking in each region. The following example uses the `us-east-1` region.
 1. In the AWS console search for "VPN" and click **VPC**
 2. Click **Start VPC Wizard** or **Create VPC**
