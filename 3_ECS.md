@@ -125,7 +125,7 @@ You need to configure VPCs for the networking in each region. The following exam
     - Load balancer name: **ipdice-alb-us-east-1**
     - Scheme: **internet-facing**
     - IP address type: **IPv4**
-    - VPC: *select the VPC you created earlier (e.g., ipdice-vpc-us-east-1)
+    - VPC: *select the VPC you created earlier* (e.g., ipdice-vpc-us-east-1)
     - Mappings: select the public subnet's availability zone and the subnet
     - Security groups
       - Click the link to **Create a new security group**
@@ -135,15 +135,20 @@ You need to configure VPCs for the networking in each region. The following exam
         - VPC info: *Ensure this is set to your VPC* (e.g., ipdice-vpc-us-east-1.)
         - Inbound rules
           - Click **Add rule**
-          - Type: **HTTPS**
-          - Protocol: *automatically TCP*
-          - Port Range: *automatcially 443*
-          - Source: **Anywhere-IPv4** (0.0.0.0/0)
+            - Type: **HTTPS**
+            - Protocol: *automatically TCP*
+            - Port Range: *automatcially 443*
+            - Source: **Anywhere-IPv4** (0.0.0.0/0)
           - Click **Add rule**
-          - Type: **HTTP**
-          - Protocol: *automatically TCP*
-          - Port Range: *automatcially 443*
-          - Source: **Anywhere-IPv4** (0.0.0.0/0)
+            - Type: **HTTP**
+            - Protocol: *automatically TCP*
+            - Port Range: *automatcially 443*
+            - Source: **Anywhere-IPv4** (0.0.0.0/0)
+          - Click **Add rule**
+            - Type: **Custom TCP**
+            - Protocol: **TCP**
+            - Port Range: **8080**
+            - Source: **Anywhere-IPv4** (0.0.0.0/0)
         - Outbound rules: leave default
     - Back on the *Create Application Load Balancer* page
       - Under *Security groups* click the refresh arrow
@@ -167,6 +172,12 @@ You need to configure VPCs for the networking in each region. The following exam
       - Back on the **Create Application Load Balancer** page
         - Under *Listeners and routing* click the refresh button
         - Select the new target group you created from the drop down
+      - Add another listener
+        - **HTTP** and port **80**
+        - Select "Redirect to..." **HTTPS** port **443**
+          - Redirect to URL, URI parts, HTTPS Port 443
+        - Status code HTTP_301 (permanent redirect)
+        - Click **Save**
     - Security policy
       - Security category: All security policies
       - Policy name: *use the recommended option from the dropdown*
@@ -209,34 +220,32 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
     - Network mode: automatically set to *awsvpc* for Fargate
     - CPU: **0.25 vCPU**
     - Memory: **0.5 GB**
-3. Launch Type Compatibility: **Fargate**
-4. Task Definition Name: **ipdice-task-def**
-5. Task Role - grants your task's containers permissions to call other AWS services on your behalf (e.g., accessing an S3 bucket, sending a message to SNS) - **Leave Blank for Now**
-6. Task Execution role - gives the ECS agent (running on the Fargate infrastructure) permissions to manage your tasks. It needs permissions like pulling container images from ECR and writing logs to CloudWatch - **ecsTaskExecutionRole**
-7. Container - 1
-    - Name: **ipdice-container**
-    - Image URI: *your image URI* (mine is 702745267684.dkr.ecr.us-east-1.amazonaws.com/ipdice:latest)
-    - Essential container: **Yes**
-    - Private registry authentication: **No**
-    - Port Mappings
-      - Container port: **8080** (our applcation listens on port 8080)
-      - Protocol: **TCP**
-      - Port name: *leave blank*
-      - App protocol: **HTTP**
-    - Read only root file system: **Leave off** (our application can run with Read Only enabled)
-    - Resource allocation limits
-      - CPU: 1 vCPU
-      - GPU: 1 (can't change)
-      - Memory hard limit: 3GB (very generous)
-      - Memory soft limit: 1GB
-    - Log collection: **On** for testing, **Off** to reduce costs
-    - HealthCheck - Optional: (incurs small costs)
-      - Command: `CMD-SHELL, curl -f http://localhost/health.php || exit 1`
-      - Interval: 30 seconds (default)
-      - Timeout: 5 seconds (default)
-      - Start period: 0 seconds (no need for grace period here)
-      - Retries: 2 (one or two retriess before making the container unhealthy)
-11. Click **Create**
+    - Task Role - grants your task's containers permissions to call other AWS services on your behalf (e.g., accessing an S3 bucket, sending a message to SNS) - **Leave Blank for Now**
+    - Task Execution role - gives the ECS agent (running on the Fargate infrastructure) permissions to manage your tasks. It needs permissions like pulling container images from ECR and writing logs to CloudWatch - **ecsTaskExecutionRole**
+    - Container - 1
+      - Name: **ipdice-container**
+      - Image URI: *your image URI* (mine is 702745267684.dkr.ecr.us-east-1.amazonaws.com/ipdice:latest)
+      - Essential container: **Yes**
+      - Private registry authentication: **No**
+      - Port Mappings
+        - Container port: **8080** (our applcation listens on port 8080)
+        - Protocol: **TCP**
+        - Port name: *leave blank*
+        - App protocol: **HTTP**
+      - Read only root file system: **Leave off** (our application can run with Read Only enabled)
+      - Resource allocation limits
+        - CPU: 1 vCPU
+        - GPU: 1 (can't change)
+        - Memory hard limit: 3GB (very generous)
+        - Memory soft limit: 1GB
+      - Log collection: **On** for testing, **Off** to reduce costs
+      - HealthCheck - Optional: (incurs small costs) **OFF FOR NOW**
+        - Command: `CMD-SHELL, curl -f http://localhost/health.php || exit 1`
+        - Interval: 30 seconds (default)
+        - Timeout: 5 seconds (default)
+        - Start period: 0 seconds (no need for grace period here)
+        - Retries: 2 (one or two retriess before making the container unhealthy)
+    - Click **Create**
 
 ## Create a Service
 1. Back in the ECS console, go to your cluster `ipdice-cluster`
@@ -248,19 +257,20 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
     - Family: **ipdice-app**
     - Revision: *latest*
     - Service name: **ipdice-service**
-    - Service type: Replica
+    - Service type: **Replica**
     - Desired tasks: **1** start with 1 for initial testing; can scale later
     - Deployment options > Deployment type: **Rolling updates** (default)
       - After you have the lab up and running, you can experiment with the Blue/green deployment type, which uses AWS CodeDeploy
     - Networking
       - VPC: *select the VPC you created*
       - The two subnets, one for each availability zone, should be listed
-      - Security group: *Select tee SG you created (only)*
-      - Load balancing
+      - Security group: *Select the SG you created (only)*
+      - Public IP: **Turned on**
+      - Load balancing **TRY WITH THIS OFF**
         - Type: **Application Load Balancer**
         - Container: **ipdice-container 8080:8080** (from the dropdown)
         - Load balancer name: **ipdice-alb-us-east-1**
-    - Service auto scaling
+    - Service auto scaling **TRY WITH THIS OFF**
       - Select **User service auto scaling**
         - Minimum number of tasks: **1**
         - Maximum number of tasks: **10**
@@ -274,7 +284,14 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
 4. Click the refresh buttons and look for
     - The cluster to show active, Active 1, Running 1
     - The service section will show the the container health and status
-    - If the status running but the status is *Unhealthy*, check your health check
+    - If the status running but the status is *Unhealthy*, check your health check settings
+
+## Add targets to the target group?
 
 ## Test the container
+Test public IP address
+1. ECS > Click your cluster > click your service > click tab tasks, click the first task > find the public IP
+2. `http://<publicIP>:8080`
+3. Page will load and show your IP address
+
 :worried: Missing a lot of information here
