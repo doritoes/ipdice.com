@@ -240,11 +240,11 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
         - Memory soft limit: 1GB
       - Log collection: **On** for testing, **Off** to reduce costs
       - HealthCheck - Optional: (incurs small costs)
-        - Command: `CMD-SHELL, curl -f http://localhost/health.php || exit 1`
+        - Command: `CMD-SHELL, curl -f http://localhost:8080 || exit 1`
         - Command: `CMD-SHELL, curl -f http://localhost:8080/health.php || exit 1`
         - Interval: 30 seconds (default)
         - Timeout: 5 seconds (default)
-        - Start period: 0 seconds (no need for grace period here)
+        - Start period: 30 seconds
         - Retries: 2 (one or two retriess before making the container unhealthy)
     - Click **Create**
 
