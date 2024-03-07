@@ -139,6 +139,11 @@ You need to configure VPCs for the networking in each region. The following exam
           - Protocol: *automatically TCP*
           - Port Range: *automatcially 443*
           - Source: **Anywhere-IPv4** (0.0.0.0/0)
+          - Click **Add rule**
+          - Type: **HTTP**
+          - Protocol: *automatically TCP*
+          - Port Range: *automatcially 443*
+          - Source: **Anywhere-IPv4** (0.0.0.0/0)
         - Outbound rules: leave default
     - Back on the *Create Application Load Balancer* page
       - Under *Security groups* click the refresh arrow
@@ -164,7 +169,7 @@ You need to configure VPCs for the networking in each region. The following exam
         - Select the new target group you created from the drop down
     - Security policy
       - Security category: All security policies
-      - Poliy name: *use the recommended option from the dropdown*
+      - Policy name: *use the recommended option from the dropdown*
     - Default SSL/TLS server certificate
       - **From ACM**
       - Select the ACM certificate from the dropdown
@@ -234,7 +239,7 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
 11. Click **Create**
 
 ## Create a Service
-1. Back in the ECS console, the go to your cluster `ipdice-cluster`
+1. Back in the ECS console, go to your cluster `ipdice-cluster`
 2. In the lower pane, find the **Services** tab (probably already selected)
 3. Click **Create**
     - Cluster: **ipdice-cluster**
@@ -250,15 +255,26 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
     - Networking
       - VPC: *select the VPC you created*
       - The two subnets, one for each availability zone, should be listed
-      - Security group: *Select tye SG you created (only)*
+      - Security group: *Select tee SG you created (only)*
       - Load balancing
         - Type: **Application Load Balancer**
         - Container: **ipdice-container 8080:8080** (from the dropdown)
         - Load balancer name: **ipdice-alb-us-east-1**
-    - Networking: configre your load balancer and security groups here
-    - Auto scaling
-    - service discovery
-    - create
+    - Service auto scaling
+      - Select **User service auto scaling**
+        - Minimum number of tasks: **1**
+        - Maximum number of tasks: **10**
+      - Policy name: **ipdice-scaling-policy**
+      - ECS service metric: **ECSServiceAverageCPUUtilization**
+      - Target value: 80
+      - Scale-out cooldown period: **300**
+      - Scale-in cooldown period: **300**
+      - :worried: service discovery ????
+    - Click **Create**
+4. Click the refresh buttons and look for
+    - The cluster to show active, Active 1, Running 1
+    - The service section will show the the container health and status
+    - If the status running but the status is *Unhealthy*, check your health check
 
 ## Test the container
 :worried: Missing a lot of information here
