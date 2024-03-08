@@ -89,9 +89,9 @@ You need to configure VPCs for the networking in each region. The following exam
     - Most settings can be left at default
     - Name tag auto-generation: **ipdice**
     - Number of availability zones: **2**
-    - Number of public subnets: **2** (for your load balancers)
-    - Number of private subnets: **0** (can add private subnets later for ECS tasks if desired, providing extra security isolation)
-    - NAT gateways: **None** for now; NAT gateways are mainly used for private subnet instances to access the internet, which we don't strictly need in this setup
+    - Number of public subnets: **2**
+    - Number of private subnets: **2**
+    - NAT gateways: **1 per AZ** (availability zone)
     - VPC Endpoints: **None** (S3 Gateway endpoints offer optimization but can add complexity for initial setup)
     - DNS: Enable both options, **DNS hostnames** and **DNS resolution**
     - Click **Create VPC**
@@ -126,7 +126,7 @@ You need to configure VPCs for the networking in each region. The following exam
     - Scheme: **internet-facing**
     - IP address type: **IPv4**
     - VPC: *select the VPC you created earlier* (e.g., ipdice-vpc-us-east-1)
-    - Mappings: select the public subnet's availability zone and the subnet
+    - Mappings: select the public subnet's availability zone and the subnet (:!: sometimes it defaults to private, so fix it)
     - Security groups
       - Click the link to **Create a new security group**
         - a new windows opens with the *Create security group* page
@@ -156,7 +156,7 @@ You need to configure VPCs for the networking in each region. The following exam
     - Listeners and routing
       - Modify the protocol to **HTTPS**
       - Click the link **Create target group**
-        - Target type: **Instances** (compatibility issue) (vs IP vs **Application Load Balancer**)
+        - Target type: **Instances**
         - Target Group Name: **ipdice-target-group**
         - Protocol: **HTTP**
         - Port: **8080** (the port the container listens on)
@@ -172,12 +172,6 @@ You need to configure VPCs for the networking in each region. The following exam
       - Back on the **Create Application Load Balancer** page
         - Under *Listeners and routing* click the refresh button
         - Select the new target group you created from the drop down
-      - Add another listener
-        - **HTTP** and port **80**
-        - Select "Redirect to..." **HTTPS** port **443**
-          - Redirect to URL, URI parts, HTTPS Port 443
-        - Status code HTTP_301 (permanent redirect)
-        - Click **Save**
     - Security policy
       - Security category: All security policies
       - Policy name: *use the recommended option from the dropdown*
@@ -185,7 +179,13 @@ You need to configure VPCs for the networking in each region. The following exam
       - **From ACM**
       - Select the ACM certificate from the dropdown
     - Leave the remaining settings at defaults
-    - **Click Create load balancer**    
+    - **Click Create load balancer**
+    - Add another listener
+        - **HTTP** and port **80**
+        - Select "Redirect to..." **HTTPS** port **443**
+          - Redirect to URL, URI parts, HTTPS Port 443
+        - Status code HTTP_301 (permanent redirect)
+        - Click **Save**
 
 ## Create an ECS Cluster
 1.  In the AWS console search bar enter "ECS" and click on **Elastic Container Service**
@@ -280,7 +280,6 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
       - Target value: 80
       - Scale-out cooldown period: **300**
       - Scale-in cooldown period: **300**
-      - :worried: service discovery ????
     - Click **Create**
 4. Click the refresh buttons and look for
     - The cluster to show active, Active 1, Running 1
