@@ -107,10 +107,10 @@ You need to configure VPCs for the networking in each region. The following exam
 ## Create Security Groups
 ### Create Security Group for ECS
 1. In the AWS console search for "EC2" and click **EC2**
-2. From the left menu click **Network & Security** > **Secruity Groups**
+2. From the left menu click **Network & Security** > **Security Groups**
 3. Click **Create security group**
     - Name: **ipdice-ecs-sg**
-    - Description: **Allow access to containers**
+    - Description: **Security group for the access to ECS containers**
     - VPC: *select the VPC you created*
     - Inbound rules
       - Click **Add rule**
@@ -123,7 +123,26 @@ You need to configure VPCs for the networking in each region. The following exam
     - Click **Create security group**
       
 ### Create Security Group for Application Load Balancer
-
+1. In the AWS console search for "EC2" and click **EC2**
+2. From the left menu click **Network & Security** > **Security Groups**
+3. Click **Create security group**
+    - Name: **ipdice-alb-sg**
+    - Description: **Security group for the Application Load Balancer**
+    - VPC: *select the VPC you created*
+    - Inbound rules
+      - Click **Add rule**
+        - Type: **HTTPS**
+        - Protocol: *automatically TCP*
+        - Port Range: *automatcially 443*
+        - Source: **Anywhere-IPv4** (0.0.0.0/0)
+        - Click **Add rule**
+      - Click **Add rule**
+        - Type: **HTTP**
+        - Protocol: *automatically TCP*
+        - Port Range: *automatcially 80*
+        - Source: **Anywhere-IPv4** (0.0.0.0/0)
+        - Click **Add rule**
+    - Outbound rules: *Leave at default settings*
 
 ## Create TLS Certificate using AWS Certificate Manager (ACM)
 1. In the AWS console search for "Certificate" and click **Certificate Manager**
@@ -141,7 +160,7 @@ You need to configure VPCs for the networking in each region. The following exam
 5. Click **Create records in Route 53**, then click **Create records**
 6. Refresh the list of certificates until the new certificate is validated and the status changes to *Issued*
 
-## Create Aplication Load Balancer (ALB)
+## Create Application Load Balancer (ALB)
 1. In the AWS console search for "EC2" and click **EC2**
 2. From then left menu, under *Load Balancing* click **Load Balancers**
 3. Click **Create load balancer**
@@ -150,37 +169,13 @@ You need to configure VPCs for the networking in each region. The following exam
     - Scheme: **internet-facing**
     - IP address type: **IPv4**
     - VPC: *select the VPC you created earlier* (e.g., ipdice-vpc-us-east-1)
-    - Mappings: select the public subnet's availability zone and the subnet (:!: sometimes it defaults to private, so fix it)
+    - Mappings: select two public subnet's availability zones and the subnet
     - Security groups
-      - Click the link to **Create a new security group**
-        - a new windows opens with the *Create security group* page
-        - Security Group Name: **ipdice-alb-sg** (or similar descriptive name)
-        - Description: **Security group for the ipdice Application Load Balancer**
-        - VPC info: *Ensure this is set to your VPC* (e.g., ipdice-vpc-us-east-1)
-        - Inbound rules
-          - Click **Add rule**
-            - Type: **HTTPS**
-            - Protocol: *automatically TCP*
-            - Port Range: *automatcially 443*
-            - Source: **Anywhere-IPv4** (0.0.0.0/0)
-          - Click **Add rule**
-            - Type: **HTTP**
-            - Protocol: *automatically TCP*
-            - Port Range: *automatcially 443*
-            - Source: **Anywhere-IPv4** (0.0.0.0/0)
-          - Click **Add rule**
-            - Type: **Custom TCP**
-            - Protocol: **TCP**
-            - Port Range: **8080**
-            - Source: **Anywhere-IPv4** (0.0.0.0/0)
-        - Outbound rules: leave default
-    - Back on the *Create Application Load Balancer* page
-      - Under *Security groups* click the refresh arrow
-      - From the drop down select the new security group (e.g., ipdice-alb-sg)
+      - From the dropdown select the Secruity group you created for the load balancer (i.e., `ipdice-alg-sg`)
     - Listeners and routing
       - Modify the protocol to **HTTPS**
       - Click the link **Create target group**
-        - Target type: **Instances**
+        - Target type: **IP addresses**
         - Target Group Name: **ipdice-target-group**
         - Protocol: **HTTP**
         - Port: **8080** (the port the container listens on)
@@ -192,7 +187,7 @@ You need to configure VPCs for the networking in each region. The following exam
           - Health check path: **/health.php**
         - Register targets
         - *no targets right now, will add later*
-        - Click **Create target**
+        - Click **Create target group**
       - Back on the **Create Application Load Balancer** page
         - Under *Listeners and routing* click the refresh button
         - Select the new target group you created from the drop down
@@ -204,12 +199,17 @@ You need to configure VPCs for the networking in each region. The following exam
       - Select the ACM certificate from the dropdown
     - Leave the remaining settings at defaults
     - **Click Create load balancer**
-    - Add another listener
-        - **HTTP** and port **80**
-        - Select "Redirect to..." **HTTPS** port **443**
-          - Redirect to URL, URI parts, HTTPS Port 443
-        - Status code HTTP_301 (permanent redirect)
-        - Click **Save**
+    - Add another listener to the Load Balancer
+      - Click the load balancer then in the lower pane click on the tab **Listeners and rules**
+      - Click **Add listener**
+        - Protocol:**HTTP**
+        - Port **80**
+        - Select **Redirect to URL**
+          - **URI parts**
+          - **HTTPS**
+          - **Port 443**
+          - Status code **301 - Permanently moved**
+      - Click **Add**
 
 ## Create an ECS Cluster
 1.  In the AWS console search bar enter "ECS" and click on **Elastic Container Service**
@@ -248,7 +248,7 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
     - Task Execution role - gives the ECS agent (running on the Fargate infrastructure) permissions to manage your tasks. It needs permissions like pulling container images from ECR and writing logs to CloudWatch - **ecsTaskExecutionRole**
     - Container - 1
       - Name: **ipdice-container**
-      - Image URI: *your image URI* (mine is 702745267684.dkr.ecr.us-east-1.amazonaws.com/ipdice:latest)
+      - Image URI: *your image URI* (copy this from ECR)
       - Essential container: **Yes**
       - Private registry authentication: **No**
       - Port Mappings
@@ -264,12 +264,11 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
         - Memory soft limit: 1GB
       - Log collection: **On** for testing, **Off** to reduce costs
       - HealthCheck - Optional: (incurs small costs)
-        - Command: `CMD-SHELL, curl -f http://localhost:8080 || exit 1`
         - Command: `CMD-SHELL, curl -f http://localhost:8080/health.php || exit 1`
-        - Interval: 30 seconds (default)
-        - Timeout: 5 seconds (default)
-        - Start period: 30 seconds
-        - Retries: 2 (one or two retriess before making the container unhealthy)
+        - Interval: **30** seconds (default)
+        - Timeout: **5** seconds (default)
+        - Start period: **30** seconds
+        - Retries: **2** (one or two retriess before making the container unhealthy)
     - Click **Create**
 
 ## Create a Service
@@ -277,50 +276,83 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
 2. In the lower pane, find the **Services** tab (probably already selected)
 3. Click **Create**
     - Cluster: **ipdice-cluster**
-    - Most settings will be left at defaults
-    - Type: **Service**
-    - Family: **ipdice-app**
-    - Revision: *latest*
+    - Compute options: **Launch type**
+      - Fargate
+    - Application type: **Service**
+    - Family: **ipdice-app** (latest version)
     - Service name: **ipdice-service**
     - Service type: **Replica**
-    - Desired tasks: **1** start with 1 for initial testing; can scale later
+    - Desired tasks: **1** (start with 1 for initial testing; can scale later)
     - Deployment options > Deployment type: **Rolling updates** (default)
       - After you have the lab up and running, you can experiment with the Blue/green deployment type, which uses AWS CodeDeploy
     - Networking
-      - VPC: *select the VPC you created*
+      - VPC: **ipdice-ecs-sg**
       - The two subnets, one for each availability zone, should be listed
       - Security group: *Select the SG you created (only)*
-      - Public IP: **Turned on**
-      - Load balancing **TRY WITH THIS OFF**
+      - Public IP: **ON**
+      - Load balancing
         - Type: **Application Load Balancer**
         - Container: **ipdice-container 8080:8080** (from the dropdown)
         - Load balancer name: **ipdice-alb-us-east-1**
-    - Service auto scaling **TRY WITH THIS OFF**
+    - Service auto scaling
       - Select **User service auto scaling**
         - Minimum number of tasks: **1**
         - Maximum number of tasks: **10**
-      - Policy name: **ipdice-scaling-policy**
-      - ECS service metric: **ECSServiceAverageCPUUtilization**
-      - Target value: 80
-      - Scale-out cooldown period: **300**
-      - Scale-in cooldown period: **300**
-    - Click **Create**
+      - Click **Add scaling policies**
+        - Type: **Target tracking**
+        - Policy name: **ipdice-scaling-policy**
+        - ECS service metric: **ECSServiceAverageCPUUtilization**
+        - Target value: 80
+        - Scale-out cooldown period: **300**
+        - Scale-in cooldown period: **300**
+      - Click **Update**
 4. Click the refresh buttons and look for
     - The cluster to show active, Active 1, Running 1
     - The service section will show the the container health and status
     - If the status running but the status is *Unhealthy*, check your health check settings
 
-## Add targets to the target group?
-
 ## Test the container
-Test public IP address
+Test the service public IP address (test directly to the container, who's IP address will keep changing)
 1. ECS > Click your cluster > click your service > click tab tasks, click the first task > find the public IP
-2. `http://<publicIP>:8080`
+2. `http://<publicIP>:8080` (yes you need to add the port 8080, which the container listens on)
 3. Page will load and show your IP address
-
 
 Test ALB
 1. EC2 > Load Balancers > Copy the DNS name (e.g., ipdice-alb-us-east-1-1264694426.us-east-1.elb.amazonaws.com)
 2. Try accessing by http and https
+    - the certificate will not match until we configure Route 53
 
-:worried: Missing a lot of information here
+## Configure Route 53
+1.  In the AWS console search bar enter "Route" and click on **Route 53**
+2.  Click **Hosted Zones** and then the hosted zone that manages your domain (i.e., `ipdice.com`)
+3.  Create A Records
+    - No subdomain (i.e., `ipdice.com`)
+      - Record type: **A**
+      - Alias: **ON**
+      - Route traffic to:
+        - Alias Target: **Alias to Application and Classic Load Balancer**
+        - Region: *Select the region where your ALB is located (e.g., "US East (N. Virginia)")*
+        - Load balancer: *choose your load balancer from the list
+        - Routing policy: **Latency**
+        - Region: *Select the region where your ALB is located (e.g., "US East (N. Virginia)")*
+      - Evaluate target health: **NO**
+      - Record ID: **root-record**
+    - The www subdomain (i.e., `www.ipdice.com`)
+      - Record type: **A**
+      - Alias: **ON**
+      - Route traffic to:
+        - Alias Target: **Alias to Application and Classic Load Balancer**
+        - Region: Select the region where your ALB is located (e.g., "US East (N. Virginia)").
+        - Load balancer: *choose your load balancer from the list
+        - Routing policy: **Latency**
+      - Evaluate target health: **NO**
+      - Record ID: **www-record**
+
+## Test
+Here are some tests you can try to confirm the site is loading in all use cases
+1. http://ipdice.com
+2. https://ipdice.com
+3. http://www.ipdice.com
+4. https://www.ipdice.com
+5. http://ipdice.com/
+6. https://ipdice.com/
