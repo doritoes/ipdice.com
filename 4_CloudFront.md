@@ -48,7 +48,7 @@ It is possible to  configure health checks within CloudFront to automatically ro
 ## Reconfigure Route 53
 pdate Route 53
 
-Modify your existing Route 53 "A" records for both "ipdice.com" and "www.ipdice.com [invalid URL removed] [invalid URL removed]".
+Modify your existing Route 53 "A" records for both "ipdice.com" and "www.ipdice.com".
 Change the "Alias Target" to point to your newly created CloudFront distribution domain name.
 
 
