@@ -354,5 +354,3 @@ Here are some tests you can try to confirm the site is loading in all use cases
 2. https://ipdice.com
 3. http://www.ipdice.com
 4. https://www.ipdice.com
-5. http://ipdice.com/
-6. https://ipdice.com/
