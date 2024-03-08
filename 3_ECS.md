@@ -104,6 +104,27 @@ You need to configure VPCs for the networking in each region. The following exam
     - Internet Gateway ID
     - Route Table ID (automatically created)
 
+## Create Security Groups
+### Create Security Group for ECS
+1. In the AWS console search for "EC2" and click **EC2**
+2. From the left menu click **Network & Security** > **Secruity Groups**
+3. Click **Create security group**
+    - Name: **ipdice-ecs-sg**
+    - Description: **Allow access to containers**
+    - VPC: *select the VPC you created*
+    - Inbound rules
+      - Click **Add rule**
+      - Type: **All traffic**
+      - Protocol: *automatically All*
+      - Port Range: *automatcially All*
+      - Source: **Anywhere-IPv4** (0.0.0.0/0)
+      - Click **Add rule**
+    - Outbound rules: *Leave at default settings*
+    - Click **Create security group**
+      
+### Create Security Group for Application Load Balancer
+
+
 ## Create TLS Certificate using AWS Certificate Manager (ACM)
 1. In the AWS console search for "Certificate" and click **Certificate Manager**
 2. Click **Request**
@@ -135,7 +156,7 @@ You need to configure VPCs for the networking in each region. The following exam
         - a new windows opens with the *Create security group* page
         - Security Group Name: **ipdice-alb-sg** (or similar descriptive name)
         - Description: **Security group for the ipdice Application Load Balancer**
-        - VPC info: *Ensure this is set to your VPC* (e.g., ipdice-vpc-us-east-1.)
+        - VPC info: *Ensure this is set to your VPC* (e.g., ipdice-vpc-us-east-1)
         - Inbound rules
           - Click **Add rule**
             - Type: **HTTPS**
