@@ -17,6 +17,7 @@ Amazon Elastic Container Servicve (ECS) offers a simplified experience with tigh
 
 This demonstration site has the following features:
 * No ads
+* Small container based on Alpine Linux
 * Gradually release new experiences to the web application
 * Demonstrate global autoscaling container applicationss without breaking the bank (don't want to cost too much for this free site)
 * No SQL backend
@@ -45,11 +46,10 @@ Here are the goals I have for this project. If you would like to encourage me to
 1. [Pre-Requisites](1_Prerequisites.md)
 2. [Create and Build the Web App Container](2_ipdice.md)
 3. [Configuring ECS](3_ECS.md)
-4. [Create CloudFront](4_CloudFront.md)
-5. [Update DNS](5_Route_53.md)
-6. [Testing and Monitoring](6_Testing_and_Monitoring.md)
-7. [Adding Regions](7_Regions.md)
-8. [Next Steps](8_Next_Steps.md)
+4. [Configuring CloudFront](4_CloudFront.md)
+5. [Testing and Monitoring](5_Testing_and_Monitoring.md)
+6. [Adding Regions](6_Regions.md)
+7. [Next Steps](7_Next_Steps.md)
 
 # References
 My favorite IP address checking web sites:
