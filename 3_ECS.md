@@ -91,7 +91,7 @@ You need to configure VPCs for the networking in each region. The following exam
     - Number of availability zones: **2**
     - Number of public subnets: **2**
     - Number of private subnets: **2**
-    - NAT gateways: **1 per AZ** (availability zone)
+    - NAT gateways: **None**
     - VPC Endpoints: **None** (S3 Gateway endpoints offer optimization but can add complexity for initial setup)
     - DNS: Enable both options, **DNS hostnames** and **DNS resolution**
     - Click **Create VPC**
