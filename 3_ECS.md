@@ -6,6 +6,9 @@ It is also important that we will be using the launch type **AWS Fargate**, a se
 Tip: Make sure you are in the desired region (e.g., `us-east-1`)
 
 *See https://aws.amazon.com/ecr/pricing/ for details about pricing after the first year of Free Tier*
+
+*See https://medium.com/@h.fadili/amazon-elastic-container-service-ecs-with-a-load-balancer-67c9897cb70b*
+
 ## Create IAM User and Access Keys
 1.  In the AWS console search bar enter "IAM" and click on **IAM**
 2.  Click **Users** in the left sidebar
