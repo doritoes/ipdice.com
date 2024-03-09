@@ -73,7 +73,7 @@ This step authenticates the Docker client with Amazon ECR. It generates a tempor
 ~~~
 aws ecr get-login-password --region <your-region> | docker login --username AWS --password-stdin https://<your-account-id>.dkr.ecr.<your-region>.amazonaws.com
 ~~~
-Validate: `aws ecr describe-images --repository-name ipdice`
+Confirm authentication worked: `aws ecr describe-images --repository-name ipdice`
 
 ### Tag Image
 1. List images: `docker images`
