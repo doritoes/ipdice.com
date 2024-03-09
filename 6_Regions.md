@@ -56,50 +56,11 @@ Overview:
     - Repeat for any remening behaviors (e.g., `/static/*`
 
 #### Route 53 Setup
-1. Browse to (https://console.aws.amazon.com) and log in
-2. In the search bar enter "route" and click on **Route 53**
-3. Note that Route 53 is in the *Global* region
-4. Click **Hosted zones**
-5. Click on your domain name (in my example, ipdice.com)
-6. Edit the existing base record
-    - Select the base A record (i.e., **ipdice.com**) and click **Edit record**
-    - Routing policy: **Latency**
-    - Region: *your first region* (i.e., us-east-1(
-    - Record ID: *name this descriptively* (i.e., app-us-east-1)
-    - Click **Save**
-7. Edit the existing www record
-    - Select the www A record (i.e., **www.ipdice.com**) and click **Edit record**
-    - Routing policy: **Latency**
-    - Region: *your first region* (i.e., us-east-1(
-    - Record ID: *name this descriptively* (i.e., www-app-us-east-1)
-    - Click **Save**
-8. Add another base record for each additional region
-    - Click **Create record**
-    - Leave the subdomain empty (i.e., ipdice.com)
-    - Record type: **A*
-    - Alias: **YES**
-    - Route traffic to
-      - **CloudFront distribution**
-      - *select your distribution*
-    - Routing policy: **Latency**
-    - Region: *the region you are adding*
-    - Record ID: *name this descriptively* (i.e., app-us-west-2)
-    - Click **Create records**
-9. Add another www record for each additional region
-    - Click **Create record**
-    - Record name: subdomain: **www** (i.e., www.ipdice.com)
-    - Record type: **A*
-    - Alias: **YES**
-    - Route traffic to
-      - **CloudFront distribution**
-      - *select your distribution*
-    - Routing policy: **Latency**
-    - Region: *the region you are adding*
-    - Record ID: *name this descriptively* (i.e., www-app-us-west-2)
-    - Click **Create records**
+We are not going to set up another DNS name to use latency based routing to direct traffic to the ALBs.
 
 ### Testing
 First we will generate traffic source from different global regions, followed by confirming traffic is reaching all regions.
+
 #### Generate traffic with Online Speed Test Tools
 These have limited locations, but can quickly renerate traffic to your different regions.
 - Pingdom: https://tools.pingdom.com/ (select from *Test from*)
