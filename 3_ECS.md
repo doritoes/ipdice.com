@@ -179,8 +179,7 @@ You need to configure VPCs for the networking in each region. The following exam
         - Health Checks
           - Health check protocol: **HTTP**
           - Health check path: **/health.php**
-        - Register targets
-        - *no targets right now, will add later*
+        - Register targets - *no targets right now; ECS tasks will be registered later*
         - Click **Create target group**
       - Back on the **Create Application Load Balancer** page
         - Under *Listeners and routing* click the refresh button
