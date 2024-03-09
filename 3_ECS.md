@@ -99,11 +99,6 @@ You need to configure VPCs for the networking in each region. The following exam
     - VPC Endpoints: **None** (S3 Gateway endpoints offer optimization but can add complexity for initial setup)
     - DNS: Enable both options, **DNS hostnames** and **DNS resolution**
     - Click **Create VPC**
-3. :zap:Thoroughly document your new VPC information
-    - VPC ID
-    - Subnet ID (public)
-    - Internet Gateway ID
-    - Route Table ID (automatically created)
 
 ## Create Security Groups
 ### Create Security Group for ECS
