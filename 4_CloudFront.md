@@ -13,11 +13,10 @@ It is possible to  configure health checks within CloudFront to automatically ro
   - Origin name: *click in this box, and select your ALB from the list* (i.e., ipdice-alb-us-east-1)
   - Protocol: **HTTPS only** on port **443** with **TLSv1.2**
   - Origin path - optional: *leave blank*
-  - Name: *leave it as is, this is the domain name CloudFront will point to*
+  - Name: *leave it as is, this is the domain name CloudFront will point to* (i.e., ipdice-alb-us-east-1-701553201.us-east-1.elb.amazonaws.com)
   - Viewer > Viewer protocol policy: **Redirect HTTP to HTTPS**
   - Leave the remaining Origin settings at their default values
   - Default cache behavior leave at default values
-  - Click **Create Origin**
   - Viewer
     - **Redirect HTTP to HTTPS**
     - Allowed HTTP methods: **GET, HEAD**
@@ -25,7 +24,7 @@ It is possible to  configure health checks within CloudFront to automatically ro
     - Choose **CachingOptimizedForUncompressedOjbects** (default)
     - Origin Request policy: (<u>important</u>)
       - **AllViewer**
-    - The rest can be left at default values
+    - Response headers policy - :worried: tried NONE and then Simple CORS
   - Web Application Firewall (WAF)
     - **Do not enable security protections**
     - Our function is not an API (just simple HTML) and doesn't need this expensive add-on
@@ -38,6 +37,7 @@ It is possible to  configure health checks within CloudFront to automatically ro
           - www.ipdice.com
     - Custom SSL certificate - optional
       - From the drop-down select your new certificate
+    - Default root object - :worried: tried NONE and then /
     - Click **Create distribution**. Be patient as the deployment completes.
     - **TAKE NOTE** of the *distribution domain name* - you will need this (my example: https://dch6676csc92k.cloudfront.net)
 
