@@ -78,8 +78,9 @@ Validate: `aws ecr describe-images --repository-name ipdice`
 ### Tag Image
 1. List images: `docker images`
 2. Tag image
-    - `docker tag <image_repository_name>:latest <your_repository_url>:latest
+    - `docker tag ipdice <your_repository_url>:latest
     - no "https" in the tag
+3. Confirm: `docker images`
 ### Push Image
 1. Push: `docker push <your_repository_url>:latest`
 2. Verify: `aws ecr describe-images --repository-name ipdice`
@@ -118,7 +119,6 @@ You need to configure VPCs for the networking in each region. The following exam
       - Protocol: *automatically All*
       - Port Range: *automatcially All*
       - Source: **Anywhere-IPv4** (0.0.0.0/0)
-      - Click **Add rule**
     - Outbound rules: *Leave at default settings*
     - Click **Create security group**
       
@@ -135,14 +135,13 @@ You need to configure VPCs for the networking in each region. The following exam
         - Protocol: *automatically TCP*
         - Port Range: *automatcially 443*
         - Source: **Anywhere-IPv4** (0.0.0.0/0)
-        - Click **Add rule**
       - Click **Add rule**
         - Type: **HTTP**
         - Protocol: *automatically TCP*
         - Port Range: *automatcially 80*
         - Source: **Anywhere-IPv4** (0.0.0.0/0)
-        - Click **Add rule**
     - Outbound rules: *Leave at default settings*
+    - Click **Create security group**
 
 ## Create TLS Certificate using AWS Certificate Manager (ACM)
 1. In the AWS console search for "Certificate" and click **Certificate Manager**
@@ -169,7 +168,7 @@ You need to configure VPCs for the networking in each region. The following exam
     - Scheme: **internet-facing**
     - IP address type: **IPv4**
     - VPC: *select the VPC you created earlier* (e.g., ipdice-vpc-us-east-1)
-    - Mappings: select two public subnet's availability zones and the subnet
+    - Mappings: select two <ul>public</ul> subnet's availability zones and the subnet
     - Security groups
       - From the dropdown select the Secruity group you created for the load balancer (i.e., `ipdice-alg-sg`)
     - Listeners and routing
@@ -288,12 +287,20 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
     - Networking
       - VPC: **ipdice-ecs-sg**
       - The two subnets, one for each availability zone, should be listed
-      - Security group: *Select the SG you created (only)*
+      - Security group: *Select the SG you created for ECS (only)* (i.e., ipdice-ecs-sg)
+      - From the dropdown select the Secruity group you created for the load balancer (i.e., `ipdice-alg-sg`)
       - Public IP: **ON**
       - Load balancing
         - Type: **Application Load Balancer**
         - Container: **ipdice-container 8080:8080** (from the dropdown)
+        - **Use an existing load balancer**
         - Load balancer name: **ipdice-alb-us-east-1**
+      - Listener
+        - **Use an existing listener**
+        - **443:HTTPS**
+      - Target group
+        - **Use an existing target group**
+        - Target group name: *select from the dropdown* (i.e., ipdice-target-group)
     - Service auto scaling
       - Select **User service auto scaling**
         - Minimum number of tasks: **1**
@@ -305,7 +312,7 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
         - Target value: 80
         - Scale-out cooldown period: **300**
         - Scale-in cooldown period: **300**
-      - Click **Update**
+      - Click **Create**
 4. Click the refresh buttons and look for
     - The cluster to show active, Active 1, Running 1
     - The service section will show the the container health and status
