@@ -110,7 +110,7 @@ You need to configure VPCs for the networking in each region. The following exam
 2. From the left menu click **Network & Security** > **Security Groups**
 3. Click **Create security group**
     - Name: **ipdice-ecs-sg**
-    - Description: **Security group for the access to ECS containers**
+    - Description: **Security group for access to ECS containers**
     - VPC: *select the VPC you created*
     - Inbound rules
       - Click **Add rule**
