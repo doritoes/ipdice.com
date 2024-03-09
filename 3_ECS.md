@@ -318,7 +318,7 @@ Test the service public IP address (test directly to the container, who's IP add
 3. Page will load and show your IP address
 
 Test ALB
-1. EC2 > Load Balancers > Copy the DNS name (e.g., ipdice-alb-us-east-1-1264694426.us-east-1.elb.amazonaws.com)
+1. EC2 > Load Balancers > Copy the DNS name (e.g., ipdice-alb-us-east-1-701553201.us-east-1.elb.amazonaws.com)
 2. Try accessing by http and https
     - the certificate will not match until we configure Route 53
 
