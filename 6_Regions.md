@@ -3,7 +3,6 @@ Our test application https://www.ipdice.com is running just fine. How can we mak
 
 *See https://aws.amazon.com/blogs/networking-and-content-delivery/latency-based-routing-leveraging-amazon-cloudfront-for-a-multi-region-active-active-architecture/*
 
-## Primary and Failover Regions
 In this example we are doing to use:
 - us-east-1 (N. Virginia)
 - us-west-2 (Oregon)
@@ -17,7 +16,7 @@ Overview:
 - add Load Balancer function URL to CloudFront
 - update Route 53
 
-### Steps
+## Steps
 1. Create Secret for the Repository in the addtional regions
 2. Create ECR repository in the new regions
 3. Configure the AWI CLI for the region, tag & push the image to the ECR; repeat each region
@@ -31,6 +30,30 @@ Overview:
 11. Configure CloudFront to add the origin
 12. Route 53 Setup
 
+#### Configure CloudFront to add the origin
+1. Browse to (https://console.aws.amazon.com) and log in
+2. In the search bar enter "cloudfront" and click on **CloudFront**
+3. Click on your distribution (i.e., for ipdice.com, www.ipdice.com)
+4. Click the **Origins** tab
+5. Click **Create Origin**
+    - Origin domain: *start typing and you will have a list to choose from* (i.e., ipdice-alb-us-west-2)
+    - Origin path - optional: *leave blank*
+    - Name:  *leave it as is, this is the domain name CloudFront will point to* (i.e., ipdice-alb-us-west-2-1531905465.us-west-2.elb.amazonaws.com)
+    - Click **Create origin**
+6. Click **Create origin group**
+    - Origins: Select each origin and click **Add** (re-order as needed)
+    - Name: **ipdice-origin-group**
+    - Failover criteria (required)
+      - 502
+      - 503
+      - 504
+    - **Click Create origin group**
+    - Edit Default behavior
+      - Click **Behaviors** tab
+      - Select the *Default* behavior and click **Edit**
+      - Change Origin and origin groups to **ipdice-origin-group**
+      - Click **Save** changes
+    - Repeat for any remening behaviors (e.g., `/static/*`
 
 #### Route 53 Setup
 1. Browse to (https://console.aws.amazon.com) and log in
@@ -38,33 +61,42 @@ Overview:
 3. Note that Route 53 is in the *Global* region
 4. Click **Hosted zones**
 5. Click on your domain name (in my example, ipdice.com)
-6. Click **Create record**
-    - Record Name: **app** (or your designed subdomain)
-    - Record Type: Leave as **A - IPv4 Address**
+6. Edit the existing base record
+    - Select the base A record (i.e., **ipdice.com**) and click **Edit record**
+    - Routing policy: **Latency**
+    - Region: *your first region* (i.e., us-east-1(
+    - Record ID: *name this descriptively* (i.e., app-us-east-1)
+    - Click **Save**
+7. Edit the existing www record
+    - Select the www A record (i.e., **www.ipdice.com**) and click **Edit record**
+    - Routing policy: **Latency**
+    - Region: *your first region* (i.e., us-east-1(
+    - Record ID: *name this descriptively* (i.e., www-app-us-east-1)
+    - Click **Save**
+8. Add another base record for each additional region
+    - Click **Create record**
+    - Leave the subdomain empty (i.e., ipdice.com)
+    - Record type: **A*
     - Alias: **YES**
-    - Route traffic to:
-      - Select **API Gateway REST APIs** from the dropdown menu
-      - Region: Chooose the region
-    - Value: Enter the domain name of your API gateway in this region (my example is 59o1ou36kb.execute-api.us-east-1.amazonaws.com)
-    - Routing Policy: **Latency**
-    - Region: Select your first region (in my case us-east-1)
-    - Healtch check ID - options: **Leave blank**
-    - Evaluate target health: **NO** (default) to save cost, or enable to allow Route 53 to monitor your API Gateway endpoint
-    - Record ID: **app-us-east-1**
-7. Click **Add another record** and repeat for your second region (in my case us-west-2)
-    - As this is an advanced section of the lab, I am allowing you to determine the settings
-8. Click **Create records**
-
-#### CloudFront Setup
-1. Browse to (https://console.aws.amazon.com) and log in
-2. In the search bar enter "CloudFront" and click on **CloudFront**
-3. Note that CloudFront is in the *Global* region
-4. Find and click on your distribution
-5. Click **Edit**
-6. Alternate Domain Names - add the *app* subdomain record (see my example below)
-    - add **app.ipdice.com**
-7. We recreated the Custom SSL certificate. Just make sure it is selected.
-8. Click **Save changes**
+    - Route traffic to
+      - **CloudFront distribution**
+      - *select your distribution*
+    - Routing policy: **Latency**
+    - Region: *the region you are adding*
+    - Record ID: *name this descriptively* (i.e., app-us-west-2)
+    - Click **Create records**
+9. Add another www record for each additional region
+    - Click **Create record**
+    - Record name: subdomain: **www** (i.e., www.ipdice.com)
+    - Record type: **A*
+    - Alias: **YES**
+    - Route traffic to
+      - **CloudFront distribution**
+      - *select your distribution*
+    - Routing policy: **Latency**
+    - Region: *the region you are adding*
+    - Record ID: *name this descriptively* (i.e., www-app-us-west-2)
+    - Click **Create records**
 
 ### Testing
 First we will generate traffic source from different global regions, followed by confirming traffic is reaching all regions.
@@ -76,15 +108,24 @@ These have limited locations, but can quickly renerate traffic to your different
 ####  Generate traffic with VPN Services
 Use a VPN service (some have free options) that lets you connect through servers in various countries. In this way you can access the site from, say, Seattle.
 
-#### Validating Lambda funtion usage
+#### Validating Regional ECS usage
+Logs
 1. In the search bar enter "CloudWatch" and click on **CloudWatch**
-2. From the left Menu, expand **Metrics** and click **All metrics**
-3. ___ which metrics for ECS and CloudFront?
-4. Use region dropdown to confirm you have invocations in each region
+2. Select the region you want to see logs for from the region drop-down
+3. From the left Menu, expand **Logs** and click **Log groups**
+4. Click on the ecs log group (e.g., /ecs/ipdice-app-us-west-2)
+5. Use region dropdown to confirm you have invocations in each region
+
+Dashboard
+1. In the search bar enter "CloudWatch" and click on **CloudWatch**
+2. Select the region you want to see logs for from the region drop-down
+3. From the left Menu click **Dashboards** > **Automatic dashboards**
+4. Click **Application ELB**
+
+⚠️ In testing with 2 regions, not seeing the second region be hit. Need to build the third region and test.
 
 # Learning More
 - Think about pricing model of CloudFront affects your ability to add your application to regious outside US and Europe
 - What do you think the capacity for each container is at 0.25vPC and 0.5Gb of memory at 80% target CPU?
 - What do you think the maximum capability of the max 10 scale size is?
 - How can you increase the capacity of each container to support more traffic?
-  
