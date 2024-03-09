@@ -86,7 +86,7 @@ Validate: `aws ecr describe-images --repository-name ipdice`
 
 ## Create VPC(s)
 You need to configure VPCs for the networking in each region. The following example uses the `us-east-1` region.
-1. In the AWS console search for "VPN" and click **VPC**
+1. In the AWS console search for "VPC" and click **VPC**
 2. Click **Start VPC Wizard** or **Create VPC**
     - Resources: **VPC and more**
     - Most settings can be left at default
