@@ -45,8 +45,8 @@ https://www.stormit.cloud/blog/cloudfront-distribution-for-amazon-ec2-alb/
 
 ## Reconfigure Route 53
 Modify your existing Route 53 "A" records for both "ipdice.com" and "www.ipdice.com".
-- Record type stays "A"
-- Alias stays "On"
+- Record type stays "**A**"
+- Alias stays "**On**"
 - Route traffic to: **Alias to CloudFront distribution**
 - Region: **the region where your CloudFront distribution is located**
 - *Select your distribution from the dropdown list*
