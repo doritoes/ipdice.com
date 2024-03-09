@@ -195,7 +195,7 @@ You need to configure VPCs for the networking in each region. The following exam
     - Add another listener to the Load Balancer
       - Click the load balancer then in the lower pane click on the tab **Listeners and rules**
       - Click **Add listener**
-        - Protocol:**HTTP**
+        - Protocol: **HTTP**
         - Port **80**
         - Select **Redirect to URL**
           - **URI parts**
