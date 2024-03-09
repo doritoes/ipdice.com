@@ -69,7 +69,7 @@ Tip: Make sure you are in the desired region (e.g., `us-east-1`)
 
 ## Push Image
 ### Get ECR Login and Docker Working
-This step authenticates the Docker client with Amazon ECR. It generates a temporary token (12 hours). It provides seamless Docker Login. The URL of your ECR repository is used for the last part. If the command failes, launch Docker Desktop to ensure the Docker Engine is running.
+This step authenticates the Docker client with Amazon ECR. It generates a temporary token (12 hours). It provides seamless Docker Login. The URL of your ECR repository is used for the last part. If the command fails, launch Docker Desktop to ensure the Docker Engine is running.
 ~~~
 aws ecr get-login-password --region <your-region> | docker login --username AWS --password-stdin https://<your-account-id>.dkr.ecr.<your-region>.amazonaws.com
 ~~~
@@ -83,7 +83,7 @@ Validate: `aws ecr describe-images --repository-name ipdice`
 3. Confirm: `docker images`
 ### Push Image
 1. Push: `docker push <your_repository_url>:latest`
-2. Verify: `aws ecr describe-images --repository-name ipdice`
+2. Confirm: `aws ecr describe-images --repository-name ipdice`
 
 ## Create VPC(s)
 You need to configure VPCs for the networking in each region. The following example uses the `us-east-1` region.
