@@ -18,6 +18,7 @@ Amazon Elastic Container Servicve (ECS) offers a simplified experience with tigh
 This demonstration site has the following features:
 * No ads
 * Small container based on Alpine Linux
+* Serverless computing on Fargate
 * Gradually release new experiences to the web application
 * Demonstrate global autoscaling container applicationss without breaking the bank (don't want to cost too much for this free site)
 * No SQL backend
@@ -29,8 +30,10 @@ Here are the goals I have for this project. If you would like to encourage me to
 ### Completed
 - Register domain name
 - Bootstrapping repo on github
-### Working on
 - Bootstrapping image on docker hub
+- One region built
+### Working on
+- Multi-region
 ### Will Do
 - Basic IP address experience
 - Feature: IP address information experience
@@ -39,7 +42,7 @@ Here are the goals I have for this project. If you would like to encourage me to
 - Feature: API for dice rolls (using custom dice rolling algorithm)
 - Feature: API for physical dice roles (rolled and captured by Raspberry Pi-powered physical device)
 ## Out of Scope
-- Amazon Elastic Kubernetes Service (EKS) is doesn't meet my criteria for integrating a new technology for me. I have done other Kubernetes labs ([here](https://www.unclenuc.com/lab:kubernetes_app:start) and [here](https://www.unclenuc.com/lab:stack_of_nucs:start))
+- Amazon Elastic Kubernetes Service (EKS) doesn't meet my criteria for integrating a new technology for me. I have done other Kubernetes labs ([here](https://www.unclenuc.com/lab:kubernetes_app:start) and [here](https://www.unclenuc.com/lab:stack_of_nucs:start)).
 - Azure and GCP are out of scope for this lab
 
 # Step-by-Step
