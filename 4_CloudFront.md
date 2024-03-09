@@ -3,6 +3,8 @@ The next step is to create the CloudFront distribution. This acts as a global co
 
 It is possible to  configure health checks within CloudFront to automatically route traffic away from unhealthy regions should an issue arrise. **IMPORTANT** - be mindful of potential cross-region data transfer costs when using multiple origins in different regions.
 
+https://www.stormit.cloud/blog/cloudfront-distribution-for-amazon-ec2-alb/
+
 ## Log in to AWS Console and Navigate to CloudFront
 1. Browse to (https://console.aws.amazon.com) and log in
 2. In the search bar enter "CloudFront" and click on **CloudFront**
