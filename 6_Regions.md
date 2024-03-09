@@ -8,14 +8,6 @@ In this example we are doing to use:
 - us-west-2 (Oregon)
 - eu-central-1 (Frankfurt)
 
-Overview:
-- add secrets to each region
-- add security groups to each region
-- add clusters to each region
-- add load balancer to each region
-- add Load Balancer function URL to CloudFront
-- update Route 53
-
 ## Steps
 1. Create Secret for the Repository in the addtional regions
 2. Create ECR repository in the new regions
