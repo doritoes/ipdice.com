@@ -78,7 +78,7 @@ Validate: `aws ecr describe-images --repository-name ipdice`
 ### Tag Image
 1. List images: `docker images`
 2. Tag image
-    - `docker tag ipdice <your_repository_url>:latest
+    - `docker tag ipdice <your_repository_url>:latest`
     - no "https" in the tag
 3. Confirm: `docker images`
 ### Push Image
