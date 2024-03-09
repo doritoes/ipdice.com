@@ -3,7 +3,6 @@ Our test application https://www.ipdice.com is running just fine. How can we mak
 
 *See https://aws.amazon.com/blogs/networking-and-content-delivery/latency-based-routing-leveraging-amazon-cloudfront-for-a-multi-region-active-active-architecture/*
 
-⚠️This section needs to be re-written from Lambda to ECS.
 ## Primary and Failover Regions
 In this example we are doing to use:
 - us-east-1 (N. Virginia)
