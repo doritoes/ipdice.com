@@ -9,7 +9,7 @@ In this example we are doing to use:
 - eu-central-1 (Frankfurt)
 
 ## Steps
-1. Create Secret for the Repository in the addtional regions
+1. Create Secret for the Repository in the additional regions
 2. Create ECR repository in the new regions
 3. Configure the AWI CLI for the region, tag & push the image to the ECR; repeat each region
 4. Create VPC in the addional regions
