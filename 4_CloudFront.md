@@ -38,7 +38,7 @@ https://www.stormit.cloud/blog/cloudfront-distribution-for-amazon-ec2-alb/
           - www.ipdice.com
     - Custom SSL certificate - optional
       - From the drop-down select your new certificate
-    - Default root object - :worried: tried NONE and then /
+    - Default root object - **index.php** (if you have issues, change back to **/**)
     - Click **Create distribution**. Be patient as the deployment completes.
     - **TAKE NOTE** of the *distribution domain name* - you will need this (my example: https://dch6676csc92k.cloudfront.net)
 2. ⚠️ You cannot test browsing to the distribution domain
