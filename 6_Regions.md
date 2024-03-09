@@ -6,7 +6,10 @@ Our test application https://www.ipdice.com is running just fine. How can we mak
 In this example we are doing to use:
 - us-east-1 (N. Virginia)
 - us-west-2 (Oregon)
-- eu-central-1 (Frankfurt)
+
+We are not going to deploy to eu-central-1 (Frankfurt) because
+- Only two originals can be in a CloudFront origin group
+- We are not going to set up latency-based Route 53 records to point to the ALBs in this case
 
 ## Steps
 1. Create Secret for the Repository in the additional regions
@@ -23,6 +26,7 @@ In this example we are doing to use:
 12. Route 53 Setup
 
 #### Configure CloudFront to add the origin
+:warning: You can only have two origins in an origin group
 1. Browse to (https://console.aws.amazon.com) and log in
 2. In the search bar enter "cloudfront" and click on **CloudFront**
 3. Click on your distribution (i.e., for ipdice.com, www.ipdice.com)
@@ -75,7 +79,7 @@ Dashboard
 3. From the left Menu click **Dashboards** > **Automatic dashboards**
 4. Click **Application ELB**
 
-⚠️ In testing with 2 regions, not seeing the second region be hit. Need to build the third region and test.
+⚠️ In initial testing with origins in two regions did not see the container logging any hits in us-west-2.
 
 # Learning More
 - Think about pricing model of CloudFront affects your ability to add your application to regious outside US and Europe
