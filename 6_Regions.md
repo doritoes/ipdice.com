@@ -3,7 +3,7 @@ Our test application https://www.ipdice.com is running just fine. How can we mak
 
 *See https://aws.amazon.com/blogs/networking-and-content-delivery/latency-based-routing-leveraging-amazon-cloudfront-for-a-multi-region-active-active-architecture/*
 
-⚠️This sectinn needs to be re-written from Lambda to ECS.
+⚠️This section needs to be re-written from Lambda to ECS.
 ## Primary and Failover Regions
 In this example we are doing to use:
 - us-east-1 (N. Virginia)
@@ -11,10 +11,12 @@ In this example we are doing to use:
 - eu-central-1 (Frankfurt)
 
 Overview:
-- add _______ to each region
-- add _______ to each region
-- add _______ to each region
+- add secrets to each region
+- add security groups to each region
+- add clusters to each region
+- add load balancer to each region
 - add Load Balancer function URL to CloudFront
+- update Route 53
 
 ### Steps
 1. Browse to (https://console.aws.amazon.com) and log in
