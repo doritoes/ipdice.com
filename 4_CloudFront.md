@@ -13,7 +13,7 @@ It is possible to  configure health checks within CloudFront to automatically ro
   - Origin name: *click in this box, and select your ALB from the list* (i.e., ipdice-alb-us-east-1)
   - Protocol: **HTTPS only** on port **443** with **TLSv1.2**
   - Origin path - optional: *leave blank*
-  - Name: *leave it as is, this is the domain name CloudFront will point to**
+  - Name: *leave it as is, this is the domain name CloudFront will point to*
   - Viewer > Viewer protocol policy: **Redirect HTTP to HTTPS**
   - Leave the remaining Origin settings at their default values
   - Default cache behavior leave at default values
