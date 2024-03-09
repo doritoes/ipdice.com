@@ -19,92 +19,19 @@ Overview:
 - update Route 53
 
 ### Steps
-1. Browse to (https://console.aws.amazon.com) and log in
-2. In the search bar enter "Lambda" and click on **Lambda**
-3. Locate the Region dropdown at the top of the AWS Console next to your account name
-4. Click the dropdown and select the region you want to add
-5. Create the Lambba function (refer to [Create Lambda Function](2_Lambda_Function.md))
-6. Create the API gateway (refer to [Create API Gateway](3_API_Gateway.md))
-7. Navigate the CloudFront in the AWS console
-    - note the region is *Global* for CloudFront
-8. Select your CloudFront distribution
-9. Click on the *Origins* tab (refer to [Create CloudFront](4_CloudFront.md)
-10. Click **Create origin**
-    - Origin name: *paste your invoke URL here*
-    - You can find this in your API Gateway console; one way is open the API, click **Stages** and find *Invoke URL*
-      - Example: (t2efulpgok.execute-api.us-west-2.amazonaws.com/Prod)
-    - Origin path - optional: *leave blank*
-    - Name: **myIP-backend-prod-us-west-2** (this name must be unique)
-    - Leave the remaining Origin settings at their default values
-    - Click **Create origin**
-11. Click **Create origin group**
-    - Select each origin and click Add
-    - Name: myIP-origin-group
-    - Failover criteria: (required)
-      - 502
-      - 503
-      - 504
-    - Click **Create origin group**
-12. Edit Default behavior
-    - Click **Behaviors** tab
-    - Select the *Default* behavior and click **Edit**
-    - Change *Origin and origin groups* to **myIP-origin-group**
-    - Click **Save changes**
+1. Create Secret for the Repository in the addtional regions
+2. Create ECR repository in the new regions
+3. Configure the AWI CLI for the region, tag & push the image to the ECR; repeat each region
+4. Create VPC in the addional regions
+5. Create Security Groups (ECS and ALB) in the additional regions
+6. Create TLS certificate in the additional regions
+7. Create Application Load Balancer (ALB) in the additional regions
+8. Create ECS cluster in the additonal regions
+9. Create Task Definition in the additional regions
+10. Create a Service in the additional regions
+11. Configure CloudFront to add the origin
+12. Route 53 Setup
 
-## Active-Active Regions
-We are going to add our configuration to multiple regions and allow CloudFront to direct users to the closest region.
-
-Overview
-- create a matching SSL certificate in ACM <u>in the additional region</u>
-- configure Route 53 to have two records for the same domain name and set the routing policy to *latency*
-
-### Steps
-#### Re-Create SSL Certificate
-(www.ipdice.com) was initially created in us-east-1. The SSL certificate was therefore created in us-east-1. We need to add a new subdomain to the certificate.
-1. Browse to (https://console.aws.amazon.com) and log in
-2. Make sure you have the correction region selected in the region dropdown
-3. In the search bar enter "certificate" and click on **Certificate Manager**
-4. Click **Request a certificate**
-    - Certificate type *Public*, click **Next**
-    - Enter the domain names you will use using the button *Add another name to this certificate*. See examples below.
-      - ipdice.com
-      - www.ipdice.com
-    - Validation method: **DNS validation**
-    - Click **Request**
-      - Click **List certificates**, click view your certificate
-      - The status will be *Pending validation*
-      - Click on the certificate
-      - Click **Create Records in Route 53**
-      - Click **Create records** (This allows the certificate to successfully validate; it shouldn't take long)
-5. Modify your CloudFront distribution to use the new certificate
-    - Navigate to CloudFront > Distributions
-    - Click on your distribution
-    - Click **Edit**
-    - Select the new SSL certificate
-    - Click **Save changes**
-    - At this point you can navigate to web site, click refresh and examine the certificate to find the new *Subject Alternative Names* (SAN) listed
-6. Remove the old certificate
-    - Navigate to Certificate Manager > List certificate
-    - Note that the new certificate has *In use* as *Yes*
-    - Select the unused certificate, click **Delete**, and confirm
-#### Create SSL Certificate in the New Region
-(www.ipdice.com) was initially created in us-east-1. The SSL certificate was therefore created in us-east-1. Next we will re-create the same SSL certificate in the new region (in my case, us-west-2)
-1. Browse to (https://console.aws.amazon.com) and log in
-2. Make sure you have the correction region selected in the region dropdown
-3. In the search bar enter "certificate" and click on **Certificate Manager**
-4. Click **Request a certificate**
-    - Certificate type *Public*, click **Next**
-    - Enter the domain names you will use using the button *Add another name to this certificate*. See examples below.
-      - ipdice.com
-      - www.ipdice.com
-      - app.ipdice.com
-    - Validation method: **DNS validation**
-    - Click **Request**
-      - Click **List certificates**, click view your certificate
-      - The status will be *Pending validation*
-      - Click on the certificate
-      - Click **Create Records in Route 53**
-      - Click **Create records** (This allows the certificate to successfully validate; it shouldn't take long)
 
 #### Route 53 Setup
 1. Browse to (https://console.aws.amazon.com) and log in
