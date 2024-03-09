@@ -20,7 +20,7 @@ It is possible to  configure health checks within CloudFront to automatically ro
   - Click **Create Origin**
   - Viewer
     - **Redirect HTTP to HTTPS**
-    - Allowed HTTP methods: **GET, HEAD, OPTIONS**
+    - Allowed HTTP methods: **GET, HEAD**
   - Caching (Important):
     - Choose **CachingOptimizedForUncompressedOjbects** (default)
     - Origin Request policy: (<u>important</u>)
@@ -50,8 +50,6 @@ pdate Route 53
 
 Modify your existing Route 53 "A" records for both "ipdice.com" and "www.ipdice.com".
 Change the "Alias Target" to point to your newly created CloudFront distribution domain name.
-
-
 
 ## Test
 https://ipdice.com
