@@ -10,7 +10,6 @@ https://www.stormit.cloud/blog/cloudfront-distribution-for-amazon-ec2-alb/
 2. In the search bar enter "CloudFront" and click on **CloudFront**
    
 ## Create a CloudFront Distribution
-
 1. Click **Create a CloudFront distribution**
   - Origin name: *click in this box, and select your ALB from the list* (i.e., ipdice-alb-us-east-1)
   - Protocol: **HTTPS only** on port **443** with **TLSv1.2**
@@ -23,10 +22,10 @@ https://www.stormit.cloud/blog/cloudfront-distribution-for-amazon-ec2-alb/
     - **Redirect HTTP to HTTPS**
     - Allowed HTTP methods: **GET, HEAD**
   - Caching (Important):
-    - Choose **CachingOptimizedForUncompressedOjbects** (default)
+    - Choose **CachingDisabled**
     - Origin Request policy: (<u>important</u>)
       - **AllViewer**
-    - Response headers policy - :worried: tried NONE and then Simple CORS
+    - Response headers policy - **NONE**
   - Web Application Firewall (WAF)
     - **Do not enable security protections**
     - Our function is not an API (just simple HTML) and doesn't need this expensive add-on
@@ -42,36 +41,25 @@ https://www.stormit.cloud/blog/cloudfront-distribution-for-amazon-ec2-alb/
     - Default root object - :worried: tried NONE and then /
     - Click **Create distribution**. Be patient as the deployment completes.
     - **TAKE NOTE** of the *distribution domain name* - you will need this (my example: https://dch6676csc92k.cloudfront.net)
-
-## Test
-1. On the general tab of your distribution, the distribution domain name is shown (e.g., https://dch6676csc92k.cloudfront.net)
-2. Browse to it
+2. ⚠️ You cannot test browsing to the distribution domain
 
 ## Reconfigure Route 53
-pdate Route 53
-
 Modify your existing Route 53 "A" records for both "ipdice.com" and "www.ipdice.com".
-Change the "Alias Target" to point to your newly created CloudFront distribution domain name.
+- Record type stays "A"
+- Alias stays "On"
+- Route traffic to: **Alias to CloudFront distribution**
+- Region: **the region where your CloudFront distribution is located**
+- *Select your distribution from the dropdown list*
+- Routing policy: **Simple routing**
+- Click **Save**
 
 ## Test
-https://ipdice.com
+Allow for DNS entries to propagate (e.g., https://dnschecker.org/#A/www.ipdice.com)
 
+Test each variation:
+- http://www.ipdice.com
+- https://www.ipdice.com
+- http://ipdice.com
+- https://ipdice.com
 
-## Fix the incorrect IP address
-The source IP that the Lamba function sees will be the last cloudfront host in the path. That's not what we want. We want the client IP address.
-
-We will configure the X-Forwarded-For header to get the client's real IP address.
-
-On the left menu bar below Distributions there is Policies.
-
-1. Click on **Policies**
-2. Click **Origin Request** from the ribbon menu
-3. In the *Custom policies* pane, click **Create origin request policy**
-    - Name: **IP-Forwarding-Policy**
-    - Headers
-      - Select **Include the following headers**
-      - Add header > Click Add custom > X-Forwarded-For
-    - Click **Save changes**
-  
-
-The correct list IP address will now be returned.
+The client IP address should be returned by the application.
