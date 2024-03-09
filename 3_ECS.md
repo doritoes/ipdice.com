@@ -41,7 +41,7 @@ Tip: Make sure you are in the desired region (e.g., `us-east-1`)
     - Key: **username**
     - Value: *the access key ID from your ECR access keys*
     - Key: **password**
-    - Value: *the secret access keyfrom your ECR access keys*
+    - Value: *the secret access key from your ECR access keys*
 5. Secret Namee: **ecr-image-pull-credentials**
 6. Description: **credentials for pulling images from ECR**
 7. <u>Do not configure automatic rotation</u>
