@@ -76,3 +76,6 @@ My other web sites:
 - https://unclenuc.com
 - https://systems-monitor.com/
 - https://www.cottagewifi.com/ (I have a lot of content that I want to share here)
+
+To find your private LAN IP address:
+- https://www.avast.com/c-how-to-find-ip-address
