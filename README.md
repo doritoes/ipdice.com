@@ -79,3 +79,4 @@ My other web sites:
 
 To find your private LAN IP address:
 - https://www.avast.com/c-how-to-find-ip-address
+- https://nordvpn.com/what-is-my-ip/
