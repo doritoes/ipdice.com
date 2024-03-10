@@ -59,6 +59,7 @@ My favorite IP address checking web sites:
 - https://ipgoat.com
 - https://ipchicken.com
 - http://icanhazip.com (just the IP address, great from command line: `curl http://icanhazip.com`)
+- https://api.ipify.org/ (another bare IP address service)
 - http://www.ipdragon.com
 - http://ipturtle.com
 - https://ip.me
