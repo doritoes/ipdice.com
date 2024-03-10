@@ -63,6 +63,10 @@ My favorite IP address checking web sites:
 - http://ipturtle.com
 - https://ip.me
 
+More "IP Animals":
+- https://ipmonkey.com
+- https://ipfish.com (redirects to ipchicken.com)
+
 My IP address checking web sites:
 - https://ipgiraffe.com
 - https://ipdice.com (under construction)
