@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'DPoly';
-  src: url('DPoly Ten-Sider.otf') format('truetype');
+  src: url('/static/fonts/DPoly Ten-Sider.otf') format('truetype');
 }
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 body {
