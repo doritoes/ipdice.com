@@ -9,7 +9,7 @@
 }
 body {
   font-family: Arial, sans-serif;
-  background-color: #FFF8E7;
+  background-color: #704214;
   color: #333333;
   text-align: center;
   display: flex; /* Center content */
@@ -19,8 +19,8 @@ body {
   flex-direction: column;
 }
 main {
-  background: #87CEEB;
-  color: #663399;
+  background: #F0E68C;
+  color: #228B22;
   border: 4px double #a06e3b;
   font-size: 1.2em;
   line-height: 1.6; 
@@ -38,22 +38,23 @@ h1 {
   font-size: 5em;
 }
 button {
-  background-color: #FF9800;
-  color: #FFFFFF;            /* White text */
-  border: none;              /* Remove default button border */
-  padding: 10px 20px;        /* Add spacing within the button */
-  text-decoration: none;     /* Remove underline if it's a link */
-  cursor: pointer;           /* Indicate it's clickable */
-  border-radius: 5px;        /* Rounded corners */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  background-color: #FFD700;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
-  background-color: #F57C00;
+  background-color: #CC8800;
   box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.3);
 }
 .ipaddress {
+  color: #B22222;
   font-family: DPoly, sans-serif;
-	font-size: 5em;
-	font-weight:normal;
+  font-size: 5em;
+  font-weight:normal;
 }
