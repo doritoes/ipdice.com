@@ -31,16 +31,16 @@ $client_ip = client_ip();
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ipdice.com</title>
+    <title>IPDICE.COM</title>
     <link rel="stylesheet" href="/static/styles/main.css">
     <script src="/static/scripts/copy.js" defer></script>
   </head>
   <body>
     <header>
-      <h2>ipdice.com</h2>
+      <h1>ipdice.com</h1>
     </header>
     <main>
-      <h1>Your IP Address</h2>
+      <h2>Your IP Address</h2>
       <p><span id="ip-address"><?php echo $client_ip ?></span> <button id="copy-button">COPY IP</button></p>
       <p class="ipaddress"><?php echo dicetext($client_ip) ?></p>
     </main>
