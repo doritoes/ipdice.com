@@ -40,7 +40,7 @@ $client_ip = client_ip();
       <h1>ipdice.com</h1>
     </header>
     <main>
-      <h1>Your IP Address</h1>
+      <h1>Your IP Address</h2>
       <p><span id="ip-address"><?php echo $client_ip ?></span> <button id="copy-button">COPY IP</button></p>
       <p class="ipaddress"><?php echo dicetext($client_ip) ?></p>
     </main>
