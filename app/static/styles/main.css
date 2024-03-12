@@ -3,8 +3,9 @@
   src: url('/static/fonts/DPoly Ten-Sider.otf') format('truetype');
 }
 @font-face {
-  font-family: 'SuperBloom';
-  src: url('/static/fonts/Super Bloom Personal Use.otf') format('truetype');
+  font-family: 'Whocats';
+  src: url('/fonts/Whocats.otf') format('opentype'), 
+       url('/fonts/Whocats.ttf') format('truetype'); 
 }
 body {
   font-family: Arial, sans-serif;
@@ -31,7 +32,7 @@ main {
   justify-content: center; /* Center horizontally if there's extra space */
 }
 h1 {
-  font-family: SuperBloom, sans-serif;
+  font-family: Whocats, sans-serif;
   font-size: 5em;
 }
 button {
