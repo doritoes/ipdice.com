@@ -12,10 +12,10 @@ body {
   background-color: #222222;
   color: #FFFFFF;
   text-align: center;
-  display: flex; /* Center content */
+  display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh; /* Keep content centered */
+  min-height: 100vh;
   flex-direction: column;
 }
 main {
@@ -35,7 +35,7 @@ main {
 h1 {
   font-family: MonsterDoodles, sans-serif;
   font-weight:normal;
-  font-size: 5em;
+  font-size: 4em;
   color: #32CD32;
 }
 button {
