@@ -9,11 +9,7 @@
 }
 body {
   font-family: Arial, sans-serif;
-  background-color: #F0E68C;
-  background-image: 
-    linear-gradient(to right, #a06e3b 1px, transparent 1px, transparent 20px), 
-    linear-gradient(to bottom, #a06e3b 1px, transparent 1px, transparent 20px);
-  background-size: 20px 20px;
+  background-color: #E0E0E0;
   color: #FFFFFF;
   text-align: center;
   display: flex;
