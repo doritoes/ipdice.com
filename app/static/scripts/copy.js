@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', function() { // Ensure page loads 
 
         navigator.clipboard.writeText(ipAddress)
             .then(() => {
-                copyButton.style.backgroundColor = '#4CAF50'; // A pleasing green color
+                copyButton.style.backgroundColor = '#4CAF50';
                 // Optionally reset color after a delay
                 setTimeout(() => {
-                    copyButton.style.backgroundColor = '#FF9800'; // Reset to original color 
+                    copyButton.style.backgroundColor = '#FFD700'; // Reset to original color 
                 }, 1000); // 1 second delay
             })
             .catch(err => {
