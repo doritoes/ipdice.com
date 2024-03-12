@@ -37,7 +37,7 @@ $client_ip = client_ip();
   </head>
   <body>
     <header>
-      <h1>ipdice.com</h1>
+      <h2>ipdice.com</h2>
     </header>
     <main>
       <h1>Your IP Address</h2>
