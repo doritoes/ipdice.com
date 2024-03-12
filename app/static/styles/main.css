@@ -3,9 +3,9 @@
   src: url('/static/fonts/DPoly Ten-Sider.otf') format('truetype');
 }
 @font-face {
-  font-family: 'Whocats';
-  src: url('/static/fonts/Whocats.otf') format('opentype'), 
-       url('/static/fonts/Whocats.ttf') format('truetype'); 
+  font-family: 'MonsterDoodles';
+  src: url('/static/fonts/MonsterDoodles-Regular.otf') format('opentype'), 
+       url('/static/fonts/MonsterDoodles-Regular.otf') format('truetype'); 
 }
 body {
   font-family: Arial, sans-serif;
@@ -32,7 +32,7 @@ main {
   justify-content: center; /* Center horizontally if there's extra space */
 }
 h1 {
-  font-family: Whocats, sans-serif;
+  font-family: MonsterDoodles, sans-serif;
   font-size: 5em;
 }
 button {
