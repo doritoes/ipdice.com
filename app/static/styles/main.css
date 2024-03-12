@@ -39,7 +39,7 @@ h1 {
   color: #32CD32;
 }
 button {
-  background-color: #FFD700;
+  background-color: #9370DB;
   color: #FFFFFF;
   border: none;
   padding: 10px 20px;
@@ -50,11 +50,11 @@ button {
 }
 
 button:hover {
-  background-color: #CC8800;
+  background-color: #7D5BA6;
   box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.3);
 }
 .ipaddress {
-  color: #B22222;
+  color: #FFA500;
   font-family: DPoly, sans-serif;
   font-size: 2em;
   font-weight:normal;
