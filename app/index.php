@@ -20,11 +20,28 @@ function client_ip() {
   }
   return $ip;
 }
+function dicetext($strText, $hollow = $false) {
+  if ($hollow) {
+    return strtr($strText, "0123456789.", "abcdefghij1");
+  }
+  return strtr($strText, "0123456890.", "ABCDEFGHIJ!");
+}
 $client_ip = client_ip();
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ipdice.com</title>
+    <link rel="stylesheet" href="/static/styles/main.css">
+  </head>
   <body>
-    <h1>Your IP Address</h1>
-    <p><?php echo $client_ip ?></p>
+    <header>
+      <h1>ipdice.com</h1>
+    </header>
+    <main>
+      <h1>Your IP Address</h1>
+      <p><?php echo $client_ip ?></p>
+      <p class="ipaddress"><?php echo dicetext($client_ip) ?></p>
+      <link rel="stylesheet" href="classic-dice.css">
   </body>
 </html>
