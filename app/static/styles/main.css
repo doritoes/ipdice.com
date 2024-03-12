@@ -27,6 +27,8 @@ main {
   border-radius: 0px;
   margin: 10px;
   padding: 20px;
+  min-width: 30%; /* Ensures a minimum width of 30% */
+  max-width: 60%; /* Allows it to grow wider on larger screens */ 
   /* Centering the text */
   text-align: center;     /* Horizontal centering */
   align-items: center;    /* Center vertically within the flex container */
