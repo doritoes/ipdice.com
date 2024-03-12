@@ -33,7 +33,7 @@ $client_ip = client_ip();
   <head>
     <title>ipdice.com</title>
     <link rel="stylesheet" href="/static/styles/main.css">
-    <script src="copy.js" defer></script>
+    <script src="/static/scripts/copy.js" defer></script>
   </head>
   <body>
     <header>
