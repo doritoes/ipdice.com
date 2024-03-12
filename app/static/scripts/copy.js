@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', function() { // Ensure page loads 
         navigator.clipboard.writeText(ipAddress)
             .then(() => {
                 copyButton.style.backgroundColor = '#4CAF50'; // A pleasing green color
+                // Optionally reset color after a delay
+                setTimeout(() => {
+                    copyButton.style.backgroundColor = '#3498DB'; // Reset to original color 
+                }, 1000); // 1 second delay
             })
             .catch(err => {
                 console.error("Failed to copy IP address:", err);
