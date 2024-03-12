@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() { // Ensure page loads 
 
         navigator.clipboard.writeText(ipAddress)
             .then(() => {
-                alert("IP Address copied!");
+                copyButton.style.backgroundColor = '#4CAF50'; // A pleasing green color
             })
             .catch(err => {
                 console.error("Failed to copy IP address:", err);
