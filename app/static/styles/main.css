@@ -13,6 +13,20 @@ body {
   justify-content: center;
   min-height: 100vh; /* Keep content centered */
 }
+main {
+  background: #f0e5c9;
+  color: #784820;
+  border: 4px double #a06e3b;
+  font-size: 1.2em;
+  line-height: 1.6; 
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px;
+  /* Centering the text */
+  text-align: center;     /* Horizontal centering */
+  align-items: center;    /* Center vertically within the flex container */
+  justify-content: center; /* Center horizontally if there's extra space */
+}
 h1 {
   font-family: Poppins, sans-serif;
   font-size: 5em;
