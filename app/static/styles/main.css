@@ -19,12 +19,12 @@ body {
   flex-direction: column;
 }
 main {
-  background: #FFFFFF;
-  color: #888888;
-  border: 4px double #a06e3b;
+  background: #F0E68C;
+  color: #228B22;
+  border: 4px double #000080;
   font-size: 1.2em;
   line-height: 1.6; 
-  border-radius: 10px;
+  border-radius: 0px;
   margin: 10px;
   padding: 20px;
   /* Centering the text */
