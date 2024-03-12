@@ -46,12 +46,12 @@ button {
   text-decoration: none;
   cursor: pointer;
   border-radius: 2px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
   background-color: #7D5BA6;
-  box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
 }
 .ipaddress {
   color: #FFA500;
