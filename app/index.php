@@ -33,6 +33,7 @@ $client_ip = client_ip();
   <head>
     <title>ipdice.com</title>
     <link rel="stylesheet" href="/static/styles/main.css">
+    <script src="copy.js" defer></script>
   </head>
   <body>
     <header>
@@ -40,7 +41,7 @@ $client_ip = client_ip();
     </header>
     <main>
       <h1>Your IP Address</h1>
-      <p><?php echo $client_ip ?></p>
+      <p><?php echo $client_ip ?><button id="copy-button">COPY IP</button></p>
       <p class="ipaddress"><?php echo dicetext($client_ip) ?></p>
       <link rel="stylesheet" href="classic-dice.css">
   </body>
