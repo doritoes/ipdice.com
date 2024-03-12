@@ -41,7 +41,7 @@ $client_ip = client_ip();
     </header>
     <main>
       <h1>Your IP Address</h1>
-      <p><?php echo $client_ip ?><button id="copy-button">COPY IP</button></p>
+      <p><span id="ip-address"><?php echo $client_ip ?></span> <button id="copy-button">COPY IP</button></p>
       <p class="ipaddress"><?php echo dicetext($client_ip) ?></p>
       <link rel="stylesheet" href="classic-dice.css">
   </body>
