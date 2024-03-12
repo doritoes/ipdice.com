@@ -34,6 +34,20 @@ h1 {
   font-family: SuperBloom, sans-serif;
   font-size: 5em;
 }
+button {
+  background-color: #3498DB; /* A pleasant blue color */
+  color: #FFFFFF;            /* White text */
+  border: none;              /* Remove default button border */
+  padding: 10px 20px;        /* Add spacing within the button */
+  text-decoration: none;     /* Remove underline if it's a link */
+  cursor: pointer;           /* Indicate it's clickable */
+  border-radius: 5px;        /* Rounded corners */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+button:hover {
+  background-color: #2980B9; /* Slightly darker blue on hover */
+}
 .ipaddress {
   font-family: DPoly, sans-serif;
 	font-size: 5em;
