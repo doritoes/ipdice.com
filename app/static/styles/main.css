@@ -38,7 +38,7 @@ h1 {
   font-family: MonsterDoodles, sans-serif;
   font-weight:normal;
   font-size: 4em;
-  color: #32CD32;
+  color: #333333;
 }
 button {
   background-color: #9370DB;
@@ -63,7 +63,7 @@ button:hover {
   margin-top: 0;   /* Remove any default margin */
 }
 .ipaddress {
-  color: #FFA500;
+  color: #202020;
   font-family: DPoly, sans-serif;
   font-size: 3em;
   font-weight:normal;
