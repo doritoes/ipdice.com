@@ -20,7 +20,7 @@ function client_ip() {
   }
   return $ip;
 }
-function dicetext($strText, $hollow = $false) {
+function dicetext($strText, $hollow = false) {
   if ($hollow) {
     return strtr($strText, "0123456789.", "abcdefghij1");
   }
