@@ -4,8 +4,8 @@
 }
 @font-face {
   font-family: 'Whocats';
-  src: url('/fonts/Whocats.otf') format('opentype'), 
-       url('/fonts/Whocats.ttf') format('truetype'); 
+  src: url('/static/fonts/Whocats.otf') format('opentype'), 
+       url('/static/fonts/Whocats.ttf') format('truetype'); 
 }
 body {
   font-family: Arial, sans-serif;
