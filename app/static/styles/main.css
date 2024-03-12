@@ -9,8 +9,8 @@
 }
 body {
   font-family: Arial, sans-serif;
-  background-color: #704214;
-  color: #333333;
+  background-color: #222222;
+  color: #FFFFFF;
   text-align: center;
   display: flex; /* Center content */
   align-items: center;
@@ -19,8 +19,8 @@ body {
   flex-direction: column;
 }
 main {
-  background: #F0E68C;
-  color: #228B22;
+  background: #FFFFFF;
+  color: #888888;
   border: 4px double #a06e3b;
   font-size: 1.2em;
   line-height: 1.6; 
@@ -36,6 +36,7 @@ h1 {
   font-family: MonsterDoodles, sans-serif;
   font-weight:normal;
   font-size: 5em;
+  color: #32CD32;
 }
 button {
   background-color: #FFD700;
@@ -55,6 +56,6 @@ button:hover {
 .ipaddress {
   color: #B22222;
   font-family: DPoly, sans-serif;
-  font-size: 5em;
+  font-size: 2em;
   font-weight:normal;
 }
