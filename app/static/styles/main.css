@@ -9,7 +9,7 @@
 }
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #FFF8E7;
   color: #333333;
   text-align: center;
   display: flex; /* Center content */
@@ -19,8 +19,8 @@ body {
   flex-direction: column;
 }
 main {
-  background: #f0e5c9;
-  color: #784820;
+  background: #87CEEB;
+  color: #663399;
   border: 4px double #a06e3b;
   font-size: 1.2em;
   line-height: 1.6; 
@@ -38,7 +38,7 @@ h1 {
   font-size: 5em;
 }
 button {
-  background-color: #3498DB; /* A pleasant blue color */
+  background-color: #FF9800;
   color: #FFFFFF;            /* White text */
   border: none;              /* Remove default button border */
   padding: 10px 20px;        /* Add spacing within the button */
@@ -49,7 +49,7 @@ button {
 }
 
 button:hover {
-  background-color: #2980B9; /* Slightly darker blue on hover */
+  background-color: #F57C00;
 }
 .ipaddress {
   font-family: DPoly, sans-serif;
