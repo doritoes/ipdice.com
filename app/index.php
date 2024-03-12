@@ -24,7 +24,7 @@ function dicetext($strText, $hollow = false) {
   if ($hollow) {
     return strtr($strText, "0123456789.", "abcdefghij1");
   }
-  return strtr($strText, "0123456890.", "ABCDEFGHIJ!");
+  return strtr($strText, "0123456789.", "ABCDEFGHIJ!");
 }
 $client_ip = client_ip();
 ?>
