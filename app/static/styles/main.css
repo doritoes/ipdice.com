@@ -2,7 +2,10 @@
   font-family: 'DPoly';
   src: url('/static/fonts/DPoly Ten-Sider.otf') format('truetype');
 }
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@font-face {
+  font-family: 'SuperBloom';
+  src: url('/static/fonts/Super Bloom.otf') format('truetype');
+}
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
@@ -28,7 +31,7 @@ main {
   justify-content: center; /* Center horizontally if there's extra space */
 }
 h1 {
-  font-family: Poppins, sans-serif;
+  font-family: SuperBloom, sans-serif;
   font-size: 5em;
 }
 .ipaddress {
