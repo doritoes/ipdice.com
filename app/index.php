@@ -28,7 +28,6 @@ function validate_ipv4($strIp) {
     return $strIp;
   }
 }
-
 function dicetext($strText, $hollow = false) {
   if ($hollow) {
     return strtr($strText, "0123456789.", "abcdefghij1");
