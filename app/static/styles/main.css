@@ -33,6 +33,7 @@ main {
 }
 h1 {
   font-family: MonsterDoodles, sans-serif;
+  font-weight:normal;
   font-size: 5em;
 }
 button {
