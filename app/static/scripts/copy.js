@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() { // Ensure page loads 
                 copyButton.style.backgroundColor = '#4CAF50';
                 // Optionally reset color after a delay
                 setTimeout(() => {
-                    copyButton.style.backgroundColor = '#FFD700'; // Reset to original color 
+                    copyButton.style.backgroundColor = '#A0A0A0';
                 }, 1000); // 1 second delay
             })
             .catch(err => {
