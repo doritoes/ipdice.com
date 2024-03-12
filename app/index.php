@@ -31,13 +31,13 @@ $client_ip = client_ip();
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>IPDICE.COM</title>
+    <title>ipdice.com</title>
     <link rel="stylesheet" href="/static/styles/main.css">
     <script src="/static/scripts/copy.js" defer></script>
   </head>
   <body>
     <header>
-      <h1>ipdice.com</h1>
+      <h1>IPDICE.COM</h1>
     </header>
     <main>
       <h2>Your IP Address</h2>
