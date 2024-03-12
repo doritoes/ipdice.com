@@ -41,6 +41,7 @@ h1 {
 button {
   background-color: #9370DB;
   color: #FFFFFF;
+  font-size: 0.8em;
   border: none;
   padding: 5px 10px;
   text-decoration: none;
