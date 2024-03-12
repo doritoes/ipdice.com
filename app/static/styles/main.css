@@ -16,6 +16,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh; /* Keep content centered */
+  flex-direction: column;
 }
 main {
   background: #f0e5c9;
