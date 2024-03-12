@@ -40,7 +40,7 @@ $client_ip = client_ip();
       <h1>IPDICE.COM</h1>
     </header>
     <main>
-      <h2>Your IP Address</h2>
+      <p style="title">Your IP Address</p>
       <p><span id="ip-address"><?php echo $client_ip ?></span> <button id="copy-button">COPY IP</button></p>
     </main>
     <footer>
