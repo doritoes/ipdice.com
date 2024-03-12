@@ -20,13 +20,22 @@ function client_ip() {
   }
   return $ip;
 }
+function validate_ipv4($strIp) {
+  if (filter_var($strIp, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) === false &&
+      filter_var($strIp, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false) {
+    return "127.0.0.1";
+  } else {
+    return $strIp;
+  }
+}
+
 function dicetext($strText, $hollow = false) {
   if ($hollow) {
     return strtr($strText, "0123456789.", "abcdefghij1");
   }
   return strtr($strText, "0123456789.", "ABCDEFGHIJ!");
 }
-$client_ip = client_ip();
+$client_ip = validate_ipv4(client_ip());
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +43,7 @@ $client_ip = client_ip();
     <title>ipdice.com</title>
     <link rel="stylesheet" href="/static/styles/main.css">
     <script src="/static/scripts/copy.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <header>
