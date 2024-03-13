@@ -21,7 +21,7 @@ header {
    margin-top: 50px;
 }
 main {
-  background: #A00000;
+  background: #A9A9A9;
   color: #000000;
   border: 2px solid #101010;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
@@ -59,17 +59,24 @@ button:hover {
   box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
 }
 .title {
-  display: none;
+  background-color: #C0392B;
+  color: #000000;
+  border: 1px solid black;
+  padding: 5px;
+  margin-top: 0;
 }
 .image {
   padding: 5px;
   margin-top: 0;
+  border: 1px solid black;
+  padding: 5px;
+  margin-top: 0;
 }
 .ipaddress {
-  color: #A00060;
+  color: #663330;
   font-family: DPoly, sans-serif;
   font-size: 3em;
-  font-weight:normal;
+  font-weight: normal;
 }
 .header-container {
   display: flex;
