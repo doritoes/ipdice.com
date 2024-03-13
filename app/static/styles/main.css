@@ -80,7 +80,9 @@ button:hover {
 }
 .background-image {
     background-image: url('/static/images/background1.png');
-    background-size: cover; 
+    background-size: contain;
+    background-repeat: no-repeat;  
+    background-position: center; 
     filter: grayscale(50%) brightness(120%);
     position: absolute; /* To position the image behind your content*/
     top: 0;
