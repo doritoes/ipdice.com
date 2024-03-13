@@ -89,3 +89,7 @@ button:hover {
     height: 100%; 
     z-index: -1; /* Ensure it's placed at the back */
 }
+@media (max-width: 768px) {
+  background-image: url('/static/images/background1m.png');
+}
+    
