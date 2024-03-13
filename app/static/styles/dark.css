@@ -125,6 +125,10 @@ button:hover {
     padding-left: 20px;
     font-size: 1.0em;
   }
+  main img {
+    max-width: 90%;
+    height: auto;
+  }
   footer {
     padding-left: 20px;
   }
