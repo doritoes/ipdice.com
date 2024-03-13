@@ -59,7 +59,7 @@ button:hover {
   box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
 }
 .title {
-  dislay: none;
+  display: none;
 }
 .image {
   padding: 5px;
