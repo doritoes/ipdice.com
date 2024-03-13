@@ -94,3 +94,49 @@ button:hover {
     height: 100%; 
     z-index: -1; /* Ensure it's placed at the back */
 }
+@media (max-width: 768px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  body .background-image {
+    background-image: url('/static/images/background2m.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: grayscale(50%) brightness(120%);
+    position: absolute; /* To position the image behind your content */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    z-index: -1; /* Ensure it's placed at the back */
+  }
+  h1 {
+    font-size: 3em;
+    padding-left: 20px;
+  }
+  header {
+    padding-left: 20px;
+  }
+  main {
+    padding-left: 20px;
+    font-size: 1.0em;
+  }
+  footer {
+    padding-left: 20px;
+  }
+  .ipaddress {
+    color: #202020;
+    font-family: DPoly, sans-serif;
+    font-size: 2em;
+    font-weight: normal;
+  }
+}
+@media (max-height: 700px) and (orientation: landscape) { 
+  header {
+    margin-top: 150px;
+  }
+}
