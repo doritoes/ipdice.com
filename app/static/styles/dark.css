@@ -41,7 +41,7 @@ h1 {
   font-family: PokerInFire, sans-serif;
   font-weight:normal;
   font-size: 4em;
-  color: #000000;
+  color: #e0641c;
 }
 button {
   background-color: #9370DB;
@@ -80,7 +80,7 @@ button:hover {
 .background-image {
     background-image: url('/static/images/background2.png');
     background-size: cover;
-    filter: grayscale(50%) brightness(80%);
+    filter: grayscale(50%) brightness(120%);
     position: absolute; /* To position the image behind your content */
     top: 0;
     left: 0;
