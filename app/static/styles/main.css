@@ -90,6 +90,13 @@ button:hover {
     z-index: -1; /* Ensure it's placed at the back */
 }
 @media (max-width: 768px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    flex-direction: column;
+  }
   body .background-image {
     background-image: url('/static/images/background1m.png');
     background-size: contain;
