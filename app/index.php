@@ -66,14 +66,5 @@ $client_ip = validate_ipv4(client_ip());
     <footer>
       <p class="ipaddress"><?php echo dicetext($client_ip) ?></p>
     </footer>
-    <p>buffer</p>
-    <p>buffer</p>
-    <p>buffer</p>
-    <p>buffer</p>
-    <p>buffer</p>
-    <p>buffer</p>
-    <p>buffer</p>
-    <p>buffer</p>
-    <p>buffer</p>
   </body>
 </html>
