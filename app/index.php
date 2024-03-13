@@ -52,6 +52,7 @@ $client_ip = validate_ipv4(client_ip());
     <script src="/static/scripts/copy.js" defer></script>
   </head>
   <body>
+    <div class="background-image"></div>
     <header>
       <h1>IPDICE.COM</h1>
     </header>
