@@ -53,7 +53,7 @@ $client_ip = validate_ipv4(client_ip());
   </head>
   <body>
     <div class="background-image"></div>
-    <div class="header-container>
+    <div class="header-container">
       <header>
         <h1>IPDICE.COM</h1>
       </header>
