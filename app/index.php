@@ -65,7 +65,7 @@ $client_ip = validate_ipv4(client_ip());
       <p><button id="copy-button">COPY IP</button></p>
     </main>
     <footer>
-      <p class="ipaddress"><?php echo dicetext($client_ip) ?></p>
+      <p id="dice-text" class="ipaddress"><?php echo dicetext($client_ip) ?></p>
     </footer>
   </body>
 </html>
