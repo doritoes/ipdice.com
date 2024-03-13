@@ -59,11 +59,11 @@ button:hover {
   box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
 }
 .title {
-  background-color: #00008B;
-  color: #FFFFFF;
-  border: 2px solid black; /* Add a 2px thick solid black border */
-  padding: 5px; /* Add some padding within the title */
-  margin-top: 0;   /* Remove any default margin */
+  dislay: none;
+}
+.image {
+  padding: 5px;
+  margin-top: 0;
 }
 .ipaddress {
   color: #A00060;
