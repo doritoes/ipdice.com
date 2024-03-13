@@ -82,7 +82,7 @@ button:hover {
     background-image: url('/static/images/background1.png');
     background-size: cover;
     filter: grayscale(50%) brightness(120%);
-    /* position: absolute; To position the image behind your content*/
+    position: absolute; /* To position the image behind your content */
     top: 0;
     left: 0;
     width: 100%;
@@ -95,7 +95,7 @@ button:hover {
     background-size: contain;
     background-repeat: no-repeat;
     filter: grayscale(50%) brightness(120%);
-    /* position: absolute; To position the image behind your content*/
+    position: absolute; /* To position the image behind your content */
     top: 0;
     left: 0;
     width: 100%;
