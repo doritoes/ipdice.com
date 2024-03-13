@@ -112,3 +112,7 @@ button:hover {
     font-weight:normal;
   }
 }
+header, main {
+    position: relative; /* Establish a stacking context */
+    z-index: 1;  /* Ensure they are above background image */
+}
