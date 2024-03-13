@@ -44,7 +44,7 @@ h1 {
   color: #592A19;
 }
 button {
-  background-color: #FFD700;
+  background-color: #FFA500;
   color: #FFFFFF;
   font-size: 0.8em;
   border: none;
@@ -55,7 +55,7 @@ button {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);ok 
 }
 button:hover {
-  background-color: #FFA500;
+  background-color: #FFD700;
   box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
 }
 .title {
