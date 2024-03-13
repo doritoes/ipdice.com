@@ -106,6 +106,9 @@ button:hover {
   h1 {
     font-size: 1em;
   }
+  header {
+   margin-top: 10px;
+  }
   .ipaddress {
     color: #202020;
     font-family: DPoly, sans-serif;
