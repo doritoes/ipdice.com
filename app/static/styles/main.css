@@ -21,7 +21,7 @@ body {
 main {
   background: #FFFFFF;
   color: #000000;
-  border: 4px #000080;
+  border: 8px solid red;
   font-size: 1.2em;
   line-height: 1.6; 
   border-radius: 0px;
