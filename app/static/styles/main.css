@@ -92,6 +92,7 @@ button:hover {
 @media (max-width: 768px) {
   body .background-image {
     background-image: url('/static/images/background1m.png');
+    filter: grayscale(50%) brightness(200%);
   }
 }
     
