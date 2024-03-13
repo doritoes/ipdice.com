@@ -41,7 +41,7 @@ h1 {
   font-family: PokerInFire, sans-serif;
   font-weight:normal;
   font-size: 4em;
-  color: ##592A19;
+  color: #592A19;
 }
 button {
   background-color: #9370DB;
@@ -59,7 +59,7 @@ button:hover {
   box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
 }
 .title {
-  background-color: #C0392B;
+  background-color: #592A19;
   color: #000000;
   border: 1px solid black;
   padding: 5px;
