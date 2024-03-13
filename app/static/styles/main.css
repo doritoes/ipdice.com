@@ -10,6 +10,9 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #E0E0E0;
+  background-image: url('/static/images/background1.png');
+  background-size: cover; /* Or contain, depending on desired fit */
+  filter: grayscale(50%) brightness(120%); /* Adjust values as needed */
   color: #FFFFFF;
   text-align: center;
   display: flex;
