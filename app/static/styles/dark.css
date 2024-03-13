@@ -8,7 +8,7 @@
 }
 body {
   font-family: Arial, sans-serif;
-  background-color: #bf895b;
+  background-color: #36261d;
   color: #A00000;
   text-align: center;
   display: flex;
@@ -21,7 +21,7 @@ header {
    margin-top: 50px;
 }
 main {
-  background: #36261d;
+  background: #a9a9a9;
   color: #000000;
   border: 2px solid #101010;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
