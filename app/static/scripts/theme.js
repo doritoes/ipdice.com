@@ -1,4 +1,4 @@
-const triggerObject = document.getElementById("ip-address"); 
+const triggerObject = document.getElementById("dice-text"); 
 
 function switchTheme() {
   const themeLink = document.getElementById("theme-stylesheet");
