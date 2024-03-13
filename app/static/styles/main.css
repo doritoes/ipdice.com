@@ -66,6 +66,9 @@ button:hover {
   padding: 5px; /* Add some padding within the title */
   margin-top: 0;   /* Remove any default margin */
 }
+.image {
+  display: none;
+}
 .ipaddress {
   color: #202020;
   font-family: DPoly, sans-serif;
