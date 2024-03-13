@@ -1,0 +1,79 @@
+@font-face {
+  font-family: 'DPoly';
+  src: url('/static/fonts/DPoly Ten-Sider.otf') format('truetype');
+}
+@font-face {
+  font-family: 'PokerInFire';
+  src: url('/static/fonts/Poker in Fire.ttf') format('truetype'); 
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000000;
+  color: #000000;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+header {
+   margin-top: 50px;
+}
+main {
+  background: #A00000;
+  color: #000000;
+  border: 2px solid #101010;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  font-size: 1.2em;
+  line-height: 1.6; 
+  border-radius: 0px;
+  margin: 5px;
+  padding: 10px;
+  min-width: 30%; /* Ensures a minimum width of 30% */
+  max-width: 60%; /* Allows it to grow wider on larger screens */ 
+  /* Centering the text */
+  text-align: center;     /* Horizontal centering */
+  align-items: center;    /* Center vertically within the flex container */
+  justify-content: center; /* Center horizontally if there's extra space */
+}
+h1 {
+  font-family: PokerInFire, sans-serif;
+  font-weight:normal;
+  font-size: 4em;
+  color: #000000;
+}
+button {
+  background-color: #9370DB;
+  color: #FFFFFF;
+  font-size: 0.8em;
+  border: none;
+  padding: 5px 10px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+button:hover {
+  background-color: #7D5BA6;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
+}
+.title {
+  background-color: #00008B;
+  color: #FFFFFF;
+  border: 2px solid black; /* Add a 2px thick solid black border */
+  padding: 5px; /* Add some padding within the title */
+  margin-top: 0;   /* Remove any default margin */
+}
+.ipaddress {
+  color: #202020;
+  font-family: DPoly, sans-serif;
+  font-size: 3em;
+  font-weight:normal;
+}
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Maintains horizontal centering */
+  justify-content: flex-start; /* Content starts at the top */
+}
