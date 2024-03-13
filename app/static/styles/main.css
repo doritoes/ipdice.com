@@ -103,7 +103,7 @@ button:hover {
     z-index: -1; /* Ensure it's placed at the back */
   }
   h1 {
-    font-size: 1em;
+    font-size: 3em;
     padding-left: 20px;
   }
   header {
