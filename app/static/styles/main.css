@@ -92,7 +92,15 @@ button:hover {
 @media (max-width: 768px) {
   body .background-image {
     background-image: url('/static/images/background1m.png');
-    filter: grayscale(50%) brightness(200%);
+    filter: grayscale(50%) brightness(120%);
+  }
+  h1 {
+    font-size: 1em;
+  }
+  .ipaddress {
+    color: #202020;
+    font-family: DPoly, sans-serif;
+    font-size: 1em;
+    font-weight:normal;
   }
 }
-    
