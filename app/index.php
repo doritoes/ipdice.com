@@ -53,16 +53,16 @@ $client_ip = validate_ipv4(client_ip());
   </head>
   <body>
     <div class="background-image"></div>
-    <header>
-      <h1>IPDICE.COM</h1>
-    </header>
-    <div class=main-container>
-      <main>
-        <div class="title">Your IP Address</div>
-        <p id="ip-address"><?php echo $client_ip ?></p>
-        <p></p><button id="copy-button">COPY IP</button></p>
-      </main>
+    <div class="header-container>
+      <header>
+        <h1>IPDICE.COM</h1>
+      </header>
     </div>
+    <main>
+      <div class="title">Your IP Address</div>
+      <p id="ip-address"><?php echo $client_ip ?></p>
+      <p></p><button id="copy-button">COPY IP</button></p>
+    </main>
     <footer>
       <p class="ipaddress"><?php echo dicetext($client_ip) ?></p>
     </footer>
