@@ -50,6 +50,7 @@ $client_ip = validate_ipv4(client_ip());
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <script src="/static/scripts/copy.js" defer></script>
+    <script src="/static/scripts/theme.js" defer></script>
   </head>
   <body>
     <div class="background-image"></div>
