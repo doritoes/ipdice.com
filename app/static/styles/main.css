@@ -104,6 +104,7 @@ button:hover {
   }
   body {
     align-items: flex-start;
+    flex-direction: column;
   }
   h1 {
     font-size: 3em;
