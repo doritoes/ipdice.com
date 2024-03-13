@@ -102,6 +102,9 @@ button:hover {
     height: 100%; 
     z-index: -1; /* Ensure it's placed at the back */
   }
+  body {
+    align-items: flex-start;
+  }
   h1 {
     font-size: 3em;
     padding-left: 20px;
