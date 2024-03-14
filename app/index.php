@@ -43,10 +43,6 @@ if ($client_ip == "127.0.0.1") {
   $hostname = "";
 } else {
   $hostname = gethostbyaddr($client_ip);
-  echo "DEBUG" . $hostname . "DEBUG";
-  if ($hostname == $client_ip) {
-    $hostname = "";
-  }
 }
 ?>
 <!DOCTYPE html>
