@@ -44,6 +44,9 @@ main .details {
   font-size: 0.9em;  /* Slightly smaller font */
   line-height: 1.0em; /* Single-spaced */
 }
+main .details p {
+  margin: 0;
+}
 h1 {
   font-family: PokerInFire, sans-serif;
   font-weight:normal;
