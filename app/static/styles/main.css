@@ -92,15 +92,17 @@ button:hover {
   justify-content: flex-start; /* Content starts at the top */
 }
 .background-image {
-    background-image: url('/static/images/background1.png');
-    background-size: cover;
-    filter: grayscale(50%) brightness(120%);
-    position: absolute; /* To position the image behind your content */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; 
-    z-index: -1; /* Ensure it's placed at the back */
+  background-image: url('/static/images/background1.png');
+  background-size: cover;
+  filter: grayscale(50%) brightness(120%);
+  position: absolute; /* To position the image behind your content */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure it's placed at the back */
+  max-width: 100%;
+  height: auto;
 }
 @media (max-width: 768px) {
   body {
