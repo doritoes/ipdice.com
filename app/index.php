@@ -47,6 +47,7 @@ if ($client_ip == "127.0.0.1") {
   $hostname = gethostbyaddr($client_ip);
   if ($hostname == $client_ip) {
     $hostname = "";
+  }
 }
 ?>
 <!DOCTYPE html>
