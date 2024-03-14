@@ -42,11 +42,11 @@ main .details {
   margin: 0 auto;    /* Horizontally center the block */
   width: 80%;        /* Set a width to prevent the text from stretching too wide */
   font-size: 0.9em;  /* Slightly smaller font */
-  line-height: 1.2em; /* Single-spaced */
+  line-height: 1.0em; /* Single-spaced */
 }
 main .details p { 
-  line-height: 1.1em; /* Reduce line spacing between lines of text */
-  margin-bottom: 0.1em; /* Adds a small margin at the bottom of each paragraph */
+  line-height: 1.0em; /* Reduce line spacing between lines of text */
+  margin-bottom: 0.0em; /* Adds a small margin at the bottom of each paragraph */
 } 
 
 h1 {
