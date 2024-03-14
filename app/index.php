@@ -77,9 +77,7 @@ if ($client_ip == "127.0.0.1") {
 echo "<p>Device: " . ucfirst($result['os_family'] ). " " . ucfirst($result['device_type'] ) . "</p>";
 echo "<p>OS: " . ucfirst($result['os_title']) .  "</p>";
 echo "<p>Browser: " . ucfirst($result['browser_title']) . "</p>";
-if ($hostname) {
-  echo "<p>Reverse lookup: " . $hostname . "</p>";
-}
+echo "<p>Reverse lookup: " . $hostname . "</p>";
 if ($result['64bits_mode']) {
   echo "<p>64-bits: enabled</p>";
 }
