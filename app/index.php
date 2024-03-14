@@ -70,7 +70,7 @@ $result = $Browser->getAll($useragent);
       <div class="details">
 <?php
 echo "<p>Device: " . ucfirst($result['os_family'] ). " " . ucfirst($result['device_type'] ) . "</p>";
-echo "<p>OS: " . ucfirst($result['os_title'] ). " " . ucfirst($result['os_version'] ) . "</p>";
+echo "<p>OS: " . ucfirst($result['os_title']) .  "</p>";
 echo "<p>Browser: " . ucfirst($result['browser_title']) . "</p>";
 if ($result['64bits_mode']) {
   echo "<p>64-bits: enabled</p>";
