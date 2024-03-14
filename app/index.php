@@ -1,5 +1,5 @@
 <?php
-require_once('app/src/BrowserDetection.php');
+require_once('BrowserDetection.php');
 function get_client_ip() {
   return $_SERVER['HTTP_X_FORWARDED_FOR']
     ?? $_SERVER['REMOTE_ADDR']
