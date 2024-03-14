@@ -38,11 +38,11 @@ main {
   justify-content: center; /* Center horizontally if there's extra space */
 }
 main .details {
-  text-align: left;  /* Left-justify the text */
-  margin: 0 auto;    /* Horizontally center the block */
-  width: 80%;        /* Set a width to prevent the text from stretching too wide */
-  font-size: 0.9em;  /* Slightly smaller font */
-  line-height: 1.0em; /* Single-spaced */
+  text-align: left;
+  margin: 0 auto;
+  width: 80%;
+  font-size: 0.9em;
+  line-height: 1.0em;
 }
 main .details p {
   margin: 0;
