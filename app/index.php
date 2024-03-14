@@ -67,9 +67,16 @@ $result = $Browser->getAll($useragent);
       <div class="title">Your IP Address</div>
       <div class="image"><img src="/static/images/image2.png"></div>
       <p id="ip-address"><?php echo $client_ip ?></p>
+      <div class="details">
 <?php
-echo "<p>" . $result['os_type'] . "</p>";
+echo "<p>Device: " . ucfirst($result['os_family'] ). " " . ucfirst($result['device_type'] ) . "</p>";
+echo "<p>OS: " . ucfirst($result['os_title'] ). " " . ucfirst($result['os_version'] ) . "</p>";
+echo "<p>Browser: " . ucfirst($result['browser_title']) . "</p>";
+if ($result['64bits_mode']) {
+  echo "<p>64-bits: enabled</p>";
+}
 ?>
+      </div>
       <p><button id="copy-button">COPY IP</button></p>
     </main>
     <footer>
