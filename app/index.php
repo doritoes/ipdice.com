@@ -40,9 +40,9 @@ $Browser = new foroco\BrowserDetection();
 $useragent = $_SERVER['HTTP_USER_AGENT'];
 $result = $Browser->getAll($useragent);
 if ($client_ip == "127.0.0.1") {
-  $hostname = "";
+  $hostname = "booger";
 } else {
-  $hostname = gethostbyaddr($client_ip);
+  $hostname = "result:" . gethostbyaddr($client_ip);
 }
 ?>
 <!DOCTYPE html>
