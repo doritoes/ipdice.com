@@ -39,7 +39,11 @@ $client_ip = validate_ipv4(client_ip());
 $Browser = new foroco\BrowserDetection();
 $useragent = $_SERVER['HTTP_USER_AGENT'];
 $result = $Browser->getAll($useragent);
-$hostname = "result:" . gethostbyaddr($client_ip);
+if ($client_ip == "127.0.0.1") {
+  $hostname = "";
+} else {
+  $hostname = gethostbyaddr($client_ip);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
