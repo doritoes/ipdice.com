@@ -38,6 +38,13 @@ main {
   align-items: center;    /* Center vertically within the flex container */
   justify-content: center; /* Center horizontally if there's extra space */
 }
+main .details {
+  text-align: left;  /* Left-justify the text */
+  margin: 0 auto;    /* Horizontally center the block */
+  width: 80%;        /* Set a width to prevent the text from stretching too wide */
+  font-size: 0.9em;  /* Slightly smaller font */
+  line-height: 1.2em; /* Single-spaced */
+}
 h1 {
   font-family: MonsterDoodles, sans-serif;
   font-weight:normal;
