@@ -1,4 +1,5 @@
 <?php
+requires_once('/app/src/BrowserDetection.php');
 function get_client_ip() {
   return $_SERVER['HTTP_X_FORWARDED_FOR']
     ?? $_SERVER['REMOTE_ADDR']
@@ -35,6 +36,9 @@ function dicetext($strText, $hollow = false) {
   return strtr($strText, "0123456789.", "ABCDEFGHIJ!");
 }
 $client_ip = validate_ipv4(client_ip());
+$Browser = new foroco\BrowserDetection();
+$useragent = $_SERVER['HTTP_USER_AGENT'];
+$result = $Browser->getAll($useragent);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,6 +67,9 @@ $client_ip = validate_ipv4(client_ip());
       <div class="title">Your IP Address</div>
       <div class="image"><img src="/static/images/image2.png"></div>
       <p id="ip-address"><?php echo $client_ip ?></p>
+?>
+echo "<p>" . $result['os_type'] . "</p>";
+?<
       <p><button id="copy-button">COPY IP</button></p>
     </main>
     <footer>
