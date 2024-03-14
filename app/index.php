@@ -39,8 +39,6 @@ $client_ip = validate_ipv4(client_ip());
 $Browser = new foroco\BrowserDetection();
 $useragent = $_SERVER['HTTP_USER_AGENT'];
 $result = $Browser->getAll($useragent);
-@socket_set_timeout($handle, intdiv($timeout_ms, 1000), $timeout_ms % 1000);
-
 if ($client_ip == "127.0.0.1") {
   $hostname = "";
 } else {
