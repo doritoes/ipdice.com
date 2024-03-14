@@ -28,6 +28,9 @@ Is it a new image URI and/or a new tag? If so, do this:
 1. Watch the deployment progress to complete (new task spun up, old task spun down)
 2. Click on the new task, find the Public IP and open it wiht port 8080 (e.g. http://3.81.118.133:8080)
 
+## Reducing Costs
+Turn off logging after the application is working, if you don't need the logs
+
 ## Learnings
 
 ## Learn More
