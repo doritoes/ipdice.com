@@ -67,9 +67,9 @@ $result = $Browser->getAll($useragent);
       <div class="title">Your IP Address</div>
       <div class="image"><img src="/static/images/image2.png"></div>
       <p id="ip-address"><?php echo $client_ip ?></p>
-?>
+<?php
 echo "<p>" . $result['os_type'] . "</p>";
-?<
+?>
       <p><button id="copy-button">COPY IP</button></p>
     </main>
     <footer>
