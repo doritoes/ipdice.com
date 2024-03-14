@@ -39,6 +39,15 @@ $client_ip = validate_ipv4(client_ip());
 $Browser = new foroco\BrowserDetection();
 $useragent = $_SERVER['HTTP_USER_AGENT'];
 $result = $Browser->getAll($useragent);
+@socket_set_timeout($handle, intdiv($timeout_ms, 1000), $timeout_ms % 1000);
+
+if ($client_ip == "127.0.0.1") {
+  $hostname = "";
+} else {
+  $hostname = gethostbyaddr($client_ip);
+  if ($hostname == $client_ip) {
+    $hostname = "";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,6 +81,9 @@ $result = $Browser->getAll($useragent);
 echo "<p>Device: " . ucfirst($result['os_family'] ). " " . ucfirst($result['device_type'] ) . "</p>";
 echo "<p>OS: " . ucfirst($result['os_title']) .  "</p>";
 echo "<p>Browser: " . ucfirst($result['browser_title']) . "</p>";
+if ($hostname) {
+  echo "<p>Reverse lookup: " . $hostname . "</p>";
+}
 if ($result['64bits_mode']) {
   echo "<p>64-bits: enabled</p>";
 }
