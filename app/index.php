@@ -39,11 +39,7 @@ $client_ip = validate_ipv4(client_ip());
 $Browser = new foroco\BrowserDetection();
 $useragent = $_SERVER['HTTP_USER_AGENT'];
 $result = $Browser->getAll($useragent);
-if ($client_ip == "127.0.0.1") {
-  $hostname = "booger";
-} else {
-  $hostname = "result:" . gethostbyaddr($client_ip);
-}
+$hostname = "result:" . gethostbyaddr($client_ip);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,6 +78,7 @@ if ($result['64bits_mode']) {
   echo "<p>64-bits: enabled</p>";
 }
 ?>
+
       </div>
       <p><button id="copy-button">COPY IP</button></p>
     </main>
