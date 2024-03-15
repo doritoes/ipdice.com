@@ -28,122 +28,43 @@ function validate_ipv4($strIp) {
     return $strIp;
   }
 }
+$ip_address =  client_ip();
 if (!isset($_GET['ip'])) {
-  $newURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?ip=' . client_ip();
+  $newURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?ip=' . $ip_address;
   header("Location: $newURL");
   exit;
 }
-if ($_GET['ip'] !== client_ip()) {
+if ($_GET['ip'] !== $ip_address) {
   $cleanURI = strtok($_SERVER['REQUEST_URI'], '?');
-  $newURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $cleanURI . '?ip=' . client_ip();
+  $newURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $cleanURI . '?ip=' . $ip_address;
   header("Location: $newURL");
   exit;
 }
 ?>
-<html>
-<head>
-<title>Hello</title>
-<style>
-  body {
-    background-color: black;
-    overflow: hidden; /* Hide scrollbars */
-}
-
-.matrix-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden; /* Important for containing falling characters */ 
-}
-
-.matrix-line {
-  position: absolute;
-  top: 0; /* Align the lines with the top edge */
-  width: 10px; /* Adjust character width */
-  height: 100%; 
-  overflow: hidden; 
-  opacity: 0.5; /* Adjust for faded effect */
-}
-
-.matrix-line span {
-    color: limegreen;
-    font-family: monospace;
-    display: block;
-    animation: matrix-fall 10s linear infinite; /* Adjust speed */
-}
-
-@keyframes matrix-fall {
-  0% { top: -100%; }
-  100% { top: 100%; }
-}
-
-@keyframes pulse {
-  0%   { opacity: 0.5; }
-  50%  { opacity: 1; }
-  100% { opacity: 0.5; }
-}
-
-.ip-display {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 24px;
-    font-family: monospace;
-    color: limegreen;
-    animation: pulse 2s infinite alternate;
-}
-</style>
-</head>
-<body>
-<h1>Success</h1>
-<div class="matrix-container">
-<div class="matrix-line"></div>
-<div class="matrix-line"></div>
-<div class="matrix-line"></div>
-<div class="matrix-line"></div>
-<div class="matrix-line"></div>
-<div class="matrix-line"></div>
-<div class="ip-display"></div>
-</div>
-<script>
-  // Fetch IP using an API (respecting privacy)
-  fetch('https://api.ipify.org?format=json')
-    .then(response => response.json())
-    .then(data => document.querySelector('.ip-display').textContent = data.ip);
-
-  const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%*&*+=-~πΩ∞▽';
-
-  function generateMatrixStream() {
-    const span = document.createElement('span');
-    const randomChar = characters.charAt(Math.floor(Math.random() * characters.length));
-    span.textContent = randomChar;
-    return span;
-  }
-
-  function positionMatrixLines() { // Wrap in a function for execution timing
-    const matrixLines = document.querySelectorAll('.matrix-line');
-    const containerWidth = document.querySelector('.matrix-container').offsetWidth;
-    const columnWidth = 15; // Adjust the width of each column
-
-    matrixLines.forEach((line, index) => {
-      line.style.left = `${index * columnWidth}px`; // Calculate left offset
-
-      setInterval(() => {
-        line.appendChild(generateMatrixStream());
-        // Clean up old characters (adjust if needed)
-        if (line.children.length > 100) {
-          line.removeChild(line.firstChild);
-        }
-      }, 50 + (Math.random() * 50)); // Adjust character fall speed
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    positionMatrixLines(); // Call the function after the DOM is ready 
-  });
-</script>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ipdice.com - Deatils</title>
+    <link rel="stylesheet" href="/static/styles/details.css" id="theme-stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
+    <link rel="manifest" href="/static/styles/site.webmanifest">
+    <link rel="mask-icon" href="/static/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#000000">
+    <script src="/static/scripts/details.js" defer></script>
+  </head>
+  <body>
+    <div class="matrix-container">
+      <div class="matrix-line"></div>
+      <div class="matrix-line"></div>
+      <div class="matrix-line"></div>
+      <div class="matrix-line"></div>
+      <div class="matrix-line"></div>
+      <div class="matrix-line"></div>
+      <div class="ip-display"><?php echo $ip_address ?></div>
+  </div>
+  </body>
 </html>
