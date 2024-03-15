@@ -73,7 +73,7 @@ if ($client_ip == "127.0.0.1") {
     </div>
     <main>
       <div class="title">Your IP Address</div>
-      <div class="image"><img src="/static/images/image?<php echo rand)1,6) ?>.png"></div>
+      <div class="image"><img src="/static/images/image<?php echo rand(1,6) ?>.png"></div>
       <p id="ip-address"><?php echo $client_ip ?></p>
       <div class="details">
 <?php
