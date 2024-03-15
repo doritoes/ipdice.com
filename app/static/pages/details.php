@@ -89,6 +89,14 @@ if ($_GET['ip'] !== client_ip()) {
     color: limegreen;
 }
 </style>
+</head>
+<body>
+<h1>Success</h1>
+<div class="matrix-container">
+<div class="matrix-line"></div>
+<div class="matrix-line"></div>
+<div class="ip-display"></div>
+</div>
 <script>
   // Fetch IP using an API (respecting privacy)
   fetch('https://api.ipify.org?format=json')
@@ -118,13 +126,5 @@ matrixLines.forEach((line, index) => {
     }, 50 + (interval * 50)); // Adjust character fall speed
 });
 </script>
-</head>
-<body>
-<h1>Success</h1>
-<div class="matrix-container">
-<div class="matrix-line"></div>
-<div class="matrix-line"></div>
-<div class="ip-display"></div>
-</div>
-</body
+</body>
 </html>
