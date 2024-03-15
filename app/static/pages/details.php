@@ -111,7 +111,8 @@ matrixLines.forEach((line, index) => {
         if (line.children.length > 100) { 
             line.removeChild(line.firstChild);
         }
-    }, 50 + (interval * 50)); // Adjust character fall speed</script>
+    }, 50 + (interval * 50)); // Adjust character fall speed
+</script>
 </head>
 <body>
 <h1>Success</h1>
