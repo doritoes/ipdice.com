@@ -107,7 +107,7 @@ if ($_GET['ip'] !== client_ip()) {
     .then(response => response.json())
     .then(data => document.querySelector('.ip-display').textContent = data.ip);
 
-  const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%*&       ';
+  const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%*&*+=-~πΩ∞       ';
 
   function generateMatrixStream() {
     const span = document.createElement('span');
