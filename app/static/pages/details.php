@@ -95,6 +95,10 @@ if ($_GET['ip'] !== client_ip()) {
 <div class="matrix-container">
 <div class="matrix-line"></div>
 <div class="matrix-line"></div>
+<div class="matrix-line"></div>
+<div class="matrix-line"></div>
+<div class="matrix-line"></div>
+<div class="matrix-line"></div>
 <div class="ip-display"></div>
 </div>
 <script>
