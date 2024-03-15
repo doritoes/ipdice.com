@@ -50,19 +50,21 @@ if ($_GET['ip'] !== client_ip()) {
 }
 
 .matrix-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Important for containing falling characters */ 
 }
 
 .matrix-line {
-    position: absolute;
-    width: 10px; /* Adjust character width */
-    height: 100%; 
-    overflow: hidden;
-    opacity: 0.5; /* Adjust for faded effect */
+  position: absolute;
+  top: 0; /* Align the lines with the top edge */
+  width: 10px; /* Adjust character width */
+  height: 100%; 
+  overflow: hidden; 
+  opacity: 0.5; /* Adjust for faded effect */
 }
 
 .matrix-line span {
@@ -103,6 +105,8 @@ function generateMatrixStream() {
 }
 // Populate lines
 const matrixLines = document.querySelectorAll('.matrix-line');
+const containerWidth = document.querySelector('.matrix-container').offsetWidth; // Get container width
+const columnWidth = 15; // Adjust the width of each column
 matrixLines.forEach((line, index) => {
     const interval = Math.random() * 2; // Slight randomness
     setInterval(() => {
