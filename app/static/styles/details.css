@@ -1,3 +1,7 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 body {
   background-color: black;
   overflow: hidden; /* Hide scrollbars */
@@ -20,7 +24,7 @@ body {
 }
 .matrix-line span {
     color: limegreen;
-    font-family: monospace;
+    font-family: "Share Tech Mono", monospace;
     display: block;
     animation: matrix-fall 10s linear infinite; /* Adjust speed */
 }
@@ -39,6 +43,6 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 24px;
-    font-family: monospace;
+    font-family: "Orbitron", monospace;
     color: limegreen;
     animation: pulse 2s infinite alternate;
