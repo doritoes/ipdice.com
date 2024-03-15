@@ -79,6 +79,11 @@ if ($_GET['ip'] !== client_ip()) {
     100% { top: 100%; }
 }
 
+  @keyframes pulse {
+  0%   { opacity: 0.5; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.5; }
+
 .ip-display {
     position: absolute;
     top: 50%;
@@ -87,6 +92,7 @@ if ($_GET['ip'] !== client_ip()) {
     font-size: 24px;
     font-family: monospace;
     color: limegreen;
+    animation: pulse 2s infinite alternate;
 }
 </style>
 </head>
@@ -107,7 +113,7 @@ if ($_GET['ip'] !== client_ip()) {
     .then(response => response.json())
     .then(data => document.querySelector('.ip-display').textContent = data.ip);
 
-  const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%*&*+=-~πΩ∞▽       ';
+  const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%*&*+=-~πΩ∞▽';
 
   function generateMatrixStream() {
     const span = document.createElement('span');
