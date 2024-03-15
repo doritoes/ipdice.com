@@ -43,8 +43,82 @@ if ($_GET['ip'] !== client_ip()) {
 <html>
 <head>
 <title>Hello</title>
+<style>
+  body {
+    background-color: black;
+    overflow: hidden; /* Hide scrollbars */
+}
+
+.matrix-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.matrix-line {
+    position: absolute;
+    width: 10px; /* Adjust character width */
+    height: 100%; 
+    overflow: hidden;
+    opacity: 0.5; /* Adjust for faded effect */
+}
+
+.matrix-line span {
+    color: limegreen;
+    font-family: monospace;
+    display: block;
+    animation: matrix-fall 10s linear infinite; /* Adjust speed */
+}
+
+@keyframes matrix-fall {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
+.ip-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-family: monospace;
+    color: limegreen;
+}
+</style>
+<script>
+  // Fetch IP using an API (respecting privacy)
+  fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => document.querySelector('.ip-display').textContent = data.ip);
+
+const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%*&';
+
+function generateMatrixStream() {
+  const span = document.createElement('span');
+  const randomChar = characters.charAt(Math.floor(Math.random() * characters.length));
+  span.textContent = randomChar;
+  return span;
+}
+// Populate lines
+const matrixLines = document.querySelectorAll('.matrix-line');
+matrixLines.forEach((line, index) => {
+    const interval = Math.random() * 2; // Slight randomness
+    setInterval(() => {
+        line.appendChild(generateMatrixStream());
+        // Clean up old characters (adjust if needed)
+        if (line.children.length > 100) { 
+            line.removeChild(line.firstChild);
+        }
+    }, 50 + (interval * 50)); // Adjust character fall speed</script>
 </head>
 <body>
 <h1>Success</h1>
+<div class="matrix-container">
+<div classs="matrix-line"></div>
+<div classs="matrix-line"></div>
+<div class="ip-display"></div>
+</div>
 </body
 </html>
