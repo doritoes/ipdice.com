@@ -29,7 +29,7 @@ function validate_ipv4($strIp) {
   }
 }
 if (!isset($_GET['ip'])) {
-  $newURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?ip=' + client_ip()';
+  $newURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?ip=' . client_ip();
   header("Location: $newURL");
   exit;
 ?>
