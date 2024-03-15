@@ -75,14 +75,15 @@ if ($_GET['ip'] !== client_ip()) {
 }
 
 @keyframes matrix-fall {
-    0% { top: -100%; }
-    100% { top: 100%; }
+  0% { top: -100%; }
+  100% { top: 100%; }
 }
 
-  @keyframes pulse {
+@keyframes pulse {
   0%   { opacity: 0.5; }
   50%  { opacity: 1; }
   100% { opacity: 0.5; }
+}
 
 .ip-display {
     position: absolute;
