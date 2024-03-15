@@ -118,8 +118,8 @@ matrixLines.forEach((line, index) => {
 <body>
 <h1>Success</h1>
 <div class="matrix-container">
-<div classs="matrix-line"></div>
-<div classs="matrix-line"></div>
+<div class="matrix-line"></div>
+<div class="matrix-line"></div>
 <div class="ip-display"></div>
 </div>
 </body
