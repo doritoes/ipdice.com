@@ -44,7 +44,7 @@ if ($_GET['ip'] !== $ip_address) {
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ipdice.com - Deatils</title>
+    <title>ipdice.com - Details</title>
     <link rel="stylesheet" href="/static/styles/details.css" id="theme-stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
