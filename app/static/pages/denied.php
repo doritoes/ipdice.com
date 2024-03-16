@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ipdice.com - Details</title>
+    <title>ipdice.com - Access Denied</title>
     <link rel="stylesheet" href="/static/styles/denied.css" id="theme-stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
