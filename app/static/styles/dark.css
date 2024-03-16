@@ -1,0 +1,164 @@
+@font-face {
+  font-family: 'DPoly';
+  src: url('/static/fonts/DPoly Ten-Sider.otf') format('truetype');
+}
+@font-face {
+  font-family: 'PokerInFire';
+  src: url('/static/fonts/Poker in Fire.ttf') format('truetype'); 
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #36261d;
+  color: #A00000;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+header {
+   margin-top: 50px;
+}
+main {
+  background: #a9a9a9;
+  color: #000000;
+  border: 2px solid #101010;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  font-size: 1.2em;
+  line-height: 1.6; 
+  border-radius: 0px;
+  margin: 5px;
+  padding: 10px;
+  min-width: 30%; /* Ensures a minimum width of 30% */
+  max-width: 60%; /* Allows it to grow wider on larger screens */ 
+  /* Centering the text */
+  text-align: center;     /* Horizontal centering */
+  align-items: center;    /* Center vertically within the flex container */
+  justify-content: center; /* Center horizontally if there's extra space */
+}
+main .details {
+  text-align: left;
+  margin: 0 auto;
+  width: 80%;
+  font-size: 0.9em;
+  line-height: 1.0em;
+}
+main .details p {
+  margin: 0;
+}
+h1 {
+  font-family: PokerInFire, sans-serif;
+  font-weight:normal;
+  font-size: 4em;
+  color: #592A19;
+}
+button {
+  background-color: #FFA500;
+  color: #FFFFFF;
+  font-size: 0.8em;
+  border: none;
+  padding: 5px 10px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);ok 
+}
+button:hover {
+  background-color: #FFD700;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
+}
+.title {
+  background-color: #592A19;
+  color: #000000;
+  border: 1px solid black;
+  padding: 5px;
+  margin-top: 0;
+}
+.image {
+  padding: 5px;
+  margin-top: 0;
+  padding: 5px;
+  margin-top: 0;
+}
+.ipaddress {
+  color: #663330;
+  font-family: DPoly, sans-serif;
+  font-size: 3em;
+  font-weight: normal;
+}
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Maintains horizontal centering */
+  justify-content: flex-start; /* Content starts at the top */
+}
+.background-image {
+    background-image: url('/static/images/background2.png');
+    background-size: cover;
+    filter: grayscale(50%) brightness(120%);
+    position: absolute; /* To position the image behind your content */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    z-index: -1; /* Ensure it's placed at the back */
+}
+@media (max-width: 768px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  body .background-image {
+    background-image: url('/static/images/background2m.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: grayscale(50%) brightness(120%);
+    position: absolute; /* To position the image behind your content */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    z-index: -1; /* Ensure it's placed at the back */
+  }
+  h1 {
+    font-size: 2.5em;
+    padding-left: 20px;
+  }
+  header {
+    padding-left: 20px;
+  }
+  main {
+    padding-left: 20px;
+    font-size: 1.0em;
+  }
+  main img {
+    max-width: 90%;
+    height: auto;
+  }
+  footer {
+    padding-left: 20px;
+  }
+  .ipaddress {
+    color: #202020;
+    font-family: DPoly, sans-serif;
+    font-size: 2em;
+    font-weight: normal;
+  }
+}
+@media (max-height: 700px) and (orientation: landscape) { 
+  header {
+    margin-top: 120px;
+  }
+  h1 {
+    font-size: 2.5em;
+    padding-left: 20px;
+  }
+  main {
+    line-height: 1.0;
+    padding-left: 20px;
+  }
+}
