@@ -57,6 +57,7 @@ if ($_GET['ip'] !== $ip_address) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#000000">
+    <script src="/static/scripts/detect.js" defer></script>
     <script src="/static/scripts/details.js" defer></script>
   </head>
   <body>
