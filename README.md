@@ -22,6 +22,7 @@ This demonstration site has the following features:
 * Gradually release new experiences to the web application
 * Demonstrate global autoscaling container applicationss without breaking the bank (don't want to cost too much for this free site)
 * No SQL backend
+* Fun easter eggs to find
 
 # Project Goals
 Here are the goals I have for this project. If you would like to encourage me to add additional goals or to complete these goals,  I'm open to [contributions](https://account.venmo.com/u/unclenuc) to pay my Cloud bills.
@@ -71,7 +72,7 @@ More "IP Animals":
 
 My IP address checking web sites:
 - https://ipgiraffe.com
-- https://ipdice.com (under construction)
+- https://ipdice.com
 
 My other web sites:
 - https://unclenuc.com
