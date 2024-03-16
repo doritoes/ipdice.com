@@ -42,3 +42,6 @@ body {
     font-family: monospace;
     color: limegreen;
     animation: pulse 2s infinite alternate;
+.honey {
+  opacity: 0;
+}
