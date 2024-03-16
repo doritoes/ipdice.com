@@ -68,7 +68,6 @@ if ($_GET['ip'] !== $ip_address) {
       <div class="matrix-line"></div>
       <div class="matrix-line"></div>
       <div class="ip-display"><?php echo $ip_address ?></div>
-      <div><?php echo $_SERVER['HTTP_REFERER'] ?></div>
-  </div>
+    </div>
   </body>
 </html>
