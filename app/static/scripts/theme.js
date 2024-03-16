@@ -1,5 +1,5 @@
 const triggerObject = document.getElementById("dice-text"); 
-const triggerLink = document.getElemementById('image');
+const triggerLink = document.getElementById("image");
 
 function switchTheme() {
   const themeLink = document.getElementById("theme-stylesheet");
