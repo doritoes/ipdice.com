@@ -1,9 +1,10 @@
 # Next Steps
 
 ## Deploy updated container image
-You will need to repeat this for each region you are deployed in.
+You will need to repeat this for each region you are deployed in
 
 ### Push the latest container to ECR
+See [section 2](3_ECS.md) for the instructions for pushing images to ECR
 
 ### Update Task Definition
 Is it a new image URI and/or a new tag? If so, do this:
@@ -64,7 +65,37 @@ Turning off HealthCheck reduces traffic to your container at the cost of a) losi
 12. Revision: *select the new revision from the dropdown*
 13. Click **Update**
 
+## Invalidating CloudFront Cache Data (clearing the cache)
+If you have deployed a new version of your application, sometimes you want to clear the cached data from CloudFront.
+
+For example, if you updated .js script files, a .css style sheet, or other application component.
+
+### Using AWS console
+1. In the AWS console search bar enter "cloudfront" and click **CloudFront**
+1. Click on your distribution
+2. Click on the **Invalidations** tab
+3. Click **Create invalidation**
+4. Object paths: *enter everything you want to clear*
+    - For example to clear everything use **/***
+5. Click **Create invalidation**
+6. The status will go from *In progress* to *Completed*
+    - The invalidation process might take some time depending on the size of your distribution and cache
+
+### Using AWS CLI
+1. Look up your distribution ID
+2. `aws cloudfront create-invalidation --distribution-id <DistributionId> --paths "/*"`
 
 ## Learnings
+In this lab you were introduced to Amazon ECS on Fargate, a serverless computing platform based on containers. You got to experiment with CloudFront and Route53.
+
+🥚 Did you find the easter eggs in the application?
+
+I hope you take some time to look at the web appliation itself, is it was designed to expose you to
+- javascript
+- dynamic CSS style sheets including switching style sheets
 
 ## Learn More
+I recommend reading/learning more! Here are some free and some paid resources that you may already have access to
+- https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/application.html
+- https://www.pluralsight.com/courses/introduction-amazon-elastic-container-service
+- https://www.udemy.com/topic/amazon-ecs/?utm_source=
