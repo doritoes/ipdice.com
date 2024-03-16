@@ -69,6 +69,12 @@ if ($_GET['ip'] !== $ip_address) {
       <div class="matrix-line"></div>
       <div class="matrix-line"></div>
       <div class="ip-display"><?php echo $ip_address ?></div>
+      <div class="honey">
+        <form action="javascript:void(0);" method="get">
+          <input id="username" type="text" size="20" name="user"><br>
+          <input id="password" type="password" size="20" name="password">
+        </form>
+      </div>
     </div>
   </body>
 </html>
