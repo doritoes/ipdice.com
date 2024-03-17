@@ -9,9 +9,9 @@ Building a container-based IP address web site on Amazon ECS.
 # Overview and Genesis
 After building a number of container web apps and deploying them to on-premise Kubernetes (k8), I wanted to try a real-world use case. Patterning after https://github.com/doritoes/ipgiraffe.com, I am creating a new site to return a more complete and playful IP Address web site experience.
 
-Amazon Elastic Container Servicve (ECS) offers a simplified experience with tight integration with AWS services. This is just what I want for my lab.
+Amazon Elastic Container Service (ECS) offers a simplified experience with tight integration with AWS services. This is just what I want for my lab.
 - I haven't used ECS before
-- Use Route 53 and Cloudfront for multi-regions support
+- Use Route 53 and CloudFront for multi-regions support
 - Supports service auto scaling (container instances)
 - Supports capacity provider scaling
 
@@ -20,23 +20,25 @@ This demonstration site has the following features:
 * Small container based on Alpine Linux
 * Serverless computing on Fargate
 * Gradually release new experiences to the web application
-* Demonstrate global autoscaling container applicationss without breaking the bank (don't want to cost too much for this free site)
+* Demonstrate global autoscaling container applications without breaking the bank (don't want to cost too much for this free site)
 * No SQL backend
 * Fun easter eggs to find
 
 # Project Goals
-Here are the goals I have for this project. If you would like to encourage me to add additional goals or to complete these goals,  I'm open to [contributions](https://account.venmo.com/u/unclenuc) to pay my Cloud bills.
+Here are the goals I have for this project. If you would like to encourage me to add additional goals or to complete these goals, I'm open to [contributions](https://account.venmo.com/u/unclenuc) to pay my Cloud bills.
 
 ## In Scope
 ### Completed
 - Register domain name
-- Bootstrapping repo on github
-- Bootstrapping image on docker hub
+- Bootstrapping repo on Github
+- Bootstrapping image on Docker Hub
+- Basic IP address experience
 - One region built
+- Multi-region
+- Added first two easter eggs
 ### Working on
 - Multi-region
 ### Will Do
-- Basic IP address experience
 - Feature: IP address information experience
 ### Might Do
 - Feature: Dice rolling experience
