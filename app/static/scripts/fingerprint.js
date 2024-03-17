@@ -5,7 +5,7 @@ const fpPromise = import('https://openfpcdn.io/fingerprintjs/v4')
 fpPromise
     .then(fp => fp.get())
     .then(result => {
-      console.log('Fingerprinted visitorId ' + results.visitorId + ' with confidence ' + result.confidence.score);  
+      console.log('Fingerprinted visitorId ' + result.visitorId + ' with confidence ' + result.confidence.score);  
       const visitorId = result.visitorId
       console.log(visitorId);
       console.log(result.confidence.score);
