@@ -7,5 +7,6 @@ fpPromise
       // This is the visitor identifier:
       const visitorId = result.visitorId
       console.log(visitorId);
-      console.log(JSON.stringify(result, null, 2));
+      console.log(result.confidence.score);
+      // console.log(JSON.stringify(result, null, 2));
     })
