@@ -143,8 +143,7 @@ button:hover {
     font-weight: normal;
   }
 }
-@media only screen and (max-height: 600px) {
-  /* Styles specifically for ultra-wide displays go here */
+@media only screen and (max-height: 600px) and (min-width: 1000px) {
   header {
     margin-top: 200px;
   }
