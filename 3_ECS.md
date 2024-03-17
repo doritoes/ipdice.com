@@ -42,7 +42,7 @@ Tip: Make sure you are in the desired region (e.g., `us-east-1`)
     - Value: *the access key ID from your ECR access keys*
     - Key: **password**
     - Value: *the secret access key from your ECR access keys*
-5. Secret Namee: **ecr-image-pull-credentials**
+5. Secret Name: **ecr-image-pull-credentials**
 6. Description: **credentials for pulling images from ECR**
 7. <ins>Do not configure automatic rotation</ins>
     - Once the application is up and running first try rotating the secret manually
@@ -251,17 +251,14 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
         - App protocol: **HTTP**
       - Read only root file system: **Leave off** (our application can run with Read Only enabled)
       - Resource allocation limits
-        - CPU: 1 vCPU
-        - GPU: 1 (can't change)
-        - Memory hard limit: 3GB (very generous)
-        - Memory soft limit: 1GB
+        - Generally leave this as is. Note this is empty (no values)
       - Log collection: **On** for testing, **Off** to reduce costs
       - HealthCheck - Optional: (incurs small costs)
         - Command: `CMD-SHELL, curl -f http://localhost:8080/health.php || exit 1`
-        - Interval: **30** seconds (default)
-        - Timeout: **5** seconds (default)
+        - Interval: **30** seconds (recommended)
+        - Timeout: **5** seconds (recommended)
         - Start period: **30** seconds
-        - Retries: **2** (one or two retriess before making the container unhealthy)
+        - Retries: **2** (one or two retries before making the container unhealthy)
     - Click **Create**
 
 ## Create a Service
@@ -272,7 +269,8 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
     - Compute options: **Launch type**
       - Fargate
     - Application type: **Service**
-    - Family: **ipdice-app** (latest version)
+    - Family: **ipdice-app** (from dropdown)
+    - Revision: *LATEST*
     - Service name: **ipdice-service**
     - Service type: **Replica**
     - Desired tasks: **1** (start with 1 for initial testing; can scale later)
