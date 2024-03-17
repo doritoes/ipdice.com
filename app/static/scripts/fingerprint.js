@@ -6,6 +6,6 @@ fpPromise
     .then(result => {
       // This is the visitor identifier:
       const visitorId = result.visitorId
-      console.log(visitorId)
+      console.log(visitorId);
       console.log(JSON.stringify(result, null, 2));
     })
