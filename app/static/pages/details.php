@@ -48,6 +48,8 @@ if (!isset($_GET['ip'])) {
 if ($_GET['ip'] !== $ip_address) {
   $cleanURI = strtok($_SERVER['REQUEST_URI'], '?');
   $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . $cleanURI . '?ip=' . $ip_address;
+  echo "Unmatched get ip " . $_GET['ip'] . " to client_ip " . $p_address\n$newURL;
+  exit;
   header("Location: $newURL");
   exit;
 }
