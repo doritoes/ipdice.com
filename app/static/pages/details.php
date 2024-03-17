@@ -68,7 +68,6 @@ if ($_GET['ip'] !== $ip_address) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#000000">
-    <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs-pro@3/dist/fp.min.js"></script>
     <script src="/static/scripts/detect.js" defer></script>
     <script src="/static/scripts/details.js" defer></script>
     <script src="/static/scripts/fingerprint.js" defer></script>
