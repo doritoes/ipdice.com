@@ -9,8 +9,7 @@ function checkDoNotTrack() {
       donottrackDiv.style.display = 'block';
     } else {
       console.log("Do Not Track status is unknown");
-      donottrackDiv.style.color = 'orange';
-      donottrackDiv.style.display = 'block';
+      console.log(navigator.doNotTrack);
     }
   }
 }
