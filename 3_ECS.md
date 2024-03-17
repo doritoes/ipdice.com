@@ -163,9 +163,9 @@ You need to configure VPCs for the networking in each region. The following exam
     - Scheme: **internet-facing**
     - IP address type: **IPv4**
     - VPC: *select the VPC you created earlier* (e.g., ipdice-vpc-us-east-1)
-    - Mappings: select two <ins>public</ins> subnets availability zones and the subnets
+    - Mappings: select two availability zones and two <ins>public</ins> subnets
     - Security groups
-      - From the dropdown select the Secruity group you created for the load balancer (i.e., `ipdice-alg-sg`)
+      - From the dropdown select the Security group you created for the load balancer (i.e., `ipdice-alg-sg`)
     - Listeners and routing
       - Modify the protocol to **HTTPS**
       - Click the link **Create target group**
