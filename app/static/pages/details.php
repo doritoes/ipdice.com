@@ -35,7 +35,7 @@ function validate_ipv4($strIp) {
   }
 }
 $ip_address =  client_ip();
-if ($ip_address == "IP Address Not Found" || $ip_address == "127.0.0.1" || is_rfc1918($ip_address)) {
+if ($ip_address == "IP Address Not Found" || $ip_address == "127.0.0.1" || is_rfc1918_ip($ip_address)) {
   $scheme = "http";
 } else {
   $scheme = "https";
