@@ -107,9 +107,13 @@ In this lab you were introduced to Amazon ECS on Fargate, a serverless computing
 
 🥚 Did you find the easter eggs in the application?
 
-I hope you take some time to look at the web appliation itself, is it was designed to expose you to
+I hope you take some time to look at the web application itself, is it was designed to expose you to
 - javascript
 - dynamic CSS style sheets including switching style sheets
+
+What affect does the CloudFront caching mechanism have on rolling out new files in the /static part of the application?
+- Turning off caching before you update the deployment image, and turning it back on after testing is one solution
+- Invalidating the cache is another
 
 ## Learn More
 I recommend reading/learning more! Here are some free and some paid resources that you may already have access to
