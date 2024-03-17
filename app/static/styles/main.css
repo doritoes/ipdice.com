@@ -164,7 +164,7 @@ button:hover {
     z-index: -1; /* Ensure it's placed at the back */
   }
   header {
-   margin-top: 50px;
+   margin-top: 150px;
   }
 }
 @media only screen and (min-width: 1840px) {
