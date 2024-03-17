@@ -20,6 +20,13 @@ function client_ip() {
   }
   return $ip;
 }
+function is_rfc1918_ip($ipaddr) {
+    $ip_long = ip2long($ipaddr);
+
+    return ($ip_long & 0xff000000) === 0x0a000000 || // 10.0.0.0/8
+           ($ip_long & 0xfff00000) === 0xac100000 || // 172.16.0.0/12
+           ($ip_long & 0xffff0000) === 0xc0a80000;  // 192.168.0.0/16
+}
 function validate_ipv4($strIp) {
   if (filter_var($strIp, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) === false &&
       filter_var($strIp, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false) {
@@ -71,6 +78,11 @@ if ($_GET['ip'] !== $ip_address) {
       <div class="output-block">
         <div class="ip-display"><?php echo $ip_address ?></div>
         <div class="tamper" id="tamper">[+] DOM Tampering detected</div>
+        <?php
+          if ($ip_address != "IP Address Not Found" && $ip_address != "127.0.0.1" && is_rfc1918_ip($ip_address)) {
+            echo "<div class="sandbox">[+] Sandbox detected</div>";
+          }
+        >?
       </div>
       <div class="honey">
         <form action="javascript:void(0);" method="get">
