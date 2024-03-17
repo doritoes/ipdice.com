@@ -82,7 +82,7 @@ if ($_GET['ip'] !== $ip_address) {
           if ($ip_address != "IP Address Not Found" && $ip_address != "127.0.0.1" && is_rfc1918_ip($ip_address)) {
             echo '<div class="sandbox">[+] Sandbox detected</div>';
           }
-        >?
+        ?>
       </div>
       <div class="honey">
         <form action="javascript:void(0);" method="get">
