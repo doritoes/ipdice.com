@@ -43,5 +43,5 @@ body {
     color: limegreen;
     animation: pulse 2s infinite alternate;
 .honey {
-  opacity: 0;
+  visbility: hidden;
 }
