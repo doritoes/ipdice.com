@@ -36,14 +36,20 @@ function validate_ipv4($strIp) {
   }
 }
 $ip_address =  client_ip();
+if ($ip_address == "IP Address Not Found" || $ip_address == "127.0.0.1" || is_rfc1918($ip_address)) {
+  $scheme = "http";
+} else {
+    $scheme = "https";
+}
+    
 if (!isset($_GET['ip'])) {
-  $newURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?ip=' . $ip_address;
+  $newURL =$scheme . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?ip=' . $ip_address;
   header("Location: $newURL");
   exit;
 }
 if ($_GET['ip'] !== $ip_address) {
   $cleanURI = strtok($_SERVER['REQUEST_URI'], '?');
-  $newURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $cleanURI . '?ip=' . $ip_address;
+  $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . $cleanURI . '?ip=' . $ip_address;
   header("Location: $newURL");
   exit;
 }
