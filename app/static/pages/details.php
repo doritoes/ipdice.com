@@ -89,7 +89,6 @@ if ($_GET['ip'] !== $ip_address) {
         ?>
         <div class="tamper" id="tamper">[+] DOM Tampering detected</div>
         <div class="fingerprint" id="fingerprint">[+] Anonymity compromised (fingerprinting)</div>
-        <div class="donottrack" id="donottrack">[+] Do Not Track not enabled</div>
       </div>
       <div class="honey">
         <form action="javascript:void(0);" method="get">
