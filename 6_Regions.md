@@ -15,11 +15,11 @@ We are not going to deploy to eu-central-1 (Frankfurt) because
 1. Create Secret for the Repository in the additional regions
 2. Create ECR repository in the new regions
 3. Configure the AWI CLI for the region, tag & push the image to the ECR; repeat each region
-4. Create VPC in the addional regions
+4. Create VPC in the additional regions
 5. Create Security Groups (ECS and ALB) in the additional regions
 6. Create TLS certificate in the additional regions
 7. Create Application Load Balancer (ALB) in the additional regions
-8. Create ECS cluster in the additonal regions
+8. Create ECS cluster in the additional regions
 9. Create Task Definition in the additional regions
 10. Create a Service in the additional regions
 11. Configure CloudFront to add the origin
@@ -49,20 +49,20 @@ We are not going to deploy to eu-central-1 (Frankfurt) because
       - Select the *Default* behavior and click **Edit**
       - Change Origin and origin groups to **ipdice-origin-group**
       - Click **Save** changes
-    - Repeat for any remening behaviors (e.g., `/static/*`
+    - Repeat for any remaining behaviors (e.g., `/static/*`
 
 #### Route 53 Setup
-We are not going to set up another DNS name to use latency based routing to direct traffic to the ALBs. CloudFront will be our mechanism to distribute traffic.
+We are not going to set up another DNS name to use latency-based routing to direct traffic to the ALBs. CloudFront will be our mechanism to distribute traffic.
 
 ### Testing
-First we will generate traffic source from different global regions, followed by confirming traffic is reaching all regions.
+First, we will generate traffic source from different global regions, followed by confirming traffic is reaching all regions.
 
 #### Generate traffic with Online Speed Test Tools
-These have limited locations, but can quickly renerate traffic to your different regions.
+These have limited locations, but can quickly generate traffic to your different regions.
 - Pingdom: https://tools.pingdom.com/ (select from *Test from*)
 - WebPageTest: https://www.webpagetest.org/ (advanced options let you select more locations)
 
-####  Generate traffic with VPN Services
+#### Generate traffic with VPN Services
 Use a VPN service (some have free options) that lets you connect through servers in various countries. In this way you can access the site from, say, Seattle.
 
 #### Validating Regional ECS usage
