@@ -21,9 +21,9 @@ From a command line test both DNS lookups. For example:
     - https://dnschecker.org/#A/www.ipdice.com
    
 ## Monitoring
-Feel free to experiment with CloudWatch (search for "CloudWatch" in the AWS console). Be aware that configuring monitoring will generated additional traffic (load).
+Feel free to experiment with CloudWatch (search for "CloudWatch" in the AWS console). Be aware that configuring monitoring will generate additional traffic (load).
 
-Start with *view  automatic dashboards* and work from there.
+Start with *view automatic dashboards* and work from there.
 
 CloudWatch > Dashboards > Automatic dashboards
 - Elastic Container Service
@@ -33,7 +33,7 @@ CloudWatch > Metrics > All Metrics
 - ApplicationELB - View automatic dashboard
 - CloudFront - View automatic dashboard
   - Request count
-  - Error  rates
+  - Error rates
 
 CloudWatch > Logs > Log Groups > /ecs/ipdice-app
 - search for events containing words like "scaling", "target tracking", or "capacity"
