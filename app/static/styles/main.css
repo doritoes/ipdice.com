@@ -147,10 +147,16 @@ button:hover {
   header {
     margin-top: 150px;
   }
+  body {
+    justify-content: flex-start;
+  }
 }
 @media only screen and (min-width: 2000px) {
   /* Styles specifically for ultra-wide displays go here */
   header {
     margin-top: 150px;
+  }
+  body {
+    justify-content: flex-start;
   }
 }
