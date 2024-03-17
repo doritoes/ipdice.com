@@ -1,7 +1,7 @@
 # Configuring ECS
-Here will will use Amazon Elastic Container Service (ECS) to host our container application. We will use Amazon Elastic Container Registry (ECR) to store and replicate the Docker image we built.
+Here we will use Amazon Elastic Container Service (ECS) to host our container application. We will use Amazon Elastic Container Registry (ECR) to store and replicate the Docker image we built.
 
-It is also important that we will be using the launch type **AWS Fargate**, a serverless model where AWS manages the underlying infrastructure for your. It's simpler but with less flexibility.
+It is also important that we will be using the launch type **AWS Fargate**, a serverless model where AWS manages the underlying infrastructure for you. It's simpler but with less flexibility.
 
 Tip: Make sure you are in the desired region (e.g., `us-east-1`)
 
@@ -59,7 +59,7 @@ Tip: Make sure you are in the desired region (e.g., `us-east-1`)
 2. Click **Create repository**
 
 ## Configure the AWS CLI
-1. Open a commmand line where will will use the AWS CLI
+1. Open a command line where we will use the AWS CLI
 2. Authenticate and provide your AWS access keys
     - `aws configure`
     - Copy the access key ID from the CSV file you downloaded
@@ -112,7 +112,7 @@ You need to configure VPCs for the networking in each region. The following exam
       - Click **Add rule**
       - Type: **All traffic**
       - Protocol: *automatically All*
-      - Port Range: *automatcially All*
+      - Port Range: *automatically All*
       - Source: **Anywhere-IPv4** (0.0.0.0/0)
     - Outbound rules: *Leave at default settings*
     - Click **Create security group**
@@ -128,12 +128,12 @@ You need to configure VPCs for the networking in each region. The following exam
       - Click **Add rule**
         - Type: **HTTPS**
         - Protocol: *automatically TCP*
-        - Port Range: *automatcially 443*
+        - Port Range: *automatically 443*
         - Source: **Anywhere-IPv4** (0.0.0.0/0)
       - Click **Add rule**
         - Type: **HTTP**
         - Protocol: *automatically TCP*
-        - Port Range: *automatcially 80*
+        - Port Range: *automatically 80*
         - Source: **Anywhere-IPv4** (0.0.0.0/0)
     - Outbound rules: *Leave at default settings*
     - Click **Create security group**
@@ -141,7 +141,7 @@ You need to configure VPCs for the networking in each region. The following exam
 ## Create TLS Certificate using AWS Certificate Manager (ACM)
 1. In the AWS console search for "Certificate" and click **Certificate Manager**
 2. Click **Request**
-    - Request a public certificate is selcted
+    - Request a public certificate is selected
     - Click **Next**
     - Fully qualified domain name (see my example below, including the www subdomain)
       - ipdice.com
@@ -150,7 +150,7 @@ You need to configure VPCs for the networking in each region. The following exam
     - Key algorithm: RSA 2048
     - Click **Request**
 3. Refresh the list of certificates until your new request is listed, *Pending validation*
-4. Click on the request ID for the new certifcate
+4. Click on the request ID for the new certificate
 5. Click **Create records in Route 53**, then click **Create records**
 6. Refresh the list of certificates until the new certificate is validated and the status changes to *Issued*
 
@@ -245,7 +245,7 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
       - Essential container: **Yes**
       - Private registry authentication: **No**
       - Port Mappings
-        - Container port: **8080** (our applcation listens on port 8080)
+        - Container port: **8080** (our application listens on port 8080)
         - Protocol: **TCP**
         - Port name: *leave blank*
         - App protocol: **HTTP**
@@ -280,7 +280,7 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
       - VPC: **ipdice-ecs-sg**
       - The two subnets, one for each availability zone, should be listed
       - Security group: *Select the SG you created for ECS (only)* (i.e., ipdice-ecs-sg)
-      - From the dropdown select the Secruity group you created for the load balancer (i.e., `ipdice-alb-sg`)
+      - From the dropdown select the Security group you created for the load balancer (i.e., `ipdice-alb-sg`)
       - Public IP: **ON**
       - Load balancing
         - Type: **Application Load Balancer**
