@@ -145,7 +145,7 @@ button:hover {
 }
 @media (max-height: 700px) and (orientation: landscape) { 
   header {
-    margin-top: 150px;
+    margin-top: 300px;
   }
   body {
     justify-content: flex-start;
@@ -154,7 +154,7 @@ button:hover {
 @media only screen and (min-width: 2000px) {
   /* Styles specifically for ultra-wide displays go here */
   header {
-    margin-top: 150px;
+    margin-top: 400px;
   }
   body {
     justify-content: flex-start;
