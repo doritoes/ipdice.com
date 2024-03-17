@@ -47,3 +47,7 @@ body {
   position: absolute;
   left: -9999px; 
 }
+.tamper {
+  color: #C70000;
+  display: none;
+}
