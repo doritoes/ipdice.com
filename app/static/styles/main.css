@@ -143,18 +143,10 @@ button:hover {
     font-weight: normal;
   }
 }
-@media (max-height: 600px) and (orientation: landscape) { 
-  header {
-    margin-top: 250px;
-  }
-  body {
-    justify-content: flex-start;
-  }
-}
 @media only screen and (min-width: 2000px) {
   /* Styles specifically for ultra-wide displays go here */
   header {
-    margin-top: 250px;
+    margin-top: 350px;
   }
   body {
     justify-content: flex-start;
