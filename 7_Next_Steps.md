@@ -48,6 +48,23 @@ Turn off logging after the application is working, if you don't need the logs.
 13. Revision: *select the new revision from the dropdown*
 14. Click **Update**
 
+### Reduce HealthCheck frequency
+You can cut the HealthCheck traffic in half by doubling the timer.
+
+1. In the AWS console search bar enter "ECS" and click **Elastic Container Service**
+2. From the left menu click **Task definitions**
+3. Click on your Task definition
+4. Click on the active Revision
+5. Click **Create new revision** > **Create new revision** 
+6. *Under HealthCheck - optional* find *HealthCheck*
+7. Interval: *increase this interval* (e.g., change from 30 seconds to 60 seconds)
+8. Click **Create**
+9. From the left menu click **Clusters** then click your cluster (i.e., ipdice-cluster)
+10. In the lower pane click **Services**
+11. <u>Select</u> your service (i.e. ipdice-service) and click **Update**
+12. Revision: *select the new revision from the dropdown*
+13. Click **Update**
+
 ### Turn off HealthCheck
 Turning off HealthCheck reduces traffic to your container at the cost of a) losing auto-restarts for unhealthy containers and b) waiting until the container is healthy prior to sending traffic
 
