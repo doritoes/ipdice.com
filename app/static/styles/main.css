@@ -28,7 +28,7 @@ main {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   font-size: 1.2em;
   line-height: 1.6; 
-  border-radius: 0px;
+  border-radius: 0;
   margin: 5px;
   padding: 10px;
   min-width: 30%; /* Ensures a minimum width of 30% */
