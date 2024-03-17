@@ -30,7 +30,7 @@ Tip: Make sure you are in the desired region (e.g., `us-east-1`)
 10. Click **Download .csv file**
     - Store this key securely!
     - Easy user can only have 2 active access keys at a time
-    - This is your <u>last chance to save</u> information about the access key
+    - This is your <ins>last chance to save</ins> information about the access key
 11. Click **Done**
 
 ## Create Secret for the Repository
@@ -44,7 +44,7 @@ Tip: Make sure you are in the desired region (e.g., `us-east-1`)
     - Value: *the secret access key from your ECR access keys*
 5. Secret Namee: **ecr-image-pull-credentials**
 6. Description: **credentials for pulling images from ECR**
-7. <u>Do not configure automatic rotation</u>
+7. <ins>Do not configure automatic rotation</ins>
     - Once the application is up and running first try rotating the secret manually
     - Once you have successfully rotated the secret manually, look into enabling and configuration automatic rotation
 8. Click **Store**
@@ -163,7 +163,7 @@ You need to configure VPCs for the networking in each region. The following exam
     - Scheme: **internet-facing**
     - IP address type: **IPv4**
     - VPC: *select the VPC you created earlier* (e.g., ipdice-vpc-us-east-1)
-    - Mappings: select two <u>public</u> subnets availability zones and the subnets
+    - Mappings: select two <ins>public</ins> subnets availability zones and the subnets
     - Security groups
       - From the dropdown select the Secruity group you created for the load balancer (i.e., `ipdice-alg-sg`)
     - Listeners and routing
