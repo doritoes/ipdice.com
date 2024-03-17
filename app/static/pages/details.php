@@ -40,7 +40,7 @@ if ($ip_address == "IP Address Not Found" || $ip_address == "127.0.0.1" || is_rf
 } else {
   $scheme = "https";
 }
-if (!isset($_GET['ip'])) {
+if (!isset($_GET['ip']) || !$_GET['ip']) {
   $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?ip=' . $ip_address;
   header("Location: $newURL");
   exit;
@@ -48,8 +48,6 @@ if (!isset($_GET['ip'])) {
 if ($_GET['ip'] !== $ip_address) {
   $cleanURI = strtok($_SERVER['REQUEST_URI'], '?');
   $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . $cleanURI . '?ip=' . $ip_address;
-  echo "Unmatched get ip " . $_GET['ip'] . " to client_ip " . $ip_address . "\n" . $newURL;
-  exit;
   header("Location: $newURL");
   exit;
 }
