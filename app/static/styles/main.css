@@ -145,7 +145,7 @@ button:hover {
 }
 @media only screen and (max-height: 600px) and (min-width: 860px) {
   header {
-    margin-top: 200px;
+    margin-top: 300px;
   }
   body {
     justify-content: flex-start;
