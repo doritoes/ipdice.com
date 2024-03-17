@@ -95,7 +95,12 @@ I hope you take some time to look at the web appliation itself, is it was design
 - dynamic CSS style sheets including switching style sheets
 
 ## Learn More
+### Reading suggestions
 I recommend reading/learning more! Here are some free and some paid resources that you may already have access to
 - https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/application.html
 - https://www.pluralsight.com/courses/introduction-amazon-elastic-container-service
 - https://www.udemy.com/topic/amazon-ecs/?utm_source=
+
+### Compare AWS Fargate to other Serverless Techonologies
+- https://duttaaniruddha31.medium.com/aws-fargate-vs-google-cloud-run-f6706e1e6147
+- https://blog.iron.io/aws-fargate-vs-azure-containers/
