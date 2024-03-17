@@ -17,9 +17,6 @@ mutationObserver.observe(document.body, {
 const allElements = document.getElementsByTagName('*');
 const elementsWithNord = [];
 
-const allElements = document.getElementsByTagName('*');
-const elementsWithNord = [];
-
 for (let i = 0; i < allElements.length; i++) {
     const element = allElements[i];
     if (element.id.toLowerCase().includes('nord') ||
