@@ -31,6 +31,6 @@ Optionally, customize the application.
     - The application port is 8080 and are mapping it to your host port 8080, hence the `:8080` at the end
     - Note the IP address displayed is your host's IP address on the Docker bridge network
       - this network does not show in your Windows IP addresses
-      - open Docker Desktop, click on the running container, and click the Inpsect tab then Networks to learn more
+      - open Docker Desktop, click on the running container, and click the Inspect tab then Networks to learn more
 3. Back at the command line, press **Control-C** to stop the container
 4. You can delete the container if you want, but keep the image as we will be pushing it to AWS ECR using in the next step
