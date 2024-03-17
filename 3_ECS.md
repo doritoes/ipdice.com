@@ -1,7 +1,7 @@
 # Configuring ECS
-Here will will use Amazon Elastic Container Service (ECS) to host our container application. We will use Amazon Elastic Container Registry (ECR) to store and replicate the Docker image we built.
+Here we will use Amazon Elastic Container Service (ECS) to host our container application. We will use Amazon Elastic Container Registry (ECR) to store and replicate the Docker image we built.
 
-It is also important that we will be using the launch type **AWS Fargate**, a serverless model where AWS manages the underlying infrastructure for your. It's simpler but with less flexibility.
+It is also important that we will be using the launch type **AWS Fargate**, a serverless model where AWS manages the underlying infrastructure for you. It's simpler but with less flexibility.
 
 Tip: Make sure you are in the desired region (e.g., `us-east-1`)
 
@@ -30,7 +30,7 @@ Tip: Make sure you are in the desired region (e.g., `us-east-1`)
 10. Click **Download .csv file**
     - Store this key securely!
     - Easy user can only have 2 active access keys at a time
-    - This is your <u>last chance to save</u> information about the access key
+    - This is your <ins>last chance to save</ins> information about the access key
 11. Click **Done**
 
 ## Create Secret for the Repository
@@ -42,9 +42,9 @@ Tip: Make sure you are in the desired region (e.g., `us-east-1`)
     - Value: *the access key ID from your ECR access keys*
     - Key: **password**
     - Value: *the secret access key from your ECR access keys*
-5. Secret Namee: **ecr-image-pull-credentials**
+5. Secret Name: **ecr-image-pull-credentials**
 6. Description: **credentials for pulling images from ECR**
-7. <u>Do not configure automatic rotation</u>
+7. <ins>Do not configure automatic rotation</ins>
     - Once the application is up and running first try rotating the secret manually
     - Once you have successfully rotated the secret manually, look into enabling and configuration automatic rotation
 8. Click **Store**
@@ -59,7 +59,7 @@ Tip: Make sure you are in the desired region (e.g., `us-east-1`)
 2. Click **Create repository**
 
 ## Configure the AWS CLI
-1. Open a commmand line where will will use the AWS CLI
+1. Open a command line where we will use the AWS CLI
 2. Authenticate and provide your AWS access keys
     - `aws configure`
     - Copy the access key ID from the CSV file you downloaded
@@ -112,7 +112,7 @@ You need to configure VPCs for the networking in each region. The following exam
       - Click **Add rule**
       - Type: **All traffic**
       - Protocol: *automatically All*
-      - Port Range: *automatcially All*
+      - Port Range: *automatically All*
       - Source: **Anywhere-IPv4** (0.0.0.0/0)
     - Outbound rules: *Leave at default settings*
     - Click **Create security group**
@@ -128,12 +128,12 @@ You need to configure VPCs for the networking in each region. The following exam
       - Click **Add rule**
         - Type: **HTTPS**
         - Protocol: *automatically TCP*
-        - Port Range: *automatcially 443*
+        - Port Range: *automatically 443*
         - Source: **Anywhere-IPv4** (0.0.0.0/0)
       - Click **Add rule**
         - Type: **HTTP**
         - Protocol: *automatically TCP*
-        - Port Range: *automatcially 80*
+        - Port Range: *automatically 80*
         - Source: **Anywhere-IPv4** (0.0.0.0/0)
     - Outbound rules: *Leave at default settings*
     - Click **Create security group**
@@ -141,7 +141,7 @@ You need to configure VPCs for the networking in each region. The following exam
 ## Create TLS Certificate using AWS Certificate Manager (ACM)
 1. In the AWS console search for "Certificate" and click **Certificate Manager**
 2. Click **Request**
-    - Request a public certificate is selcted
+    - Request a public certificate is selected
     - Click **Next**
     - Fully qualified domain name (see my example below, including the www subdomain)
       - ipdice.com
@@ -150,7 +150,7 @@ You need to configure VPCs for the networking in each region. The following exam
     - Key algorithm: RSA 2048
     - Click **Request**
 3. Refresh the list of certificates until your new request is listed, *Pending validation*
-4. Click on the request ID for the new certifcate
+4. Click on the request ID for the new certificate
 5. Click **Create records in Route 53**, then click **Create records**
 6. Refresh the list of certificates until the new certificate is validated and the status changes to *Issued*
 
@@ -163,9 +163,9 @@ You need to configure VPCs for the networking in each region. The following exam
     - Scheme: **internet-facing**
     - IP address type: **IPv4**
     - VPC: *select the VPC you created earlier* (e.g., ipdice-vpc-us-east-1)
-    - Mappings: select two <ul>public</ul> subnet's availability zones and the subnet
+    - Mappings: select two availability zones and two <ins>public</ins> subnets
     - Security groups
-      - From the dropdown select the Secruity group you created for the load balancer (i.e., `ipdice-alg-sg`)
+      - From the dropdown select the Security group you created for the load balancer (i.e., `ipdice-alg-sg`)
     - Listeners and routing
       - Modify the protocol to **HTTPS**
       - Click the link **Create target group**
@@ -185,7 +185,7 @@ You need to configure VPCs for the networking in each region. The following exam
         - Under *Listeners and routing* click the refresh button
         - Select the new target group you created from the drop down
     - Security policy
-      - Security category: All security policies
+      - Security category: **All security policies**
       - Policy name: *use the recommended option from the dropdown*
     - Default SSL/TLS server certificate
       - **From ACM**
@@ -245,23 +245,20 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
       - Essential container: **Yes**
       - Private registry authentication: **No**
       - Port Mappings
-        - Container port: **8080** (our applcation listens on port 8080)
+        - Container port: **8080** (our application listens on port 8080)
         - Protocol: **TCP**
         - Port name: *leave blank*
         - App protocol: **HTTP**
       - Read only root file system: **Leave off** (our application can run with Read Only enabled)
       - Resource allocation limits
-        - CPU: 1 vCPU
-        - GPU: 1 (can't change)
-        - Memory hard limit: 3GB (very generous)
-        - Memory soft limit: 1GB
+        - Generally leave this as is. Note this is empty (no values)
       - Log collection: **On** for testing, **Off** to reduce costs
       - HealthCheck - Optional: (incurs small costs)
         - Command: `CMD-SHELL, curl -f http://localhost:8080/health.php || exit 1`
-        - Interval: **30** seconds (default)
-        - Timeout: **5** seconds (default)
+        - Interval: **30** seconds (recommended)
+        - Timeout: **5** seconds (recommended)
         - Start period: **30** seconds
-        - Retries: **2** (one or two retriess before making the container unhealthy)
+        - Retries: **2** (one or two retries before making the container unhealthy)
     - Click **Create**
 
 ## Create a Service
@@ -272,7 +269,8 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
     - Compute options: **Launch type**
       - Fargate
     - Application type: **Service**
-    - Family: **ipdice-app** (latest version)
+    - Family: **ipdice-app** (from dropdown)
+    - Revision: *LATEST*
     - Service name: **ipdice-service**
     - Service type: **Replica**
     - Desired tasks: **1** (start with 1 for initial testing; can scale later)
@@ -282,7 +280,7 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
       - VPC: **ipdice-ecs-sg**
       - The two subnets, one for each availability zone, should be listed
       - Security group: *Select the SG you created for ECS (only)* (i.e., ipdice-ecs-sg)
-      - From the dropdown select the Secruity group you created for the load balancer (i.e., `ipdice-alb-sg`)
+      - From the dropdown select the Security group you created for the load balancer (i.e., `ipdice-alb-sg`)
       - Public IP: **ON**
       - Load balancing
         - Type: **Application Load Balancer**

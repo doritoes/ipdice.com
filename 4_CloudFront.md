@@ -1,7 +1,7 @@
 # Configuring CloudFront
-The next step is to create the CloudFront distribution. This acts as a global content delivery network (CDN), caching API Gateway responses closer to end-users, reducing latency and improving the overall performance. We will not incur the cost of enabling the WAF (Web Application Firweall) as the app simply returns HTML. There is no API to protect. Another reason we are using Cloudfront is that in later steps we will be adding more instances to additional AWS regions. CloudFront will distribute traffic to the nearest region (latency-based routing).
+The next step is to create the CloudFront distribution. This acts as a global content delivery network (CDN), caching API Gateway responses closer to end-users, reducing latency and improving the overall performance. We will not incur the cost of enabling the WAF (Web Application Firewall) as the app simply returns HTML. There is no API to protect. Another reason we are using CloudFront is that in later steps we will be adding more instances to additional AWS regions. CloudFront will distribute traffic to the nearest region (latency-based routing).
 
-It is possible to  configure health checks within CloudFront to automatically route traffic away from unhealthy regions should an issue arrise. **IMPORTANT** - be mindful of potential cross-region data transfer costs when using multiple origins in different regions.
+It is possible to configure health checks within CloudFront to automatically route traffic away from unhealthy regions should an issue arise. **IMPORTANT** - be mindful of potential cross-region data transfer costs when using multiple origins in different regions.
 
 https://www.stormit.cloud/blog/cloudfront-distribution-for-amazon-ec2-alb/
 
@@ -23,7 +23,7 @@ https://www.stormit.cloud/blog/cloudfront-distribution-for-amazon-ec2-alb/
     - Allowed HTTP methods: **GET, HEAD**
   - Caching (Important):
     - Choose **CachingDisabled**
-    - Origin Request policy: (<u>important</u>)
+    - Origin Request policy: (<ins>important</ins>)
       - **AllViewer**
     - Response headers policy - **NONE**
   - Web Application Firewall (WAF)
@@ -31,7 +31,7 @@ https://www.stormit.cloud/blog/cloudfront-distribution-for-amazon-ec2-alb/
     - Our function is not an API (just simple HTML) and doesn't need this expensive add-on
   - Settings
     - Price class: To reduce cost, set to **Use only North America and Europe**
-    - Altername domain name (CNAME) - optional
+    - Alternate domain name (CNAME) - optional
       - Click **Add item**
           - add the domain names you will use, see my examples
           - ipdice.com

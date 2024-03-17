@@ -19,15 +19,15 @@ Is it a new image URI and/or a new tag? If so, do this:
 1. In the AWS console search bar enter "ECS" and click **Elastic Container Service**
 2. Click **Clusters** then click your cluster (i.e., ipdice-cluster)
 3. In the lower pane click **Services**
-4. <u>Select</u> your service (i.e. ipdice-service) and click **Update**
+4. <ins>Select</ins> your service (i.e. ipdice-service) and click **Update**
 5. Is this a new image URI and/or new tag?
     - YES: Select the new revision
-    - NO: Check <u>Force new deployment</u>
+    - NO: Check <ins>Force new deployment</ins>
 6. Click **Update**
 
 ### Confirm
 1. Watch the deployment progress to complete (new task spun up, old task spun down)
-2. Click on the new task, find the Public IP and open it wiht port 8080 (e.g. http://3.81.118.133:8080)
+2. Click on the new task, find the Public IP and open it with port 8080 (e.g. http://3.81.118.133:8080)
 
 ## Reducing Costs
 
@@ -39,14 +39,31 @@ Turn off logging after the application is working, if you don't need the logs.
 4. Click on the active Revision
 5. Click **Create new revision** > **Create new revision** 
 6. *Under Logging - optional* find *Log collection*
-7. <u>Uncheck</u> **Use log collection**
+7. <ins>Uncheck</ins> **Use log collection**
 8. Under container-1 find Log collection and turn it **Off**
 9. Click **Create**
 10. From the left menu click **Clusters** then click your cluster (i.e., ipdice-cluster)
 11. In the lower pane click **Services**
-12. <u>Select</u> your service (i.e. ipdice-service) and click **Update**
+12. <ins>Select</ins> your service (i.e. ipdice-service) and click **Update**
 13. Revision: *select the new revision from the dropdown*
 14. Click **Update**
+
+### Reduce HealthCheck frequency
+You can cut the HealthCheck traffic in half by doubling the timer.
+
+1. In the AWS console search bar enter "ECS" and click **Elastic Container Service**
+2. From the left menu click **Task definitions**
+3. Click on your Task definition
+4. Click on the active Revision
+5. Click **Create new revision** > **Create new revision** 
+6. *Under HealthCheck - optional* find *HealthCheck*
+7. Interval: *increase this interval* (e.g., change from 30 seconds to 60 seconds)
+8. Click **Create**
+9. From the left menu click **Clusters** then click your cluster (i.e., ipdice-cluster)
+10. In the lower pane click **Services**
+11. <ins>Select</ins> your service (i.e. ipdice-service) and click **Update**
+12. Revision: *select the new revision from the dropdown*
+13. Click **Update**
 
 ### Turn off HealthCheck
 Turning off HealthCheck reduces traffic to your container at the cost of a) losing auto-restarts for unhealthy containers and b) waiting until the container is healthy prior to sending traffic
@@ -61,7 +78,7 @@ Turning off HealthCheck reduces traffic to your container at the cost of a) losi
 8. Click **Create**
 9. From the left menu click **Clusters** then click your cluster (i.e., ipdice-cluster)
 10. In the lower pane click **Services**
-11. <u>Select</u> your service (i.e. ipdice-service) and click **Update**
+11. <ins>Select</ins> your service (i.e. ipdice-service) and click **Update**
 12. Revision: *select the new revision from the dropdown*
 13. Click **Update**
 
@@ -76,7 +93,7 @@ For example, if you updated .js script files, a .css style sheet, or other appli
 2. Click on the **Invalidations** tab
 3. Click **Create invalidation**
 4. Object paths: *enter everything you want to clear*
-    - For example to clear everything use **/***
+    - For example, to clear everything use **/***
 5. Click **Create invalidation**
 6. The status will go from *In progress* to *Completed*
     - The invalidation process might take some time depending on the size of your distribution and cache
@@ -90,9 +107,13 @@ In this lab you were introduced to Amazon ECS on Fargate, a serverless computing
 
 🥚 Did you find the easter eggs in the application?
 
-I hope you take some time to look at the web appliation itself, is it was designed to expose you to
+I hope you take some time to look at the web application itself, is it was designed to expose you to
 - javascript
 - dynamic CSS style sheets including switching style sheets
+
+What affect does the CloudFront caching mechanism have on rolling out new files in the /static part of the application?
+- Turning off caching before you update the deployment image, and turning it back on after testing is one solution
+- Invalidating the cache is another
 
 ## Learn More
 ### Reading suggestions
