@@ -45,14 +45,14 @@ body {
 .ip-display {
   animation: pulse 2s infinite alternate;
 }
-.tamper {
-  display: none;
-  color: #C70000;
-  font-size: 0.75em;
 .sandbox {
   color: #C70000;
   font-size: 0.75em;
 }
+.tamper {
+  display: none;
+  color: #C70000;
+  font-size: 0.75em;
 .honey {
   opacity: 0;
   position: absolute;
