@@ -48,7 +48,7 @@ body {
 .tamper {
   display: none;
   color: #C70000;
-  font-size: 1em;
+  font-size: 0.75em;
 }
 .honey {
   opacity: 0;
