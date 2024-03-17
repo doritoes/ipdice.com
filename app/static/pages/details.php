@@ -71,6 +71,7 @@ if ($_GET['ip'] !== $ip_address) {
     <script src="/static/scripts/detect.js" defer></script>
     <script src="/static/scripts/details.js" defer></script>
     <script src="/static/scripts/fingerprint.js" defer></script>
+    <script src="/static/scripts/donottrack.js" defer></script>
   </head>
   <body>
     <div class="matrix-container">
@@ -89,6 +90,7 @@ if ($_GET['ip'] !== $ip_address) {
         ?>
         <div class="tamper" id="tamper">[+] DOM Tampering detected</div>
         <div class="fingerprint" id="fingerprint">[+] Anonymity compromised (fingerprinting)</div>
+        <div class="donottrack" id="donottrack">[+] Do Not Track not enabled</div>
       </div>
       <div class="honey">
         <form action="javascript:void(0);" method="get">
