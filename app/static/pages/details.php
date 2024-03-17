@@ -70,7 +70,7 @@ if ($_GET['ip'] !== $ip_address) {
       <div class="matrix-line"></div>
       <div class="output-block">
         <div class="ip-display"><?php echo $ip_address ?></div>
-        <div class="tamper" id="tamper">DOC Tampering detected</div>
+        <div class="tamper" id="tamper">[+] DOM Tampering detected</div>
       </div>
       <div class="honey">
         <form action="javascript:void(0);" method="get">
