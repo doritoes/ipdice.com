@@ -27,7 +27,7 @@ Is it a new image URI and/or a new tag? If so, do this:
 
 ### Confirm
 1. Watch the deployment progress to complete (new task spun up, old task spun down)
-2. Click on the new task, find the Public IP and open it wiht port 8080 (e.g. http://3.81.118.133:8080)
+2. Click on the new task, find the Public IP and open it with port 8080 (e.g. http://3.81.118.133:8080)
 
 ## Reducing Costs
 
@@ -93,7 +93,7 @@ For example, if you updated .js script files, a .css style sheet, or other appli
 2. Click on the **Invalidations** tab
 3. Click **Create invalidation**
 4. Object paths: *enter everything you want to clear*
-    - For example to clear everything use **/***
+    - For example, to clear everything use **/***
 5. Click **Create invalidation**
 6. The status will go from *In progress* to *Completed*
     - The invalidation process might take some time depending on the size of your distribution and cache
