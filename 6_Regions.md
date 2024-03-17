@@ -52,7 +52,7 @@ We are not going to deploy to eu-central-1 (Frankfurt) because
     - Repeat for any remening behaviors (e.g., `/static/*`
 
 #### Route 53 Setup
-We are not going to set up another DNS name to use latency based routing to direct traffic to the ALBs.
+We are not going to set up another DNS name to use latency based routing to direct traffic to the ALBs. CloudFront will be our mechanism to distribute traffic.
 
 ### Testing
 First we will generate traffic source from different global regions, followed by confirming traffic is reaching all regions.
