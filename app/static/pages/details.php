@@ -69,7 +69,7 @@ if ($_GET['ip'] !== $ip_address) {
       <div class="matrix-line"></div>
       <div class="matrix-line"></div>
       <div class="ip-display"><?php echo $ip_address ?></div>
-      <div class="tamper">DOC Tampering detected</div>
+      <div class="tamper" id="tamper">DOC Tampering detected</div>
       <div class="honey">
         <form action="javascript:void(0);" method="get">
           <input id="username" type="text" size="20" name="user"><br>
