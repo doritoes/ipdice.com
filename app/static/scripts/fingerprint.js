@@ -6,7 +6,7 @@ fpPromise
     .then(fp => fp.get())
     .then(result => {
       console.log('Fingerprinted visitorId ' + result.visitorId + ' with confidence ' + result.confidence.score);
-      // console.log(JSON.stringify(result, null, 2));
+      console.log(JSON.stringify(result, null, 2));
       const fingerprintDiv = document.getElementById('fingerprint'); 
         if (fingerprintDiv) {
           if (result.confidence.score < 0.5) {
