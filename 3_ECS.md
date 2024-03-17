@@ -185,7 +185,7 @@ You need to configure VPCs for the networking in each region. The following exam
         - Under *Listeners and routing* click the refresh button
         - Select the new target group you created from the drop down
     - Security policy
-      - Security category: All security policies
+      - Security category: **All security policies**
       - Policy name: *use the recommended option from the dropdown*
     - Default SSL/TLS server certificate
       - **From ACM**
