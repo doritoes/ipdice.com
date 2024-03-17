@@ -143,7 +143,7 @@ button:hover {
     font-weight: normal;
   }
 }
-@media (max-height: 900px) and (orientation: landscape) { 
+@media (max-height: 600px) and (orientation: landscape) { 
   header {
     margin-top: 250px;
   }
