@@ -163,7 +163,7 @@ You need to configure VPCs for the networking in each region. The following exam
     - Scheme: **internet-facing**
     - IP address type: **IPv4**
     - VPC: *select the VPC you created earlier* (e.g., ipdice-vpc-us-east-1)
-    - Mappings: select two <ul>public</ul> subnet's availability zones and the subnet
+    - Mappings: select two <u>public</u> subnets availability zones and the subnets
     - Security groups
       - From the dropdown select the Secruity group you created for the load balancer (i.e., `ipdice-alg-sg`)
     - Listeners and routing
