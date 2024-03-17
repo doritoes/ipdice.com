@@ -20,7 +20,7 @@ const elementsWithNord = [];
 for (let i = 0; i < allElements.length; i++) {
     const element = allElements[i];
     if (element.id && element.id.toLowerCase().includes('nord') || // Add guard clause
-        element.name.toLowerCase().includes('nord') || 
+        element.name && element.name.toLowerCase().includes('nord') || 
         element.classList.contains('nord')) { 
         elementsWithNord.push(element);
     }
