@@ -23,7 +23,7 @@ https://www.stormit.cloud/blog/cloudfront-distribution-for-amazon-ec2-alb/
     - Allowed HTTP methods: **GET, HEAD**
   - Caching (Important):
     - Choose **CachingDisabled**
-    - Origin Request policy: (<u>important</u>)
+    - Origin Request policy: (<ins>important</ins>)
       - **AllViewer**
     - Response headers policy - **NONE**
   - Web Application Firewall (WAF)
