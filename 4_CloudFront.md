@@ -13,7 +13,7 @@ https://www.stormit.cloud/blog/cloudfront-distribution-for-amazon-ec2-alb/
 1. Click **Create a CloudFront distribution**
   - Origin name: *click in this box, and select your ALB from the list* (i.e., ipdice-alb-us-east-1)
   - Protocol: **HTTPS only** on port **443** with **TLSv1.2**
-  - Origin path - optional: *leave blank*
+  - Origin path - optional: *leave blank* :!: Set to the stage name (e.g. "Prod")
   - Name: *leave it as is, this is the domain name CloudFront will point to* (i.e., ipdice-alb-us-east-1-701553201.us-east-1.elb.amazonaws.com)
   - Viewer > Viewer protocol policy: **Redirect HTTP to HTTPS**
   - Leave the remaining Origin settings at their default values
