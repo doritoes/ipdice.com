@@ -38,13 +38,6 @@ if (!isset($_GET['ip']) || !$_GET['ip']) {
   header("Location: $newURL");
   exit;
 }
-if (!is_rfc1918_ip($ip_address)) { // restrict access to the page
-  if (!isset($_SERVER['HTTP_REFERER']) || !$_SERVER['HTTP_REFERER']) {
-    $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . '/static/pages/denied.php';
-    header("Location: $newURL");
-    exit;
-  }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
