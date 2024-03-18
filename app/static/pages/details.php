@@ -36,7 +36,7 @@ if ($ip_address == "IP Address Not Found" || is_rfc1918_ip($ip_address)) {
 if (!isset($_GET['ip']) || !$_GET['ip']) {
   $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?ip=' . $ip_address;
   echo "<html><body>";
-  echo "<p>" . $newURL "</p>";
+  echo "<p>" . $newURL . "</p>";
   echo "</body></html>";
   // header("Location: $newURL");
   exit;
