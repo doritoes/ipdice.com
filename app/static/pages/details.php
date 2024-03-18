@@ -38,12 +38,6 @@ if (!isset($_GET['ip']) || !$_GET['ip']) {
   header("Location: $newURL");
   exit;
 }
-if ($_GET['ip'] != $ip_address) {
-  $cleanURI = strtok($_SERVER['REQUEST_URI'], '?');
-  $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . $cleanURI . '?ip=' . $ip_address;
-  header("Location: $newURL");
-  exit;
-}
 if (!is_rfc1918_ip($ip_address)) { // restrict access to the page
   if (!isset($_SERVER['HTTP_REFERER']) || !$_SERVER['HTTP_REFERER']) {
     $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . '/static/pages/denied.php';
