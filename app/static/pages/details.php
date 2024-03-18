@@ -35,13 +35,21 @@ if ($ip_address == "IP Address Not Found" || is_rfc1918_ip($ip_address)) {
 }
 if (!isset($_GET['ip']) || !$_GET['ip']) {
   $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?ip=' . $ip_address;
-  header("Location: $newURL");
+  echo "<html><body>";
+  echo "<p>" . $newURL "</p>";
+  echo "</body></html>";
+  // header("Location: $newURL");
   exit;
 }
-if ($_GET['ip'] !== $ip_address) {
+if ($_GET['ip'] != $ip_address) {
   $cleanURI = strtok($_SERVER['REQUEST_URI'], '?');
   $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . $cleanURI . '?ip=' . $ip_address;
-  header("Location: $newURL");
+  echo "<html><body>";
+  echo "<p> GET ip: " . $_GET['ip'] . "</p>";
+  echo "<p> ip_address: " . $ip_address . "</p>";
+  echo "<p>" . $newURL "</p>";
+  echo "</body></html>";
+  // header("Location: $newURL");
   exit;
 }
 if (!is_rfc1918_ip($ip_address)) { // restrict access to the page
