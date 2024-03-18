@@ -26,7 +26,7 @@ function is_rfc1918_ip($ipaddr) { // IPv4 only
          ($ip_long & 0xfff00000) === 0xac100000 || // 172.16.0.0/12
          ($ip_long & 0xffff0000) === 0xc0a80000;  // 192.168.0.0/16
 }
-$ip_address =  client_ip();
+$ip_address = client_ip();
 // Handle sandbox environment and edge cases, restrict to client IP address
 if ($ip_address == "IP Address Not Found" || is_rfc1918_ip($ip_address)) {
   $scheme = "http";
@@ -41,7 +41,12 @@ if (!isset($_GET['ip']) || !$_GET['ip']) {
 if ($_GET['ip'] != $ip_address) {
   $cleanURI = strtok($_SERVER['REQUEST_URI'], '?');
   $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . $cleanURI . '?ip=' . $ip_address;
-  header("Location: $newURL");
+  echo "<html><body>";
+  echo "<p>GET ip " . $_GET['ip'] . "</p>";
+  echo "<p>ip_address " . $ip_address . "</p>";
+  echo "<p>Action: " . $newURL . "</p>";
+  echo "</body></html>";
+  // header("Location: $newURL");
   exit;
 }
 if (!is_rfc1918_ip($ip_address)) { // restrict access to the page
