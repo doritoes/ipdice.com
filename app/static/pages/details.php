@@ -47,7 +47,7 @@ if ($_GET['ip'] != $ip_address) {
   echo "<html><body>";
   echo "<p> GET ip: " . $_GET['ip'] . "</p>";
   echo "<p> ip_address: " . $ip_address . "</p>";
-  echo "<p>" . $newURL "</p>";
+  echo "<p>" . $newURL . "</p>";
   echo "</body></html>";
   // header("Location: $newURL");
   exit;
