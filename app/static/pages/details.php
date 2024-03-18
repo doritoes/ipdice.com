@@ -88,7 +88,7 @@ if (!is_rfc1918_ip($ip_address)) { // restrict access to the page
           }
         ?>
         <div class="tamper" id="tamper">[+] DOM Tampering detected</div>
-        <div class="fingerprint" id="fingerprint">[+] Anonymity compromised (fingerprinting)</div>
+        <div class="fingerprint" id="fingerprint">[+] Anonymity compromised (fingerprint succeeded)</div>
       </div>
       <div class="honey">
         <form action="javascript:void(0);" method="get">
