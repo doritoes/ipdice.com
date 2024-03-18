@@ -41,12 +41,7 @@ if (!isset($_GET['ip']) || !$_GET['ip']) {
 if ($_GET['ip'] != $ip_address) {
   $cleanURI = strtok($_SERVER['REQUEST_URI'], '?');
   $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . $cleanURI . '?ip=' . $ip_address;
-  echo "<html><body>";
-  echo "<p> GET ip: " . $_GET['ip'] . "</p>";
-  echo "<p> ip_address: " . $ip_address . "</p>";
-  echo "<p>" . $newURL . "</p>";
-  echo "</body></html>";
-  // header("Location: $newURL");
+  header("Location: $newURL");
   exit;
 }
 if (!is_rfc1918_ip($ip_address)) { // restrict access to the page
