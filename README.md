@@ -36,10 +36,13 @@ Here are the goals I have for this project. If you would like to encourage me to
 - One region built
 - Multi-region
 - Added first two easter eggs
-### Working on
 - Multi-region
-### Will Do
+### Working on
+- Add anti-snoop protection
+- Integration with [iploc8.com](https://github.com/doritoes/iploc8.com for geo-location
 - Feature: IP address information experience
+### Will Do
+- No major work at this point
 ### Might Do
 - Feature: Dice rolling experience
 - Feature: API for dice rolls (using custom dice rolling algorithm)
