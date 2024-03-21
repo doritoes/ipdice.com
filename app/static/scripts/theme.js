@@ -12,7 +12,7 @@ function switchTheme() {
 }
 
 function switchPage() {
-  window.location.href = '/static/pages/details.php';
+  window.location.href = '/details.php';
 }
 
 triggerObject.addEventListener("click", switchTheme);
