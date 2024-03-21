@@ -38,6 +38,11 @@ if (!isset($_GET['ip']) || !$_GET['ip']) {
   header("Location: $newURL");
   exit;
 }
+if ($_GET['ip'] != $ip_address) {
+  $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] ."/static/pages/denied.php";
+  header("Location: $newURL");
+  exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
