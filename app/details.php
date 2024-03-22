@@ -63,6 +63,7 @@ if ($_GET['ip'] != $ip_address) {
     <script src="/static/scripts/detect.js" defer></script>
     <script src="/static/scripts/details.js" defer></script>
     <script src="/static/scripts/fingerprint.js" defer></script>
+    <script src="/static/scripts/location.js" defer></script>
   </head>
   <body>
     <div class="matrix-container">
