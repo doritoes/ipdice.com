@@ -280,7 +280,7 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
       - VPC: **ipdice-ecs-sg**
       - The two subnets, one for each availability zone, should be listed
       - Security group: *Select the SG you created for ECS (only)* (i.e., ipdice-ecs-sg)
-      - From the dropdown select the Security group you created for the load balancer (i.e., `ipdice-alb-sg`)
+      - From the dropdown select the Security group you created for the load balancer (i.e., `ipdice-ecs-sg`)
       - Public IP: **ON**
       - Load balancing
         - Type: **Application Load Balancer**
