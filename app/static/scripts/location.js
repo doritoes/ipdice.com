@@ -13,7 +13,6 @@ async function fetchLocationData(ipAddress) {
 function displayLocationData(locationData) {
   const country = document.createElement('p');
   country.textContent = `City: ${locationData.country_long}`;
-  detailsDiv.appendChild(country);  
   // Find the existing details element for positioning
   const existingDetails = document.querySelector('.details'); 
   if (existingDetails) {
