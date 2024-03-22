@@ -294,7 +294,7 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
         - **Use an existing target group**
         - Target group name: *select from the dropdown* (i.e., ipdice-target-group)
     - Service auto scaling
-      - Select **User service auto scaling**
+      - Select **Use service auto scaling**
         - Minimum number of tasks: **1**
         - Maximum number of tasks: **10**
       - Click **Add scaling policies**
