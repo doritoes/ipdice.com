@@ -63,6 +63,7 @@ if ($client_ip == "127.0.0.1") {
     <meta name="theme-color" content="#ffffff">
     <script src="/static/scripts/copy.js" defer></script>
     <script src="/static/scripts/theme.js" defer></script>
+    <script src="/static/scripts/location.js" defer></script>
   </head>
   <body>
     <div class="background-image"></div>
