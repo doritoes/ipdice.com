@@ -11,8 +11,9 @@ async function fetchLocationData(ipAddress) {
 
 // Function to create and display the details element
 function displayLocationData(locationData) {
-  const country = document.createElement('p');
-  country.textContent = `City: ${locationData.country_long}`;
+  const country = document.createElement('div');
+  country.textContent = `Country: ${locationData.country_long}`;
+  country.classList.add('details');
   // Find the existing details element for positioning
   const existingDetails = document.querySelector('.details'); 
   if (existingDetails) {
