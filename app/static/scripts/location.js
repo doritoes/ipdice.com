@@ -8,24 +8,19 @@ async function fetchLocationData(ipAddress) {
     return null; // Return null in case of an error
   }
 }
+
 // Function to create and display the details element
 function displayLocationData(locationData) {
-  const detailsDiv = document.createElement('details');
-  const summary = document.createElement('summary');
-  summary.textContent = 'Location Details';
-  detailsDiv.appendChild(summary);
-  // Add Country to details
   const country = document.createElement('p');
   country.textContent = `City: ${locationData.country_long}`;
-  detailsDiv.appendChild(country);
-  
+  detailsDiv.appendChild(country);  
   // Find the existing details element for positioning
   const existingDetails = document.querySelector('.details'); 
   if (existingDetails) {
-    existingDetails.parentNode.insertBefore(detailsDiv, existingDetails.nextSibling); 
+    existingDetails.parentNode.insertBefore(country, existingDetails.nextSibling); 
   } else {
     // If no existing .details element, append directly to main
-    document.querySelector('main').appendChild(detailsDiv);   
+    document.querySelector('main').appendChild(country);   
   }  
 }
 
