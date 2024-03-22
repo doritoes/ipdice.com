@@ -43,7 +43,7 @@ if ($_GET['ip'] != $ip_address) {
   header("Location: $newURL");
   exit;
 }
-if (!isset($_SERVER['HTTP_REFEFER']) && !is_rfc1918_ip($ip_address)) {
+if ((!isset($_SERVER['HTTP_REFEFER']) || !$_SERVER['HTTP_REFEFER']) && !is_rfc1918_ip($ip_address)) {
   $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] ."/static/pages/denied.php";
   header("Location: $newURL");
   exit;
