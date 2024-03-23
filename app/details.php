@@ -74,7 +74,7 @@ if ($_GET['ip'] != $ip_address) {
       <div class="matrix-line"></div>
       <div class="matrix-line"></div>
       <div class="output-block">
-        <div class="ip-display"><?php echo $ip_address ?></div>
+        <div id="ip-address" class="ip-display"><?php echo $ip_address ?></div>
         <?php
           if ($ip_address != "IP Address Not Found" && is_rfc1918_ip($ip_address)) {
             echo '<div class="sandbox">[+] Sandbox detected</div>' . "\n";
