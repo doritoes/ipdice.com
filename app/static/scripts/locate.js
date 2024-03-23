@@ -36,19 +36,28 @@ async function fetchLocationData(apiKey, ipAddress) {
     // Handle errors appropriately, maybe display a message to the user
   }
 }
-
 // Function to display the results
 function displayLocationData(locationData) {
   // Create the new div element
   const newDiv = document.createElement('div');
   newDiv.className = 'location-data'; // Add a class for styling
-
-  // Populate the div with location information
-  newDiv.textContent = `
-    <p>City: ${locationData.city}</p>
-    <p>State: ${locationData.state}</p> <p>Country: ${locationData.country_long}</p>
-  `;
-
+  // Create individual <p> elements
+  const city = document.createElement('p');
+  name.textContent = '[+] Location:';
+  const city = document.createElement('p');
+  city.textContent = `&nbsp;&nbsp;City: ${locationData.city}`;
+  const state = document.createElement('p');
+  state.textContent = `&nbsp;&nbsp;State: ${locationData.state}`;
+  const country = document.createElement('p');
+  country.textContent = `&nbsp;&nbsp;Country: ${locationData.country_long}`;
+  const country = document.createElement('p');
+  isp.textContent = `&nbsp;&nbsp;ISP: ${locationData.isp}`;
+  // Append the <p> elements to the div
+  newDiv.appendChild(name);
+  newDiv.appendChild(city);
+  newDiv.appendChild(state);
+  newDiv.appendChild(country);
+  newDiv.appendChild(isp);
   // Insert the div into the DOM
   const outputBlock = document.querySelector('.output-block');
   const fingerprintDiv = document.querySelector('.fingerprint'); 
