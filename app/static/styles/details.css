@@ -45,6 +45,9 @@ body {
 .ip-display {
   animation: pulse 2s infinite alternate;
 }
+.location-data {
+   font-size: 0.75em;
+}
 .sandbox {
   color: #C70000;
   font-size: 0.75em;
