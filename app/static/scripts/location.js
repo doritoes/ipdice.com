@@ -25,7 +25,7 @@ function displayLocationData(locationData) {
 }
 
 // Get the user's IP address
-const ipAddress = document.getElementById('ip-address').textContent;
+const ipAddress = document.querySelector('.ip-display').textContent;
 
 // Fetch data and display on success
 fetchLocationData(ipAddress)
