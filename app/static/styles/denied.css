@@ -58,7 +58,7 @@ body {
   40.5% { text-shadow: -2px 3px 1px red, 5px -3px 4px blue; }
   41% { text-shadow: -3px -2px 3px black; } 
   65% { text-shadow: -2px 3px 1px red; }
-  65.5% { text-shadow: -2px 3px 1px red, 5px -3px 4px blue; }
+  65.5% { text-shadow: 5px -3px 4px blue; }
   66% { text-shadow: -3px -2px 3px black; }
   100% { text-shadow: -3px -2px 3px black; }
 }
