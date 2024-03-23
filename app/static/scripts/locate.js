@@ -42,7 +42,7 @@ function displayLocationData(locationData) {
   const newDiv = document.createElement('div');
   newDiv.className = 'location-data'; // Add a class for styling
   // Create individual <p> elements
-  const city = document.createElement('p');
+  const name = document.createElement('p');
   name.textContent = '[+] Location:';
   const city = document.createElement('p');
   city.textContent = `&nbsp;&nbsp;City: ${locationData.city}`;
@@ -50,7 +50,7 @@ function displayLocationData(locationData) {
   state.textContent = `&nbsp;&nbsp;State: ${locationData.state}`;
   const country = document.createElement('p');
   country.textContent = `&nbsp;&nbsp;Country: ${locationData.country_long}`;
-  const country = document.createElement('p');
+  const isp = document.createElement('p');
   isp.textContent = `&nbsp;&nbsp;ISP: ${locationData.isp}`;
   // Append the <p> elements to the div
   newDiv.appendChild(name);
