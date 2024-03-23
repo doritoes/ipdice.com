@@ -37,7 +37,7 @@ body {
     font-size: 24px;
     font-family: monospace;
     color: #C70000;
-    animation: pulse 2s infinite alternate;
+    animation: pulse 2s infinite alternate, glitch-text 3s infinite;
 }
 @keyframes pulse {
   0%   { opacity: 0.5; }
