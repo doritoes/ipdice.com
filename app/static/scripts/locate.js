@@ -9,7 +9,6 @@ async function fetchLocationData(apiKey, ipAddress) {
       },
       body: JSON.stringify({ "api_key": apiKey })
     });
-
     if (!loginResponse.ok) {
       throw new Error("Login failed"); // Handle login errors
     }  
@@ -67,12 +66,10 @@ function displayLocationData(locationData) {
   const fingerprintDiv = document.querySelector('.fingerprint'); 
   outputBlock.insertBefore(newDiv, fingerprintDiv.nextSibling); 
 }
-
 // Get the user's IP address
 const ipAddress = document.getElementById('ip-address').textContent;
-
-// Get your API key (replace with how you'll securely store and retrieve it)
-const apiKey = 'e95b186d-3677-4466-9cb2-20a549ab1d85'; 
+// Authenticate
+const apiKey = 'ZTk1YjE4NmQtMzY3Ny00NDY2LTljYjItMjBhNTQ5YWIxZDg1'.atob(); 
 
 // Fetch and display the location data
 fetchLocationData(apiKey, ipAddress)
