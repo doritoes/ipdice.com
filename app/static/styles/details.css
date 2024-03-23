@@ -48,6 +48,10 @@ body {
 .location-data {
    font-size: 0.75em;
 }
+.location-data p {
+  margin: 0.25em 0; /* Adjust top/bottom margin for spacing */
+  padding-left: 2em;  /* Add the indentation */
+}
 .sandbox {
   color: #C70000;
   font-size: 0.75em;
