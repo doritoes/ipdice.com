@@ -44,7 +44,7 @@ body {
     font-size: 24px;
     font-family: monospace;
     color: #C70000;
-    animation: pulse 2s infinite alternate, glitch-shadow 0.5s infinite;
+    animation: pulse 2s infinite alternate, glitch-shadow 5s infinite;
 }
 @keyframes pulse {
   0%   { opacity: 0.5; }
@@ -53,11 +53,12 @@ body {
 }
 @keyframes glitch-shadow {
   0% { text-shadow: -3px -2px 3px black; }
+  39.5% { text-shadow: -3px -2px 3px black; }
   40% { text-shadow: 5px -3px 4px blue; }
-  41% { text-shadow: -6px 8px 4px red, 5px -3px 4px blue; }
-  42% { text-shadow: -3px -2px 3px black; } 
-  65% { text-shadow: -6px 8px 4px red; }
-  66% { text-shadow: -6px 8px 4px red, 5px -3px 4px blue; }
-  67% { text-shadow: -3px -2px 3px black; }
+  40.5% { text-shadow: -3px 4px 2px red, 5px -3px 4px blue; }
+  41% { text-shadow: -3px -2px 3px black; } 
+  65% { text-shadow: -3px 4px 2px red; }
+  65.5% { text-shadow: -3px 4px 2px red, 5px -3px 4px blue; }
+  66% { text-shadow: -3px -2px 3px black; }
   100% { text-shadow: -3px -2px 3px black; }
 }
