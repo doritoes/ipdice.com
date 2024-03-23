@@ -45,13 +45,13 @@ function displayLocationData(locationData) {
   const name = document.createElement('p');
   name.textContent = '[+] Location:';
   const city = document.createElement('p');
-  city.textContent = `&nbsp;&nbsp;City: ${locationData.city}`;
+  city.textContent = `City: ${locationData.city}`;
   const state = document.createElement('p');
-  state.textContent = `&nbsp;&nbsp;State: ${locationData.state}`;
+  state.textContent = `State: ${locationData.state}`;
   const country = document.createElement('p');
-  country.textContent = `&nbsp;&nbsp;Country: ${locationData.country_long}`;
+  country.textContent = `Country: ${locationData.country_long}`;
   const isp = document.createElement('p');
-  isp.textContent = `&nbsp;&nbsp;ISP: ${locationData.isp}`;
+  isp.textContent = `ISP: ${locationData.isp}`;
   // Append the <p> elements to the div
   newDiv.appendChild(name);
   newDiv.appendChild(city);
