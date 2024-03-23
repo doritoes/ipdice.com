@@ -7,7 +7,7 @@ async function fetchLocationData(apiKey, ipAddress) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ api_key: apiKey })
+      body: JSON.stringify({ "api_key": apiKey })
     });
 
     if (!loginResponse.ok) {
