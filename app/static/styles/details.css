@@ -50,7 +50,7 @@ body {
 }
 .location-data-details {
   margin: 0.25em 0; /* Adjust top/bottom margin for spacing */
-  padding-left: 1.75em;  /* Add the indentation */
+  padding-left: 2em;  /* Add the indentation */
 }
 .sandbox {
   color: #C70000;
