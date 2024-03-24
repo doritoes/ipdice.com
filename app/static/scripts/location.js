@@ -1,6 +1,6 @@
 // Function to fetch location data
 async function fetchLocationData(ipAddress) {
-  const response = await fetch(`http://ip-api.com/json/{ipAddress}?fields=status,message,city,regionName,isp,org`);
+  const response = await fetch(`http://ip-api.com/json/${ipAddress}?fields=status,message,city,regionName,isp,org`);
   if (response.ok) { // Check if the request was successful
     const locationData = await response.json();
     return locationData;
