@@ -49,6 +49,10 @@ body {
   font-size: 0.75em;
   margin: 0.25em 0; /* Adjust top/bottom margin for spacing */
 }
+.location-data p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
 .location-data-details {
   padding-left: 2em;  /* Add the indentation */
 }
