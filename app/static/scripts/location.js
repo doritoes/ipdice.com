@@ -42,7 +42,7 @@ const ipAddress = document.getElementById('ip-address').textContent;
 fetchLocationData()
   .then(locationData => {
     if (locationData) {  // Proceed if we have data
-      displayLocationData(locationData);
+      displayLocationData(ipAddress);
     }
   })
   .catch(error => console.error('Error fetching location:', error));
