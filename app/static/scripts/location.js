@@ -11,9 +11,7 @@ async function fetchLocationData(ip) {
 
 // Function to create and display the details element
 function displayLocationData(locationData) {
-  if (locationData.status == 'fail') {
-    return;
-  }
+  console.log(JSON.stringify(locationData);
   const city = document.createElement('div');
   city.textContent = `City: ${locationData.city}`;
   city.classList.add('details');
