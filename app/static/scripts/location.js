@@ -46,7 +46,7 @@ const key = atob("VnNDUXlkTG10SHhUbU9q");
 fetchLocationData(ipAddress, key)
   .then(locationData => {
     if (locationData) {  // Proceed if we have data
-      displayLocationData();
+      displayLocationData(locationData);
     }
   })
   .catch(error => console.error('Error fetching location:', error));
