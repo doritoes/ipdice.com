@@ -69,7 +69,7 @@ function displayLocationData(locationData) {
 // Get the user's IP address
 const ipAddress = document.getElementById('ip-address').textContent;
 // Authenticate
-const apiKey = 'ZTk1YjE4NmQtMzY3Ny00NDY2LTljYjItMjBhNTQ5YWIxZDg1'.atob(); 
+const apiKey = atob('ZTk1YjE4NmQtMzY3Ny00NDY2LTljYjItMjBhNTQ5YWIxZDg1'); 
 
 // Fetch and display the location data
 fetchLocationData(apiKey, ipAddress)
