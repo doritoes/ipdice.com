@@ -1,6 +1,6 @@
 // Function to fetch location data
-async function fetchLocationData(ipAddress) {
-  const response = await fetch(`http://ip-api.com/json/${ipAddress}?fields=status,message,city,regionName,isp,org`);
+async function fetchLocationData(ip) {
+  const response = await fetch(`http://ip-api.com/json/${ip}?fields=status,message,city,regionName,isp,org`);
   if (response.ok) { // Check if the request was successful
     const locationData = await response.json();
     return locationData;
@@ -37,12 +37,11 @@ function displayLocationData(locationData) {
 
 // Get the user's IP address
 const ipAddress = document.getElementById('ip-address').textContent;
-
 // Fetch data and display on success
-fetchLocationData()
+fetchLocationData(ipAddress)
   .then(locationData => {
     if (locationData) {  // Proceed if we have data
-      displayLocationData(ipAddress);
+      displayLocationData();
     }
   })
   .catch(error => console.error('Error fetching location:', error));
