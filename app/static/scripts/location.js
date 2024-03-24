@@ -11,7 +11,7 @@ async function fetchLocationData(ip) {
 
 // Function to create and display the details element
 function displayLocationData(locationData) {
-  if ($locationData.status == 'fail') {
+  if (locationData.status == 'fail') {
     return;
   }
   const city = document.createElement('div');
