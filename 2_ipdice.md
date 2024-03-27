@@ -9,18 +9,25 @@ Overview:
 1. Open a command prompt
 2. Change directory to where you want to create your project (i.e., `C:\docker`)
 3. `git clone https://github.com/doritoes/ipdice.com`
-4. Example the new subdirectory `ipdice.com` (i.e., `c:\docker\ipdice.com`)
+4. Examine the new subdirectory `ipdice.com` (i.e., `c:\docker\ipdice.com`)
     - `app` directory contains the web application
 
 ## Customize the ipdice.com App
 Optionally, customize the application.
+
+You will note that the application leverages (ip-api)[ttps://ip-api.com] for IP address lookup.
+
+You have some options:
+- Run your container only in a local docker instance under API and use the free http endpoint at ip-api
+- Purchase a key to ip-api and run the full experience
+- Modify the example to use a server like [iploc8.com](https://github.com/doritoes/iploc8.com) which wraps the free ip-api experience into https
 
 ## Build the image
 1. From the command line change directory for your project folder
     - i.e., `cd c:\docker\ipdice.com`
 2. Build the image using
     - `docker build -t ipdice .`
-    - Be sure you have the dot at the end
+    - Be sure you have the dot at the end; this means "the current directory"
 
 ## Test the image in Docker
 1. Run the container locally:
