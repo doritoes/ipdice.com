@@ -1,5 +1,5 @@
 # Prerequisites
-This lab is written for a Windows 11 system. Throughout you will see refernces to "ipdice.com". You will need adpapt the steps to your own domain name and configuration.
+This lab is written for a Windows 11 system. Throughout you will see references to "ipdice.com". You will need to adpapt the steps to your own domain name and configuration.
 
 Required knowledge and understanding
 - Cloud Computing basics and what AWS is (Free Udemy course [link](https://www.udemy.com/course/introduction-to-aws-cloud-computing/))
