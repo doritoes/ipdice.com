@@ -13,7 +13,7 @@ Required resources
 - You will need to fund your experiments and projects on AWS using a credit card
   - CAUTION It is your responsibility to clean up everything you don't need, because AWS payment terms and conditions apply!
 - If you do not already have a domain name in AWS DNS to use, you will want to register one
-    - (https://aws.amazon.com/route53/pricing/) has a list of pricing by TLD
+    - https://aws.amazon.com/route53/pricing/ has a list of pricing by TLD
     - .click $3
     - .link $5
  - Install AWS Cli on your local machine
