@@ -100,6 +100,8 @@ You need to configure VPCs for the networking in each region. The following exam
     - DNS: Enable both options, **DNS hostnames** and **DNS resolution**
     - Click **Create VPC**
 
+NOTE: No private subnets are required. You can reduce this to zero or leave at the default.
+
 ## Create Security Groups
 ### Create Security Group for ECS
 1. In the AWS console search for "EC2" and click **EC2**
