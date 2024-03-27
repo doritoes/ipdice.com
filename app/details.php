@@ -38,6 +38,11 @@ if (!isset($_GET['ip']) || !$_GET['ip']) {
   header("Location: $newURL");
   exit;
 }
+if ($_GET['ip'] != $ip_address) {
+  $newURL = $scheme . '://' . $_SERVER['HTTP_HOST'] ."/static/pages/denied.php";
+  header("Location: $newURL");
+  exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,6 +63,7 @@ if (!isset($_GET['ip']) || !$_GET['ip']) {
     <script src="/static/scripts/detect.js" defer></script>
     <script src="/static/scripts/details.js" defer></script>
     <script src="/static/scripts/fingerprint.js" defer></script>
+    <script src="/static/scripts/locate.js" defer></script>
   </head>
   <body>
     <div class="matrix-container">
@@ -68,7 +74,7 @@ if (!isset($_GET['ip']) || !$_GET['ip']) {
       <div class="matrix-line"></div>
       <div class="matrix-line"></div>
       <div class="output-block">
-        <div class="ip-display"><?php echo $ip_address ?></div>
+        <div id="ip-address" class="ip-display"><?php echo $ip_address ?></div>
         <?php
           if ($ip_address != "IP Address Not Found" && is_rfc1918_ip($ip_address)) {
             echo '<div class="sandbox">[+] Sandbox detected</div>' . "\n";

@@ -17,15 +17,18 @@ Amazon Elastic Container Service (ECS) offers a simplified experience with tight
 
 This demonstration site has the following features:
 * No ads
-* Small container based on Alpine Linux
-* Serverless computing on Fargate
-* Gradually release new experiences to the web application
-* Demonstrate global autoscaling container applications without breaking the bank (don't want to cost too much for this free site)
 * No SQL backend
+* Serverless computing on Fargate
+* Small container based on Alpine Linux
+* Demonstrate global autoscaling container applications without breaking the bank (don't want to cost too much for this free site)
+* Gradually release new experiences to the web application
+* Integration with external geo-location API
 * Fun easter eggs to find
 
 # Project Goals
 Here are the goals I have for this project. If you would like to encourage me to add additional goals or to complete these goals, I'm open to [contributions](https://account.venmo.com/u/unclenuc) to pay my Cloud bills.
+
+This is mean to be a step-by-step Lab exercise that you can follow along to.
 
 ## In Scope
 ### Completed
@@ -36,10 +39,14 @@ Here are the goals I have for this project. If you would like to encourage me to
 - One region built
 - Multi-region
 - Added first two easter eggs
-### Working on
 - Multi-region
+- Add anti-snoop protection
+- Integration with https://www.ip-api.com for geo-location
+
+### Working on
+- Improvement and testing
 ### Will Do
-- Feature: IP address information experience
+- No major work at this point
 ### Might Do
 - Feature: Dice rolling experience
 - Feature: API for dice rolls (using custom dice rolling algorithm)
@@ -72,9 +79,23 @@ More "IP Animals":
 - https://ipmonkey.com
 - https://ipfish.com (redirects to ipchicken.com)
 
+IP Lookup API options
+- https://medium.com/@ipdata_co/what-is-the-best-commercial-ip-geolocation-api-d8195cda7027
+- https://ip-api.com
+  - Free rate-limited http-only lookup without API key
+  - Paid unlimited https lookups with API key
+  - Demonstrated on [IPloc8.com](https://github.com/doritoes/iploc8.com)
+- https://db-ip.com/
+  - Great data including threat level, "isCrawler", weatherCode, and a somewhat unreliable "useageType"
+- https://ipstack.com/
+  - Moderate value, addes continent, language, currency, threat level
+  - Breaks out proxy, TOR, and crawler
+  - <ins>very</ins> limited free option 100 queries/month
+
 My IP address checking web sites:
 - https://ipgiraffe.com
 - https://ipdice.com
+- https://iploc8.com (API)
 
 My other web sites:
 - https://unclenuc.com

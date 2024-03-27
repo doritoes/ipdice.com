@@ -1,5 +1,5 @@
 # Prerequisites
-This lab is written for a Windows 11 system.
+This lab is written for a Windows 11 system. Throughout you will see refernces to "ipdice.com". You will need adpapt the steps to your own domain name and configuration.
 
 Required knowledge and understanding
 - Cloud Computing basics and what AWS is (Free Udemy course [link](https://www.udemy.com/course/introduction-to-aws-cloud-computing/))
@@ -15,7 +15,7 @@ Required resources
 - You will need to fund your experiments and projects on AWS using a credit card
   - CAUTION It is your responsibility to clean up everything you don't need, because AWS payment terms and conditions apply!
 - If you do not already have a domain name in AWS DNS to use, you will want to register one
-    - (https://aws.amazon.com/route53/pricing/) has a list of pricing by TLD
+    - https://aws.amazon.com/route53/pricing/ has a list of pricing by TLD
     - .click $3
     - .link $5
  - Install AWS Cli on your local machine

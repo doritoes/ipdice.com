@@ -8,14 +8,14 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden; /* Important for containing falling characters */ 
+  overflow: hidden; /* Important for containing falling characters */
 }
 .matrix-line {
   position: absolute;
   top: 0; /* Align the lines with the top edge */
   width: 10px; /* Adjust character width */
-  height: 100%; 
-  overflow: hidden; 
+  height: 100%;
+  overflow: hidden;
   opacity: 0.5; /* Adjust for faded effect */
 }
 .matrix-line span {
@@ -45,6 +45,17 @@ body {
 .ip-display {
   animation: pulse 2s infinite alternate;
 }
+.location-data {
+  font-size: 0.75em;
+  margin: 0.25em 0; /* Adjust top/bottom margin for spacing */
+}
+.location-data p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.location-data-details {
+  padding-left: 2.2em;
+}
 .sandbox {
   color: #C70000;
   font-size: 0.75em;
@@ -62,5 +73,5 @@ body {
 .honey {
   opacity: 0;
   position: absolute;
-  left: -9999px; 
+  left: -9999px;
 }

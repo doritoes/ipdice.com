@@ -8,7 +8,7 @@ In this example we are doing to use:
 - us-west-2 (Oregon)
 
 We are not going to deploy to eu-central-1 (Frankfurt) because
-- Only two originals can be in a CloudFront origin group
+- Only two origins can be in a CloudFront origin group
 - We are not going to set up latency-based Route 53 records to point to the ALBs in this case
 
 ## Steps

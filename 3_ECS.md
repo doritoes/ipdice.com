@@ -100,6 +100,8 @@ You need to configure VPCs for the networking in each region. The following exam
     - DNS: Enable both options, **DNS hostnames** and **DNS resolution**
     - Click **Create VPC**
 
+NOTE: No private subnets are required. You can reduce this to zero or leave at the default.
+
 ## Create Security Groups
 ### Create Security Group for ECS
 1. In the AWS console search for "EC2" and click **EC2**
@@ -165,7 +167,7 @@ You need to configure VPCs for the networking in each region. The following exam
     - VPC: *select the VPC you created earlier* (e.g., ipdice-vpc-us-east-1)
     - Mappings: select two availability zones and two <ins>public</ins> subnets
     - Security groups
-      - From the dropdown select the Security group you created for the load balancer (i.e., `ipdice-alg-sg`)
+      - From the dropdown select the Security group you created for the load balancer (i.e., `ipdice-alb-sg`)
     - Listeners and routing
       - Modify the protocol to **HTTPS**
       - Click the link **Create target group**
@@ -280,7 +282,7 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
       - VPC: **ipdice-ecs-sg**
       - The two subnets, one for each availability zone, should be listed
       - Security group: *Select the SG you created for ECS (only)* (i.e., ipdice-ecs-sg)
-      - From the dropdown select the Security group you created for the load balancer (i.e., `ipdice-alb-sg`)
+      - From the dropdown select the Security group you created for the load balancer (i.e., `ipdice-ecs-sg`)
       - Public IP: **ON**
       - Load balancing
         - Type: **Application Load Balancer**
@@ -294,7 +296,7 @@ This role allows ECS tasks to pull images from ECR and perform other necessary A
         - **Use an existing target group**
         - Target group name: *select from the dropdown* (i.e., ipdice-target-group)
     - Service auto scaling
-      - Select **User service auto scaling**
+      - Select **Use service auto scaling**
         - Minimum number of tasks: **1**
         - Maximum number of tasks: **10**
       - Click **Add scaling policies**

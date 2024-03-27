@@ -17,6 +17,7 @@ body {
   height: 100%; 
   overflow: hidden; 
   opacity: 0.5; /* Adjust for faded effect */
+  animation: glitch-matrix 8s infinite; /* Adjust speed as needed */
 }
 .matrix-line span {
     color: #C70000;
@@ -28,10 +29,12 @@ body {
   0% { top: -100%; }
   100% { top: 100%; }
 }
-@keyframes pulse {
-  0%   { opacity: 0.5; }
-  50%  { opacity: 1; }
-  100% { opacity: 0.5; }
+@keyframes glitch-matrix {
+  20% { transform: skewY(-3deg); }
+  40% { transform: skewY(5deg); }
+  60% { transform: skewY(-2deg); }
+  80% { transform: skewY(1deg); }
+  100% { transform: skewY(0deg); } 
 }
 .ip-display {
     position: absolute;
@@ -41,4 +44,21 @@ body {
     font-size: 24px;
     font-family: monospace;
     color: #C70000;
-    animation: pulse 2s infinite alternate;
+    animation: pulse 2s infinite alternate, glitch-shadow 5s infinite;
+}
+@keyframes pulse {
+  0%   { opacity: 0.5; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+@keyframes glitch-shadow {
+  0% { text-shadow: -3px -2px 3px black; }
+  39.5% { text-shadow: -3px -2px 3px black; }
+  40% { text-shadow: 5px -3px 4px blue; }
+  40.5% { text-shadow: -2px 3px 1px rgba(255,0,0,0.7), 5px -3px 4px blue; }
+  41% { text-shadow: -3px -2px 3px black; } 
+  65% { text-shadow: -2px 3px 1px rgba(255,0,0,0.7); }
+  65.5% { text-shadow: 5px -3px 4px blue; }
+  66% { text-shadow: -3px -2px 3px black; }
+  100% { text-shadow: -3px -2px 3px black; }
+}

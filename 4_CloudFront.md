@@ -1,6 +1,8 @@
 # Configuring CloudFront
 The next step is to create the CloudFront distribution. This acts as a global content delivery network (CDN), caching API Gateway responses closer to end-users, reducing latency and improving the overall performance. We will not incur the cost of enabling the WAF (Web Application Firewall) as the app simply returns HTML. There is no API to protect. Another reason we are using CloudFront is that in later steps we will be adding more instances to additional AWS regions. CloudFront will distribute traffic to the nearest region (latency-based routing).
 
+**THIS WILL COST YOU MONEY** - read more at https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CloudFrontPricing.html
+
 It is possible to configure health checks within CloudFront to automatically route traffic away from unhealthy regions should an issue arise. **IMPORTANT** - be mindful of potential cross-region data transfer costs when using multiple origins in different regions.
 
 https://www.stormit.cloud/blog/cloudfront-distribution-for-amazon-ec2-alb/

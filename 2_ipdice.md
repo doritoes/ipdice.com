@@ -15,7 +15,7 @@ Overview:
 ## Customize the ipdice.com App
 Optionally, customize the application.
 
-You will note that the application leverages (ip-api) [ttps://ip-api.com] for IP address lookup.
+You will note that the application leverages (ip-api)[ttps://ip-api.com] for IP address lookup.
 
 You have some options:
 - Run your container only in a local docker instance under API and use the free http endpoint at ip-api
