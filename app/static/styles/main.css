@@ -102,7 +102,7 @@ button:hover {
   height: 100%;
   z-index: -1; /* Ensure it's placed at the back */
 }
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* iPhone portrait */
   body {
     display: flex;
     align-items: center;
@@ -123,8 +123,9 @@ button:hover {
     z-index: -1; /* Ensure it's placed at the back */
   }
   h1 {
-    font-size: 3em;
+    font-size: 2.5em;
     padding-left: 20px;
+    margin: 0;
   }
   header {
     padding-left: 20px;
@@ -132,9 +133,14 @@ button:hover {
   main {
     padding-left: 20px;
     font-size: 1.0em;
+    margin: 0;
   }
   footer {
     padding-left: 20px;
+    margin: 0;
+  }
+  p {
+    margin: 3px;
   }
   .ipaddress {
     color: #202020;
@@ -142,37 +148,7 @@ button:hover {
     font-size: 2em;
     font-weight: normal;
   }
-}
-@media only screen and (max-height: 950px) and (orientation: landscape) {
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-  body .background-image {
-    background-image: url('/static/images/background1m.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    filter: grayscale(50%) brightness(120%);
-    position: absolute; /* To position the image behind your content */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; 
-    z-index: -1; /* Ensure it's placed at the back */
-  }
-  header {
-   margin-top: 150px;
-  }
-}
-@media only screen and (min-width: 1840px) {
-  /* Styles specifically for wide displays go here */
-  header {
-    margin-top: 350px;
-  }
-  body {
-    justify-content: flex-start;
+  .title {
+    padding: 2px;
   }
 }
