@@ -44,7 +44,7 @@ This is mean to be a step-by-step Lab exercise that you can follow along to.
 - Integration with https://www.ip-api.com for geo-location
 
 ### Working on
-- Improvement and testing
+- Improvement and testing - especially the terrible CSS formatting
 ### Will Do
 - No major work at this point
 ### Might Do
