@@ -39,7 +39,7 @@ function displayLocationData(locationData) {
     const mobile = document.createElement('p');
     mobile.textContent = 'Mobile: True';
     mobile.className = 'location-data-details';
-    newDiv.appendChild(moble);
+    newDiv.appendChild(mobile);
   }
   if (locationData.proxy) {
     const proxy = document.createElement('p');
