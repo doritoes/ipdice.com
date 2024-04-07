@@ -18,4 +18,4 @@ Health check page for use by Amazon ECS to determine if the container is healthy
 ## Fonts
 The fonts in /app/static/fonts can be used for personal puroposes. For commercial purposes, you will need to license your own fonts.
 ## Images
-Midjourney was used to create most of it the images. The dice local is a create-commmons licensed SVG.
+Midjourney was used to create most of it the images. The dice logo is a creative-commmons licensed SVG.
