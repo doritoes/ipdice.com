@@ -2,21 +2,26 @@
 Building a container-based IP address web site on Amazon ECS.
 
 Please be forewarned that this lab is fairly expensive. AWS promises to save you up to 50% on compute costs by utilizing autonomous scaling, provisioning, and usage-based pricing. However the costs of even a lab environment add up quickly. Here the top costs:
-- VPC costs
-  - includes public IP address pricing (Elastic IP); reduce by removing the public IP addresses on the load balancers
-  - ❓is this even possible
-  - is the internet gateway this cost?
-- ELB costs - you pay for AWS resources to run the load balancer(s)
+- VPC costs 💵
+  - includes public IP address pricing (Elastic IP)
+    - For example us-east-1 (USE1-PublicIPv4:InUseAddress)
+    - On 2/1/2024 Amazon started charging for public IP addresses in use
+      - https://cybernews.com/tech/amazon-web-services-charge-ipv4-addresses/
+      - Single IP is 3.60/month or $43.80/year
+- ELB costs 💵
+  - you pay for AWS resources to run the load balancer(s)
   - per application load balancer-hour
-  - per LCU-hour (load)
-- EC2 costs - I can find no explanation why these costs increased
-  - EC2-Instances / EC2 Running Hours ran up a large bill
-  - We configure Load balancers in EC2, but then we get ELB costs broken out. Target group costs would seem to be under ECS. What am I being billed for here?
-  - I tagged all my resources (e.g., "ipdice" with no value) but cannot use the tage in the Cost Explorer
-- ECS costs - you pay for the memory and vCPU resourcs the containers use
-  - reduce costs by useing the minimum required CPU and memory
-- WAF costs
-- Scaling costs - use step scaling and reduce the maximum number of containers
+  - per LCU-hour (load-based)
+  - redue the number of regions
+- ECS costs 💵
+  - you pay for the memory and vCPU resourcs the containers use
+  - reduce costs by reducing the minimum required CPU and memory in the Task definition
+  - reduce scaling - use step scaling and reduce the maximum number of tasks
+  - reduce the number of regions
+- Route53 - monthly cost
+- EC2 costs / EC2 - Other
+  - Idle Elastic IPs incur a small fee
+  - ELB usage is charged a small fee
 
 *Learn more at https://www.appsdevpro.com/blog/aws-fargate-pricing/*
 
