@@ -1,6 +1,11 @@
 # ipdice.com
 Building a container-based IP address web site on Amazon ECS.
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/doritoes/ipdice.com.svg)](https://hub.docker.com/r/doritoes/ipdice.com/)
+![nginx 1.24](https://img.shields.io/badge/nginx-1.24-brightgreen.svg)
+![php 8.3](https://img.shields.io/badge/php-8.3-brightgreen.svg)
+![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+
 Please be forewarned that this lab is fairly expensive. AWS promises to save you up to 50% on compute costs by utilizing autonomous scaling, provisioning, and usage-based pricing. However the costs of even a lab environment add up quickly. Here the top costs:
 - VPC costs 💵
   - includes public IP address pricing (Elastic IP)
@@ -24,11 +29,6 @@ Please be forewarned that this lab is fairly expensive. AWS promises to save you
   - ELB usage is charged a small fee
 
 *Learn more at https://www.appsdevpro.com/blog/aws-fargate-pricing/*
-
-[![Docker Pulls](https://img.shields.io/docker/pulls/doritoes/ipdice.com.svg)](https://hub.docker.com/r/doritoes/ipdice.com/)
-![nginx 1.24](https://img.shields.io/badge/nginx-1.24-brightgreen.svg)
-![php 8.3](https://img.shields.io/badge/php-8.3-brightgreen.svg)
-![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 # Overview and Genesis
 After building a number of container web apps and deploying them to on-premise Kubernetes (k8), I wanted to try a real-world use case. Patterning after https://github.com/doritoes/ipgiraffe.com, I am creating a new site to return a more complete and playful IP Address web site experience.
