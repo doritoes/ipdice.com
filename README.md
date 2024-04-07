@@ -7,7 +7,7 @@ Please be forewarned that this lab is fairly expensive. AWS promises to save you
     - For example us-east-1 (USE1-PublicIPv4:InUseAddress)
     - On 2/1/2024 Amazon started charging for public IP addresses in use
       - https://cybernews.com/tech/amazon-web-services-charge-ipv4-addresses/
-      - Single IP is 3.60/month or $43.80/year
+      - Single IP is $3.60/month or $43.80/year
 - ELB costs 💵
   - you pay for AWS resources to run the load balancer(s)
   - per application load balancer-hour
