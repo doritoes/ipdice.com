@@ -118,15 +118,19 @@ For example, if you updated .js script files, a .css style sheet, or other appli
 ## Learnings
 In this lab you were introduced to Amazon ECS on Fargate, a serverless computing platform based on containers. You got to experiment with CloudFront and Route53.
 
-🥚 Did you find the easter eggs in the application?
+❓Compare Amazon ECS on Fargate with AWS Lightsail Containers
+- How can Lightsail Containers reduce the cost? How are Lightsail Container costs more predictable?
+- What advanced features do you gain on Amazon ECS?
 
 I hope you take some time to look at the web application itself, is it was designed to expose you to
 - javascript
 - dynamic CSS style sheets including switching style sheets
 
+🥚 Did you find the easter eggs in the application?
+
 What affect does the CloudFront caching mechanism have on rolling out new files in the /static part of the application?
 - Turning off caching before you update the deployment image, and turning it back on after testing is one solution
-- Invalidating the cache is another
+- Invalidating the cache is another solution
 
 ## Learn More
 ### Reading suggestions
