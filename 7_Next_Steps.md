@@ -1,10 +1,14 @@
 # Next Steps
 
 ## Deploy updated container image
-You will need to repeat this for each region you are deployed in
+You will need to repeat this for each region you are deployed in.
+
+Rebuild the container (see [section 2](2_ipdice.md) with the `--pull` argument. This requests docker to pull a fresh upstream image. This ensures you get the latest updates.
+
+`docker build -t ipdice . --pull`
 
 ### Push the latest container to ECR
-See [section 2](3_ECS.md) for the instructions for pushing images to ECR
+See [section 3](3_ECS.md) for the instructions for pushing images to ECR
 
 ### Update Task Definition
 Is it a new image URI and/or a new tag? If so, do this:
