@@ -95,14 +95,14 @@ button:hover {
   background-image: url('/static/images/background1.png');
   background-size: cover;
   filter: grayscale(50%) brightness(120%);
-  position: absolute; /* To position the image behind your content */
+  position: absolute; /* position image behind content */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Ensure it's placed at the back */
+  z-index: -1; /* Ensure placed at back */
 }
-@media (max-width: 768px) {
+@media (max-width: 768px) and (orientation: portrait) { /* mobile portrait */
   body {
     display: flex;
     align-items: center;
@@ -115,26 +115,33 @@ button:hover {
     background-size: contain;
     background-repeat: no-repeat;
     filter: grayscale(50%) brightness(120%);
-    position: absolute; /* To position the image behind your content */
+    position: absolute; /* position image behind content */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%; 
-    z-index: -1; /* Ensure it's placed at the back */
+    z-index: -1; /* Ensure placed at back */
   }
   h1 {
-    font-size: 3em;
+    font-size: 2.5em;
     padding-left: 20px;
+    margin: 0;
   }
   header {
     padding-left: 20px;
+    padding-top: 28px;
   }
   main {
     padding-left: 20px;
     font-size: 1.0em;
+    margin: 0;
   }
   footer {
     padding-left: 20px;
+    margin: 0;
+  }
+  p {
+    margin: 3px;
   }
   .ipaddress {
     color: #202020;
@@ -142,8 +149,11 @@ button:hover {
     font-size: 2em;
     font-weight: normal;
   }
+  .title {
+    padding: 2px;
+  }
 }
-@media only screen and (max-height: 950px) and (orientation: landscape) {
+@media (max-height: 430px) and (orientation: landscape) { /* mobile landscape */
   body {
     display: flex;
     align-items: center;
@@ -151,28 +161,34 @@ button:hover {
     min-height: 100vh;
     flex-direction: column;
   }
-  body .background-image {
-    background-image: url('/static/images/background1m.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    filter: grayscale(50%) brightness(120%);
-    position: absolute; /* To position the image behind your content */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; 
-    z-index: -1; /* Ensure it's placed at the back */
+  h1 {
+    font-size: 2.5em;
+    padding-left: 20px;
+    margin: 0;
   }
   header {
-   margin-top: 150px;
+    padding-left: 20px;
+    padding-top: 75px;
   }
-}
-@media only screen and (min-width: 1840px) {
-  /* Styles specifically for wide displays go here */
-  header {
-    margin-top: 350px;
+  main {
+    padding-left: 20px;
+    font-size: 1.0em;
+    margin: 0;
   }
-  body {
-    justify-content: flex-start;
+  footer {
+    padding-left: 20px;
+    margin: 0;
+  }
+  p {
+    margin: 3px;
+  }
+  .ipaddress {
+    color: #202020;
+    font-family: DPoly, sans-serif;
+    font-size: 2em;
+    font-weight: normal;
+  }
+  .title {
+    padding: 2px;
   }
 }

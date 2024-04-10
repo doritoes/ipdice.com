@@ -1,10 +1,14 @@
 # Next Steps
 
 ## Deploy updated container image
-You will need to repeat this for each region you are deployed in
+You will need to repeat this for each region you are deployed in.
+
+Rebuild the container (see [section 2](2_ipdice.md) with the `--pull` argument. This requests docker to pull a fresh upstream image. This ensures you get the latest updates.
+
+`docker build -t ipdice . --pull`
 
 ### Push the latest container to ECR
-See [section 2](3_ECS.md) for the instructions for pushing images to ECR
+See [section 3](3_ECS.md) for the instructions for pushing images to ECR
 
 ### Update Task Definition
 Is it a new image URI and/or a new tag? If so, do this:
@@ -30,6 +34,15 @@ Is it a new image URI and/or a new tag? If so, do this:
 2. Click on the new task, find the Public IP and open it with port 8080 (e.g. http://3.81.118.133:8080)
 
 ## Reducing Costs
+This is an expensive lab to run. Be sure to decomission it as soon as you are done with it.
+
+Top costs:
+* Public IP addresses
+* ELB
+* ECS
+  
+### Remove unecessary public IP addresses
+Amazon now charges about $3.60/month for public IP addresses. You don't need a public IP on the Load Balancer if you are using Route53 and CloudFront.
 
 ### Turn off logging
 Turn off logging after the application is working, if you don't need the logs.
@@ -105,15 +118,19 @@ For example, if you updated .js script files, a .css style sheet, or other appli
 ## Learnings
 In this lab you were introduced to Amazon ECS on Fargate, a serverless computing platform based on containers. You got to experiment with CloudFront and Route53.
 
-🥚 Did you find the easter eggs in the application?
+❓Compare Amazon ECS on Fargate with AWS Lightsail Containers
+- How can Lightsail Containers reduce the cost? How are Lightsail Container costs more predictable?
+- What advanced features do you gain on Amazon ECS?
 
 I hope you take some time to look at the web application itself, is it was designed to expose you to
 - javascript
 - dynamic CSS style sheets including switching style sheets
 
+🥚 Did you find the easter eggs in the application?
+
 What affect does the CloudFront caching mechanism have on rolling out new files in the /static part of the application?
 - Turning off caching before you update the deployment image, and turning it back on after testing is one solution
-- Invalidating the cache is another
+- Invalidating the cache is another solution
 
 ## Learn More
 ### Reading suggestions

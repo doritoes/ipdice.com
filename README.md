@@ -30,6 +30,30 @@ Please be forewarned that this lab is fairly expensive. AWS promises to save you
 ![php 8.3](https://img.shields.io/badge/php-8.3-brightgreen.svg)
 ![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
+Please be forewarned that this lab is fairly expensive. AWS promises to save you up to 50% on compute costs by utilizing autonomous scaling, provisioning, and usage-based pricing. However the costs of even a lab environment add up quickly. Here the top costs:
+- VPC costs 💵
+  - includes public IP address pricing (Elastic IP)
+    - For example us-east-1 (USE1-PublicIPv4:InUseAddress)
+    - On 2/1/2024 Amazon started charging for public IP addresses in use
+      - https://cybernews.com/tech/amazon-web-services-charge-ipv4-addresses/
+      - Single IP is $3.60/month or $43.80/year
+- ELB costs 💵
+  - you pay for AWS resources to run the load balancer(s)
+  - per application load balancer-hour
+  - per LCU-hour (load-based)
+  - redue the number of regions
+- ECS costs 💵
+  - you pay for the memory and vCPU resourcs the containers use
+  - reduce costs by reducing the minimum required CPU and memory in the Task definition
+  - reduce scaling - use step scaling and reduce the maximum number of tasks
+  - reduce the number of regions
+- Route53 - monthly cost
+- EC2 costs / EC2 - Other
+  - Idle Elastic IPs incur a small fee
+  - ELB usage is charged a small fee
+
+*Learn more at https://www.appsdevpro.com/blog/aws-fargate-pricing/*
+
 # Overview and Genesis
 After building a number of container web apps and deploying them to on-premise Kubernetes (k8), I wanted to try a real-world use case. Patterning after https://github.com/doritoes/ipgiraffe.com, I am creating a new site to return a more complete and playful IP Address web site experience.
 
