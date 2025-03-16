@@ -74,9 +74,9 @@ This demonstration site has the following features:
 * Fun easter eggs to find
 
 # Project Goals
-Here are the goals I have for this project. If you would like to encourage me to add additional goals or to complete these goals, I'm open to [contributions](https://account.venmo.com/u/unclenuc) to pay my Cloud bills.
+Here are the goals I had for this project. This is mean to be a step-by-step Lab exercise that you can follow along to.
 
-This is mean to be a step-by-step Lab exercise that you can follow along to.
+**IMPORTANT** I am shutting down the web site https://ipdice.com and the companion site https://iploc8.com due to the AWS expenses being too high for my needs.
 
 ## In Scope
 ### Completed
@@ -90,15 +90,6 @@ This is mean to be a step-by-step Lab exercise that you can follow along to.
 - Multi-region
 - Add anti-snoop protection
 - Integration with https://www.ip-api.com for geo-location
-
-### Working on
-- Improvement and testing
-### Will Do
-- No major work at this point
-### Might Do
-- Feature: Dice rolling experience
-- Feature: API for dice rolls (using custom dice rolling algorithm)
-- Feature: API for physical dice roles (rolled and captured by Raspberry Pi-powered physical device)
 ## Out of Scope
 - Amazon Elastic Kubernetes Service (EKS) doesn't meet my criteria for integrating a new technology for me. I have done other Kubernetes labs ([here](https://www.unclenuc.com/lab:kubernetes_app:start) and [here](https://www.unclenuc.com/lab:stack_of_nucs:start)).
 - Azure and GCP are out of scope for this lab
@@ -142,12 +133,11 @@ IP Lookup API options
 
 My IP address checking web sites:
 - https://ipgiraffe.com
-- https://ipdice.com
-- https://iploc8.com (API)
+- https://ipdice.com - **decommissioned**
+- https://iploc8.com (API) - **decommissioned**
 
 My other web sites:
 - https://unclenuc.com
-- https://systems-monitor.com/
 - https://www.cottagewifi.com/ (I have a lot of content that I want to share here)
 
 To find your private LAN IP address:
